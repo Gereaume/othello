@@ -1,0 +1,41 @@
+fonctions : 
+
+pseudo.
+
+sys tour/tour
+
+grille 64 cases 8*8(voir si matrice ou autre)
+
+compteur de tour
+
+compteur de point
+savoir si un pt est marqué
+verif coup possible
+
+
+2matrices
+
+Ordre:
+
+	-Création de la matrice / gestion de la matrice : temps approximatif (2h)
+		pointeurs de fonction gestion_mat (TD3 Q1 )
+
+	-Gestions des scores / gestions des pseudo temps approximatif (2h)
+
+	-Création des règles du othello temps approximatif (10h)
+
+	-Affichage coup possible temps approximatif (3h)
+
+	-Affichage meilleur coup possible temps approximatif (3h)
+
+	-Interface graphique temps approximatif (9h)
+	
+	-Jouer contre ordinateur temps approximatif (?h)
+
+	-Reseaux temps approximatif (9h)
+
+
+total : 40h approx
+
+
+pointeurs de fonction gestion_mat (TD3 Q1 )
