@@ -13,6 +13,7 @@ void init_mat(char mat[N][N])
 {
 	
 	int lig,col;//Declaration des variables a incrementer
+
 	for(lig=0;lig<N;lig++)//Incrementation de ligne
 	{
 		for(col=0;col<N;col++)//Incrementation de colonne
@@ -30,7 +31,7 @@ Cette fonction permet de lire la matrice
 *****************************************/
 
 void lire_mat(char mat[N][N])
-{
+{	
 	int lig,col;//Declaration des variables a incrementer
 	printf("|");
 	for(lig=0;lig<N;lig++)//Incrementation de ligne
@@ -41,11 +42,41 @@ void lire_mat(char mat[N][N])
 		}
 		printf("\n|");
 	}
+	printf("\n\n");
 }
 /*****************************************************************
 Cette fonction permet d'ecrire dans une matrice a une case donnée
 *****************************************************************/
-void ecrire_mat(char mat[N][N],int lig,int col,char symbole)
+void ecrire_mat(char mat[N][N],char symbole)
+{	
+	int lig,col;//Declaration des variables a incrementer 
+	printf("Saisissez les coordonnées ou vous voulez jouer : ");//On demande a l'utilisateur de saisir les coordonnées ou il veut jouer
+	scanf("%i%i",&lig,&col);
+	while((lig<=8 && lig>=1) && (col<=8 && col>=1))//Verification si le joueur joue dans la grille
+	{
+		printf("Resaisissez les coordonnées ou vous voulez jouer : ");
+		scanf("%i%i",&lig,&col);
+	}
+	/*while(coup_possible()) (update a faire avec f° coup_possible)*/
+	mat[lig-1][col-1] = symbole;//On decremente les coordonnées saisie par le joueur pour que cela corresponde visuelement a l'affichage
+	system("clear");//On nettoie l'affichage du terminal pour ne pu voir les coordonnées précedentes
+}
+
+/*****************************************************************
+Cette fonction permet de compter le nombre de pion sur le plateau
+*****************************************************************/
+
+int compter_pion(char mat[N][N])
 {
-	mat[lig][col] = symbole;
+	int cpt_pion,lig,col;//Declaration des variables a incrementer
+
+	for(lig=0;lig<N;lig++)//Incrementation de ligne
+	{
+		for(col=0;col<N;col++)//Incrementation de colonne
+		{
+			if(mat[lig][col] == '*')
+				cpt_pion++;//Incrementation du compteur si la case est considere comme vide ( caractere * )
+		}
+	}
+	return(cpt_pion);//Retourne la valeur de cpt_pion
 }
