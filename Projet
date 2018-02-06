@@ -17,12 +17,12 @@ verif coup possible
 
 Ordre:
 
-	OK -Création de la matrice / gestion de la matrice : temps approximatif (2h)
+	OK -Création de la matrice / gestion de la matrice : temps approximatif (2h) JLQ
 		pointeurs de fonction gestion_mat (TD3 Q1 )
 
-	OK -Gestions des scores / gestions des pseudo temps approximatif (2h)
+	OK -Gestions des scores / gestions des pseudo temps approximatif (2h) AL
 
-	-Création des règles du othello temps approximatif (10h)
+	-Création des règles du othello temps approximatif (10h) JLR | AL
 
 		-Gestion d'un tour
 		-Gestion fin de partie
@@ -37,7 +37,7 @@ Ordre:
 
 	-Affichage meilleur coup possible temps approximatif (3h)
 
-	-Interface graphique temps approximatif (9h)
+	-Interface graphique temps approximatif (9h) JLR
 	
 	-Jouer contre ordinateur temps approximatif (?h)
 
