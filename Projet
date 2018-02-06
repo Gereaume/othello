@@ -17,12 +17,21 @@ verif coup possible
 
 Ordre:
 
-	-Création de la matrice / gestion de la matrice : temps approximatif (2h)
+	OK -Création de la matrice / gestion de la matrice : temps approximatif (2h)
 		pointeurs de fonction gestion_mat (TD3 Q1 )
 
-	-Gestions des scores / gestions des pseudo temps approximatif (2h)
+	OK -Gestions des scores / gestions des pseudo temps approximatif (2h)
 
 	-Création des règles du othello temps approximatif (10h)
+
+		-Gestion d'un tour
+		-Gestion fin de partie
+		-Gestion début de partie (noir commence)
+		-Gestion coup possible (si l'utilisateur palce son pion à un endroit valide)
+		-Fonction afficher coordonnée
+		-Fonction saisir coordonées
+		-Gestion retourner pions (changer couleur apres prise du pion)
+		
 
 	-Affichage coup possible temps approximatif (3h)
 
