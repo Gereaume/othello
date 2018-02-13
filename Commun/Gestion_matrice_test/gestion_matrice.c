@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
 #include "gestion_matrice.h"
 
 #include "define.h" 									// defini la taille de la matrice
@@ -49,13 +50,13 @@ Cette fonction permet d'ecrire dans une matrice a une case donnée
 *****************************************************************/
 void ecrire_mat(char mat[N][N],char symbole,int lig,int col)
 {	
-	mat[lig-1][col-1] = symbole;							//On decremente les coordonnées saisie par le joueur pour que cela corresponde visuelement a l'affichage
+	mat[lig][col] = symbole;							//On met le symbole au coordonnées souhaité
 	system("clear");								//On nettoie l'affichage du terminal pour ne pu voir les coordonnées précedentes
 }
 
-/*****************************************************************
+/***********************************************************************
 Cette fonction permet de compter le nombre d'element elem sur le plateau
-*****************************************************************/
+************************************************************************/
 
 int compter_elem(char mat[N][N],char elem)
 {
@@ -71,3 +72,14 @@ int compter_elem(char mat[N][N],char elem)
 	}
 	return(cpt_elem);								//Retourne la valeur de cpt_elem
 }
+
+/************************************************************************************
+Cette fonction cette fonction nous permet de voir si l'on est en dehors de la matrice
+*************************************************************************************/
+
+int hors_mat(int lig,int col){
+	if((lig < 0 || lig > 7) || (col < 0 || col > 7))				//Ici on regarde si on est en dehors de la matrice si c'est le cas on return 1
+		return 1;
+	else										//Autrement on return 0
+		return 0;
+} 
