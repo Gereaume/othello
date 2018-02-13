@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#define N 8
+#include "define.h"
 
 void init_mat(char mat[N][N]);
 

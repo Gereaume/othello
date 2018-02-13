@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 #include "score.h"
+#include "Gestion_matrice_/jouer.h"
 
 #define N 8
 

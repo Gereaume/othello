@@ -4,7 +4,6 @@
 
 #include "coupPossible.h"
 
-
 /******************************************
 Renvoie 1 si le coup est possible, sinon 0
 ******************************************/

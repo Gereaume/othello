@@ -1,6 +1,6 @@
 
 OBJ = gestion_matrice.o test.o
-GM = gestion_matrice.c gestion_matrice.h
+GM = gestion_matrice.c gestion_matrice.h define.h
 CC = gcc
 CFLAGS = -g -Wall
 

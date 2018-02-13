@@ -3,7 +3,7 @@
 
 #include "gestion_matrice.h"
 
-#define N 8 // defini la taille de la matrice
+#include "define.h" // defini la taille de la matrice
 
 /*********************************************
 Cette fonction permet d'initialiser la matrice

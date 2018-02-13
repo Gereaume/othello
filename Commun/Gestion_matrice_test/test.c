@@ -11,7 +11,7 @@ int main(){
 	init_mat(mat);
 	lire_mat(mat);
 	char c = 'b';
-	ecrire_mat(mat,c);
+	ecrire_mat(mat,c,1,1);
 	lire_mat(mat);
 
 
