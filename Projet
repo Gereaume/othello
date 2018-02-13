@@ -49,3 +49,49 @@ total : 40h approx
 
 
 pointeurs de fonction gestion_mat (TD3 Q1 )
+
+
+
+	-afficherSP(char mat[N][N], char couleur)
+
+		// renvois un msg contenant le score et le pseudo du joueur (printf)
+
+
+	-coupPoss(char mat[N][N], char mat2[N][N], char couleur, int lig, int col)
+
+		// renvoie 1 si le coup est possible, sinon 0 (booléen)
+
+
+	-score(char mat[N][N], char couleur)
+
+		// renvoie le score du joueur (int)
+
+
+	-init_mat(char mat[N][N])
+
+		// renvoie rien, sert juste à initialiser
+
+
+	-lire_mat(char mat[N][N])
+
+		// renvoie rien, sert juste à afficher la matrice
+
+
+	-ecrire_mat(char mat[N][N],char symbole,int lig,int col)
+
+		// renvoie rien, sert à nettoyer l'affichage et decremente les coordonnées
+
+
+	-compter_pion(char mat[N][N])
+
+		// renvoie le nb de pions total dans la matrice
+
+
+
+
+
+
+
+
+
+
