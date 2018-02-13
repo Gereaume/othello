@@ -34,14 +34,15 @@ Cette fonction permet de lire la matrice
 void lire_mat(char mat[N][N])
 {	
 	int lig,col;									//Declaration des variables a incrementer
-	printf("|");
+	printf("\t X |0|1|2|3|4|5|6|7|");	
 	for(lig=0;lig<N;lig++)								//Incrementation de ligne
 	{
+		printf("\n\t %i |",lig);
 		for(col=0;col<N;col++)							//Incrementation de colonne
 		{
 			printf("%c|",mat[lig][col]);					//Affichage de la matrice
 		}
-		printf("\n|");
+		
 	}
 	printf("\n\n");
 }
