@@ -3,7 +3,8 @@
 	
 #include "gestion_matrice.c"
 
-
+char noir = "n";
+char blanc = "b";
 /******************************************************************************************
 Cette fonction permet de savoir qui a gagné
 ******************************************************************************************/
@@ -26,12 +27,10 @@ int gagnant(char mat[N][N]){
 /******************************************************************************************
 Cette fonction permet le bon déroulement du tour des différents joueurs
 ******************************************************************************************/
-int gestion_tour(){
+void gestion_tour(){
 
 
-	int i = 0,nb_noir = 0, nb_blanc = 0;			//Déclaration des variables
-	char noir = "n";
-	char blanc = "b";
+	int i = 0;						//Déclaration des variables
 	while(coup_possible())
 	{	
 		if((i%2)!=1)
@@ -46,11 +45,11 @@ int gestion_tour(){
 				printf("\n\tCe coup la n'est pas possible ");
 				scanf("%i%i",&lig,&col);
 			}
-			ecrire_mat(mat,noir,lig,col);		//Une fois que l'endroit ou le joueur a décider de jouer est possible on l'ecrit dans la matrice
+			ecrire_mat(mat,noir,lig,col);		//Une fois que l'endroit où le joueur a décider de jouer est possible on l'ecrit dans la matrice
 			lire_mat(mat);				//On affiche la matrice une fois le coup fait
 			i+=1;					//On incrémente i
 		}		
-		else if((i%1)=1)
+		else if((i%2)==1)
 		{
 			system("clear");			//On nettoie le terminal au debut du tour
 			printf("\tTour du joueur n°2\n");	//On indique que c'est le tour du joueur n°2
@@ -67,10 +66,8 @@ int gestion_tour(){
 			i+=1;					//On incrémente i
 		}
 	}
-	nb_noir = compter_pion(mat,noir);
-	nb_blanc = compter_pion(mat,blanc);
 	
-	if(gagnant == 1)
+	if(gagnant(mat) == 1)
 		printf("\tC'est le joueur n°1 qui a gagné\n");
 	else
 		prinft("\tC'est le joueur n°2 qui a gagné\n");
