@@ -51,6 +51,7 @@ total : 40h approx
 pointeurs de fonction gestion_mat (TD3 Q1 )
 
 
+Liste des fonctions utiles :
 
 	-afficherSP(char mat[N][N], char couleur)
 
