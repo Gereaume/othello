@@ -57,17 +57,17 @@ void ecrire_mat(char mat[N][N],char symbole,int lig,int col)
 Cette fonction permet de compter le nombre de pion sur le plateau
 *****************************************************************/
 
-int compter_pion(char mat[N][N])
+int compter_elem(char mat[N][N])
 {
-	int cpt_pion,lig,col;//Declaration des variables a incrementer
+	int cpt_elem,lig,col;//Declaration des variables a incrementer
 
 	for(lig=0;lig<N;lig++)//Incrementation de ligne
 	{
 		for(col=0;col<N;col++)//Incrementation de colonne
 		{
 			if(mat[lig][col] == '*')
-				cpt_pion++;//Incrementation du compteur si la case est considere comme vide ( caractere * )
+				cpt_elem++;//Incrementation du compteur si la case est considere comme vide ( caractere * )
 		}
 	}
-	return(cpt_pion);//Retourne la valeur de cpt_pion
+	return(cpt_elem);//Retourne la valeur de cpt_pion
 }
