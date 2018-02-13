@@ -13,3 +13,6 @@ gestion_matrice.o: ${GM}
 test.o: test.c
 	${CC} -c test.c ${CFLAGS}
 
+clean :
+	- rm -f *.o
+	- rm -f test1
