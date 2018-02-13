@@ -2,6 +2,8 @@
 #include <stdlib.h>
 	
 #include "gestion_matrice.c"
+#include "define.h"
+#include "coupPoss.h"
 
 char noir = "n";
 char blanc = "b";
@@ -27,10 +29,10 @@ int gagnant(char mat[N][N]){
 /******************************************************************************************
 Cette fonction permet le bon déroulement du tour des différents joueurs
 ******************************************************************************************/
-void gestion_tour(){
+void gestion_tour(mat[N][N]){
 
 
-	int i = 0;						//Déclaration des variables
+	int i = 0, lig=0, col=0;				//Déclaration des variables
 	while(coup_possible())
 	{	
 		if((i%2)!=1)
@@ -71,5 +73,6 @@ void gestion_tour(){
 		printf("\tC'est le joueur n°1 qui a gagné\n");
 	else
 		prinft("\tC'est le joueur n°2 qui a gagné\n");
+	return;
 
 }
