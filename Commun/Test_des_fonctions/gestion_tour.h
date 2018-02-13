@@ -8,4 +8,4 @@
 
 int gagnant(char mat[N][N]);
 
-void gestion_tour(mat[N][N]);
+void gestion_tour(char mat[N][N]);

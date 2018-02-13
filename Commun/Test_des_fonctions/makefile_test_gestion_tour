@@ -4,6 +4,8 @@ GM = gestion_matrice.c gestion_matrice.h define.h
 
 GT = gestion_tour.c gestion_tour.h define.h
 
+CP = coupPoss.c coupPoss.h define.h
+
 CC = gcc
 CFLAGS = -g -Wall
 
@@ -16,8 +18,12 @@ gestion_matrice.o: ${GM}
 gestion_tour.o: ${GT}
 	${CC} -c gestion_tour.c ${CFLAGS}
 
+coupPoss.o: ${CP}
+	${CC} -c coupPoss.c ${CFLAGS}
+
 test_Beta.o: test_Beta.c
 	${CC} -c test_Beta.c ${CFLAGS}
+
 
 clean :
 	- rm -f *.o

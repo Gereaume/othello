@@ -3,10 +3,10 @@
 	
 #include "gestion_matrice.c"
 #include "define.h"
-#include "coupPoss.h"
+#include "coupPoss.c"
 
-char noir = "n";
-char blanc = "b";
+char noir = 'n';
+char blanc = 'b';
 /******************************************************************************************
 Cette fonction permet de savoir qui a gagné
 ******************************************************************************************/
@@ -14,13 +14,13 @@ Cette fonction permet de savoir qui a gagné
 int gagnant(char mat[N][N]){
 	int nb_noir = 0, nb_blanc = 0;						//Déclaration des variables				
 
-	nb_noir = compter_pion(mat,noir);					//On compte le nombre de pion noir
-	nb_blanc = compter_pion(mat,blanc);					//On compte le nombre de pion blanc
+	nb_noir = compter_elem(mat,noir);					//On compte le nombre de pion noir
+	nb_blanc = compter_elem(mat,blanc);					//On compte le nombre de pion blanc
 	
 	if(nb_noir>nb_blanc)							//Si il y a plus de pion noir on return 1 donc le joueur n°1 a gagné
-		return 1
+		return 1;
 	else									//Si il y a plus de pion blanc on return donc le joueur n°2 a gagné
-		return 0
+		return 0;
 
 }
 
@@ -29,7 +29,7 @@ int gagnant(char mat[N][N]){
 /******************************************************************************************
 Cette fonction permet le bon déroulement du tour des différents joueurs
 ******************************************************************************************/
-void gestion_tour(mat[N][N]){
+void gestion_tour(char mat[N][N]){
 
 
 	int i = 0, lig=0, col=0;						//Déclaration des variables
@@ -73,7 +73,7 @@ void gestion_tour(mat[N][N]){
 	if(gagnant(mat) == 1)
 		printf("\tC'est le joueur n°1 qui a gagné\n");
 	else
-		prinft("\tC'est le joueur n°2 qui a gagné\n");
+		printf("\tC'est le joueur n°2 qui a gagné\n");
 	return;
 
 }
