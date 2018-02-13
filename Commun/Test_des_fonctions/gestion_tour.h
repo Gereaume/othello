@@ -2,7 +2,6 @@
 #include <stdlib.h>
 
 #include "define.h"
-#include "gestion_matrice.c"
 #include "coupPoss.h"
 
 

@@ -1,9 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "gestion_matrice.c"
-#include "gestion_tour.c"
-#include "coupPoss.c"
+#include "gestion_matrice.h"
+#include "gestion_tour.h"
 #include "define.h"
 
 int main(){

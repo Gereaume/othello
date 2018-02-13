@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 	
-#include "gestion_matrice.c"
+#include "gestion_matrice.h"
 #include "gestion_tour.h"
 #include "define.h"
-#include "coupPoss.c"
+#include "coupPoss.h"
 
 
 /******************************************************************************************

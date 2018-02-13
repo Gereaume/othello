@@ -9,17 +9,17 @@ CP = coupPoss.c coupPoss.h define.h
 CC = gcc
 CFLAGS = -g -Wall
 
-test2: ${OBJ}
-	${CC} -o test2 ${OBJ} -lm
+test_Beta: ${OBJ}
+	${CC} -o test_Beta ${OBJ} -lm
 
 gestion_matrice.o: ${GM}
 	${CC} -c gestion_matrice.c ${CFLAGS}
 
-gestion_tour.o: ${GT}
-	${CC} -c gestion_tour.c ${CFLAGS}
-
 coupPoss.o: ${CP}
 	${CC} -c coupPoss.c ${CFLAGS}
+
+gestion_tour.o: ${GT} coupPoss.o
+	${CC} -c gestion_tour.c ${CFLAGS}
 
 test_Beta.o: test_Beta.c
 	${CC} -c test_Beta.c ${CFLAGS}
