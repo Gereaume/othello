@@ -1,0 +1,24 @@
+OBJ = gestion_matrice.o gestion_tour.o test_Beta.o
+
+GM = gestion_matrice.c gestion_matrice.h define.h
+
+GT = gestion_tour.c gestion_tour.h define.h
+
+CC = gcc
+CFLAGS = -g -Wall
+
+test2: ${OBJ}
+	${CC} -o test2 ${OBJ} -lm
+
+gestion_matrice.o: ${GM}
+	${CC} -c gestion_matrice.c ${CFLAGS}
+
+gestion_tour.o: ${GT}
+	${CC} -c gestion_tour.c ${CFLAGS}
+
+test_Beta.o: test_Beta.c
+	${CC} -c test_Beta.c ${CFLAGS}
+
+clean :
+	- rm -f *.o
+	- rm -f test2
