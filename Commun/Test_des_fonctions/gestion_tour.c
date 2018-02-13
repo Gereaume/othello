@@ -2,18 +2,19 @@
 #include <stdlib.h>
 	
 #include "gestion_matrice.c"
+#include "gestion_tour.h"
 #include "define.h"
 #include "coupPoss.c"
 
-char noir = 'n';
-char blanc = 'b';
+
 /******************************************************************************************
 Cette fonction permet de savoir qui a gagné
 ******************************************************************************************/
 
 int gagnant(char mat[N][N]){
 	int nb_noir = 0, nb_blanc = 0;						//Déclaration des variables				
-
+	char noir = 'n';
+	char blanc = 'b';
 	nb_noir = compter_elem(mat,noir);					//On compte le nombre de pion noir
 	nb_blanc = compter_elem(mat,blanc);					//On compte le nombre de pion blanc
 	
@@ -33,6 +34,8 @@ void gestion_tour(char mat[N][N]){
 
 
 	int i = 0, lig=0, col=0;						//Déclaration des variables
+	char noir = 'n';
+	char blanc = 'b';	
 	char mat2[N][N];
 	while(i<20)
 	{	

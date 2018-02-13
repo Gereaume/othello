@@ -3,6 +3,7 @@
 
 #include "gestion_matrice.c"
 #include "gestion_tour.c"
+#include "coupPoss.c"
 #include "define.h"
 
 int main(){
