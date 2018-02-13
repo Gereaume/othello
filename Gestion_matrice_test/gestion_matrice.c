@@ -47,17 +47,8 @@ void lire_mat(char mat[N][N])
 /*****************************************************************
 Cette fonction permet d'ecrire dans une matrice a une case donnée
 *****************************************************************/
-void ecrire_mat(char mat[N][N],char symbole)
+void ecrire_mat(char mat[N][N],char symbole,int lig,int col)
 {	
-	int lig,col;//Declaration des variables a incrementer 
-	printf("Saisissez les coordonnées ou vous voulez jouer : ");//On demande a l'utilisateur de saisir les coordonnées ou il veut jouer
-	scanf("%i%i",&lig,&col);
-	while((lig<=8 && lig>=1) && (col<=8 && col>=1))//Verification si le joueur joue dans la grille
-	{
-		printf("Resaisissez les coordonnées ou vous voulez jouer : ");
-		scanf("%i%i",&lig,&col);
-	}
-	/*while(coup_possible()) (update a faire avec f° coup_possible)*/
 	mat[lig-1][col-1] = symbole;//On decremente les coordonnées saisie par le joueur pour que cela corresponde visuelement a l'affichage
 	system("clear");//On nettoie l'affichage du terminal pour ne pu voir les coordonnées précedentes
 }
