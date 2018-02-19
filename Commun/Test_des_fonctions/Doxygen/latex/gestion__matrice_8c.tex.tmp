@@ -1,0 +1,130 @@
+\hypertarget{gestion__matrice_8c}{}\section{Référence du fichier gestion\+\_\+matrice.\+c}
+\label{gestion__matrice_8c}\index{gestion\+\_\+matrice.\+c@{gestion\+\_\+matrice.\+c}}
+
+
+Ce fichier contient des fonctions permettant la gestion de matrice tel que initialisé une matrice, lire une matrice, ecrire dans une matrice, compter le nombre d\textquotesingle{}elem dans une matrice, verifier si on est dans la matrice.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}gestion\+\_\+matrice.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}define.\+h\char`\"{}}\\*
+Graphe des dépendances par inclusion de gestion\+\_\+matrice.\+c\+:
+% FIG 0
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{gestion__matrice_8c_a55e4fc67b36d807a6f03b766aedfbc6a}{init\+\_\+mat} (char mat\mbox{[}N\mbox{]}\mbox{[}N\mbox{]})
+\begin{DoxyCompactList}\small\item\em La fonction init\+\_\+mat permet d\textquotesingle{}initialiser la matrice. \end{DoxyCompactList}\item 
+void \hyperlink{gestion__matrice_8c_a0748a671e2cb038f4265b1be7587ee79}{lire\+\_\+mat} (char mat\mbox{[}N\mbox{]}\mbox{[}N\mbox{]})
+\begin{DoxyCompactList}\small\item\em La fonction lire\+\_\+mat permet de lire la matrice. \end{DoxyCompactList}\item 
+void \hyperlink{gestion__matrice_8c_a2b06905823e2bfe7ec80a6d1b2a45318}{ecrire\+\_\+mat} (char mat\mbox{[}N\mbox{]}\mbox{[}N\mbox{]}, char symbole, int lig, int col)
+\begin{DoxyCompactList}\small\item\em La fonction ecrire\+\_\+mat permet d\textquotesingle{}ecrire dans une matrice a une case donnée. \end{DoxyCompactList}\item 
+int \hyperlink{gestion__matrice_8c_a8ea0b8baf89d0a54ec6881c94a8d4c2f}{compter\+\_\+elem} (char mat\mbox{[}N\mbox{]}\mbox{[}N\mbox{]}, char elem)
+\begin{DoxyCompactList}\small\item\em La fonction compter\+\_\+elem permet de compter le nombre d\textquotesingle{}element elem sur le plateau. \end{DoxyCompactList}\item 
+int \hyperlink{gestion__matrice_8c_aeab65e04938f826b414bf2a81efecf14}{hors\+\_\+mat} (int lig, int col)
+\begin{DoxyCompactList}\small\item\em La fonction hors\+\_\+mat nous permet de voir si l\textquotesingle{}on est en dehors de la matrice. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Ce fichier contient des fonctions permettant la gestion de matrice tel que initialisé une matrice, lire une matrice, ecrire dans une matrice, compter le nombre d\textquotesingle{}elem dans une matrice, verifier si on est dans la matrice. 
+
+\begin{DoxyAuthor}{Auteur}
+Jérôme Le Querrec 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+01 fevrier 2018 
+\end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\index{gestion\+\_\+matrice.\+c@{gestion\+\_\+matrice.\+c}!compter\+\_\+elem@{compter\+\_\+elem}}
+\index{compter\+\_\+elem@{compter\+\_\+elem}!gestion\+\_\+matrice.\+c@{gestion\+\_\+matrice.\+c}}
+\subsubsection[{\texorpdfstring{compter\+\_\+elem(char mat[N][N], char elem)}{compter_elem(char mat[N][N], char elem)}}]{\setlength{\rightskip}{0pt plus 5cm}int compter\+\_\+elem (
+\begin{DoxyParamCaption}
+\item[{char}]{mat\mbox{[}\+N\mbox{]}\mbox{[}\+N\mbox{]}, }
+\item[{char}]{elem}
+\end{DoxyParamCaption}
+)}\hypertarget{gestion__matrice_8c_a8ea0b8baf89d0a54ec6881c94a8d4c2f}{}\label{gestion__matrice_8c_a8ea0b8baf89d0a54ec6881c94a8d4c2f}
+
+
+La fonction compter\+\_\+elem permet de compter le nombre d\textquotesingle{}element elem sur le plateau. 
+
+Declaration des variables a incrementer
+
+Incrementation de ligne
+
+Incrementation de colonne
+
+Incrementation du compteur si la case contient l\textquotesingle{}elem
+
+Retourne la valeur de cpt\+\_\+elem \index{gestion\+\_\+matrice.\+c@{gestion\+\_\+matrice.\+c}!ecrire\+\_\+mat@{ecrire\+\_\+mat}}
+\index{ecrire\+\_\+mat@{ecrire\+\_\+mat}!gestion\+\_\+matrice.\+c@{gestion\+\_\+matrice.\+c}}
+\subsubsection[{\texorpdfstring{ecrire\+\_\+mat(char mat[N][N], char symbole, int lig, int col)}{ecrire_mat(char mat[N][N], char symbole, int lig, int col)}}]{\setlength{\rightskip}{0pt plus 5cm}void ecrire\+\_\+mat (
+\begin{DoxyParamCaption}
+\item[{char}]{mat\mbox{[}\+N\mbox{]}\mbox{[}\+N\mbox{]}, }
+\item[{char}]{symbole, }
+\item[{int}]{lig, }
+\item[{int}]{col}
+\end{DoxyParamCaption}
+)}\hypertarget{gestion__matrice_8c_a2b06905823e2bfe7ec80a6d1b2a45318}{}\label{gestion__matrice_8c_a2b06905823e2bfe7ec80a6d1b2a45318}
+
+
+La fonction ecrire\+\_\+mat permet d\textquotesingle{}ecrire dans une matrice a une case donnée. 
+
+On met le symbole au coordonnées souhaité
+
+On nettoie l\textquotesingle{}affichage du terminal pour ne pu voir les coordonnées précedentes \index{gestion\+\_\+matrice.\+c@{gestion\+\_\+matrice.\+c}!hors\+\_\+mat@{hors\+\_\+mat}}
+\index{hors\+\_\+mat@{hors\+\_\+mat}!gestion\+\_\+matrice.\+c@{gestion\+\_\+matrice.\+c}}
+\subsubsection[{\texorpdfstring{hors\+\_\+mat(int lig, int col)}{hors_mat(int lig, int col)}}]{\setlength{\rightskip}{0pt plus 5cm}int hors\+\_\+mat (
+\begin{DoxyParamCaption}
+\item[{int}]{lig, }
+\item[{int}]{col}
+\end{DoxyParamCaption}
+)}\hypertarget{gestion__matrice_8c_aeab65e04938f826b414bf2a81efecf14}{}\label{gestion__matrice_8c_aeab65e04938f826b414bf2a81efecf14}
+
+
+La fonction hors\+\_\+mat nous permet de voir si l\textquotesingle{}on est en dehors de la matrice. 
+
+ce test nous permet de verifier si l\textquotesingle{}on est en dehors de la matrice si c\textquotesingle{}est le cas on return 1
+
+Autrement on return 0 \index{gestion\+\_\+matrice.\+c@{gestion\+\_\+matrice.\+c}!init\+\_\+mat@{init\+\_\+mat}}
+\index{init\+\_\+mat@{init\+\_\+mat}!gestion\+\_\+matrice.\+c@{gestion\+\_\+matrice.\+c}}
+\subsubsection[{\texorpdfstring{init\+\_\+mat(char mat[N][N])}{init_mat(char mat[N][N])}}]{\setlength{\rightskip}{0pt plus 5cm}void init\+\_\+mat (
+\begin{DoxyParamCaption}
+\item[{char}]{mat\mbox{[}\+N\mbox{]}\mbox{[}\+N\mbox{]}}
+\end{DoxyParamCaption}
+)}\hypertarget{gestion__matrice_8c_a55e4fc67b36d807a6f03b766aedfbc6a}{}\label{gestion__matrice_8c_a55e4fc67b36d807a6f03b766aedfbc6a}
+
+
+La fonction init\+\_\+mat permet d\textquotesingle{}initialiser la matrice. 
+
+Declaration des variables a incrementer
+
+Incrementation de ligne
+
+Incrementation de colonne
+
+On place des points dans chaque case
+
+Sauf les cases ou nous plaçons les pions du départ \index{gestion\+\_\+matrice.\+c@{gestion\+\_\+matrice.\+c}!lire\+\_\+mat@{lire\+\_\+mat}}
+\index{lire\+\_\+mat@{lire\+\_\+mat}!gestion\+\_\+matrice.\+c@{gestion\+\_\+matrice.\+c}}
+\subsubsection[{\texorpdfstring{lire\+\_\+mat(char mat[N][N])}{lire_mat(char mat[N][N])}}]{\setlength{\rightskip}{0pt plus 5cm}void lire\+\_\+mat (
+\begin{DoxyParamCaption}
+\item[{char}]{mat\mbox{[}\+N\mbox{]}\mbox{[}\+N\mbox{]}}
+\end{DoxyParamCaption}
+)}\hypertarget{gestion__matrice_8c_a0748a671e2cb038f4265b1be7587ee79}{}\label{gestion__matrice_8c_a0748a671e2cb038f4265b1be7587ee79}
+
+
+La fonction lire\+\_\+mat permet de lire la matrice. 
+
+Declaration des variables a incrementer
+
+Incrementation de ligne
+
+Incrementation de colonne
+
+Affichage de la matrice 

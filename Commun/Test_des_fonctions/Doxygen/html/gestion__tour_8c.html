@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.11"/>
+<title>othello: Référence du fichier gestion_tour.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">othello
+   </div>
+   <div id="projectbrief">Othello</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.11 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Membres&#160;de&#160;fichier</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier gestion_tour.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Ce fichier contient des fonctions permettant la gestion des tours tel que le bon déroulement des tours et verifier qui est le gagnant.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &quot;gestion_matrice.h&quot;</code><br />
+<code>#include &quot;gestion_tour.h&quot;</code><br />
+<code>#include &quot;define.h&quot;</code><br />
+<code>#include &quot;coupPoss.c&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de gestion_tour.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="gestion__tour_8c__incl.png" border="0" usemap="#gestion__tour_8c" alt=""/></div>
+<!-- MAP 0 -->
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a2dd4ffd5c7b382ce82f064177d5d4560"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gestion__tour_8c.html#a2dd4ffd5c7b382ce82f064177d5d4560">gagnant</a> (char mat[N][N])</td></tr>
+<tr class="memdesc:a2dd4ffd5c7b382ce82f064177d5d4560"><td class="mdescLeft">&#160;</td><td class="mdescRight">la fonction gagnant permet de savoir qui a gagné  <a href="#a2dd4ffd5c7b382ce82f064177d5d4560">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a2dd4ffd5c7b382ce82f064177d5d4560"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4ce5068824c867ec6e0a9338ad0052b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gestion__tour_8c.html#aa4ce5068824c867ec6e0a9338ad0052b">gestion_tour</a> (char mat[N][N])</td></tr>
+<tr class="memdesc:aa4ce5068824c867ec6e0a9338ad0052b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cette fonction permet le bon déroulement du tour des différents joueurs.  <a href="#aa4ce5068824c867ec6e0a9338ad0052b">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aa4ce5068824c867ec6e0a9338ad0052b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a3186f1576f705c44f1fdd04a2707626f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3186f1576f705c44f1fdd04a2707626f"></a>
+char&#160;</td><td class="memItemRight" valign="bottom"><b>noir</b> = 'n'</td></tr>
+<tr class="separator:a3186f1576f705c44f1fdd04a2707626f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88836eb5d90091ea07b062936d685de0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a88836eb5d90091ea07b062936d685de0"></a>
+char&#160;</td><td class="memItemRight" valign="bottom"><b>blanc</b> = 'b'</td></tr>
+<tr class="separator:a88836eb5d90091ea07b062936d685de0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Ce fichier contient des fonctions permettant la gestion des tours tel que le bon déroulement des tours et verifier qui est le gagnant. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Jérôme Le Querrec </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>08 fevrier 2018 </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a class="anchor" id="a2dd4ffd5c7b382ce82f064177d5d4560"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int gagnant </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>mat</em>[N][N]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>la fonction gagnant permet de savoir qui a gagné </p>
+<p>Déclaration des variables</p>
+<p>On compte le nombre de pion noir</p>
+<p>On compte le nombre de pion blanc</p>
+<p>Si il y a plus de pion noir on return 1 donc le joueur n°1 a gagné</p>
+<p>Si il y a plus de pion blanc on return donc le joueur n°2 a gagné </p>
+
+</div>
+</div>
+<a class="anchor" id="aa4ce5068824c867ec6e0a9338ad0052b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gestion_tour </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>mat</em>[N][N]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cette fonction permet le bon déroulement du tour des différents joueurs. </p>
+<p>Déclaration des variables</p>
+<p>On crée une deuxieme matrice qui sera utile a la fonction coupPoss</p>
+<p>On nettoie le terminal au debut du tour</p>
+<p>On indique que c'est le tour du joueur n°1</p>
+<p>On affiche la matrice</p>
+<p>Le joueur saisie les coordonnées où il veut jouer</p>
+<p>Tant que le coup est impossible le joueur doit ressaisir les coordonnées de l'endroit ou il veut jouer</p>
+<p>Une fois que l'endroit où le joueur a décider de jouer est possible on l'ecrit dans la matrice</p>
+<p>On affiche la matrice une fois le coup fait</p>
+<p>On incrémente i</p>
+<p>On nettoie le terminal au debut du tour</p>
+<p>On indique que c'est le tour du joueur n°2 </p><pre class="fragment">                                    On affiche la matrice
+</pre><p> printf("\n\tVeuillez saisir les coordonnées ou vous souhaitez jouer"); scanf("%i%i",&amp;lig,&amp;col); /** Le joueur saisie les coordonnées où il veut jouer</p>
+<p>Tant que le coup est impossible le joueur doit ressaisir les coordonnées de l'endroit ou il veut jouer</p>
+<p>Une fois que l'endroit ou le joueur a décider de jouer est possible on l'ecrit dans la matrice</p>
+<p>On affiche la matrice une fois le coup fait</p>
+<p>On incrémente i </p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.11
+</small></address>
+</body>
+</html>
