@@ -27,3 +27,5 @@ test_Beta.o: test_Beta.c
 
 clean :
 	- rm -f *.o
+doc :
+	doxygen -g doxyfile_test_fonctions
