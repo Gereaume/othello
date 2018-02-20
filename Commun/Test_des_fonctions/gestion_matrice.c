@@ -1,4 +1,4 @@
-/**
+,,,,,,,,,,/**
 *\file gestion_matrice.c
 *\brief Ce fichier contient des fonctions permettant la gestion de matrice tel que initialisé une matrice, lire une matrice, ecrire dans une matrice, compter le nombre d'elem dans une matrice, verifier si on est dans la matrice
 *\author Jérôme Le Querrec
@@ -70,7 +70,7 @@ void ecrire_mat(char mat[N][N],char symbole,int lig,int col)
 
 int compter_elem(char mat[N][N],char elem)
 {
-	int cpt_elem,lig,col;								/** Declaration des variables a incrementer	**/
+	int cpt_elem = 0,lig,col;								/** Declaration des variables a incrementer	**/
 
 	for(lig=0;lig<N;lig++)								/** Incrementation de ligne	**/
 	{
