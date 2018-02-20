@@ -229,16 +229,21 @@ int coupPoss(char mat[N][N], char mat2[N][N], char couleur, int lig, int col){
 	copie(mat, mat2); // copie contenu de mat dans mat2
 
 	if((mat[lig][col] == '*') && !hors_mat(lig,col)){ // si les coordonnées correspondent à une zone vide
+		printf("coucou1");
 		nb_pions_ret = retourner(mat2, couleur, lig, col); // si le pion posé retourne au moins 1 pion
+		printf("coucou2");
 		if(nb_pions_ret != 0){
+			printf("coucou3");
 			printf("Le nb retourner est de %i\n", nb_pions_ret);
 			return 1;
 		}
 		else{
+			printf("coucou4");
 			return 0;
 		}
 	}
 	else{
+		printf("coucou5");
 		return 0; // sinon faux
 	}
 }
