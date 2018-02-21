@@ -1,6 +1,6 @@
-,,,,,,,,,,/**
+/**
 *\file gestion_matrice.c
-*\brief Ce fichier contient des fonctions permettant la gestion de matrice tel que initialisé une matrice, lire une matrice, ecrire dans une matrice, compter le nombre d'elem dans une matrice, verifier si on est dans la matrice
+*\brief Ce fichier contient des fonctions permettant la gestion de matrice tel que initialisé une matrice, lire une matrice, ecrire dans une matrice, compter le nombre d'elem dans une matrice, verifier si on est dans la matrice et copier une matrice dans une autre
 *\author Jérôme Le Querrec
 *\version 1.0
 *\date 01 fevrier 2018
@@ -70,7 +70,7 @@ void ecrire_mat(char mat[N][N],char symbole,int lig,int col)
 
 int compter_elem(char mat[N][N],char elem)
 {
-	int cpt_elem = 0,lig,col;								/** Declaration des variables a incrementer	**/
+	int cpt_elem = 0,lig,col;							/** Declaration des variables a incrementer	**/
 
 	for(lig=0;lig<N;lig++)								/** Incrementation de ligne	**/
 	{
@@ -89,8 +89,23 @@ int compter_elem(char mat[N][N],char elem)
 
 int hors_mat(int lig,int col)
 {
-	if((lig < 0 || lig > 7) || (col < 0 || col > 7))				/**  ce test nous permet de verifier si l'on  est en dehors de la matrice si c'est le cas on return 1	**/
+	if((lig < 0 || lig > 7) || (col < 0 || col > 7))				/** Ce test nous permet de verifier si l'on  est en dehors de la matrice si c'est le cas on return 1	**/
 		return 1;
 	else										/** Autrement on return 0	**/
 		return 0;
 } 
+
+/**
+*\brief la fonction copie permet de copier une matrice dans une autre
+**/
+void copie(char mat[N][N], char mat2[N][N])
+{
+	int lig, col;									/** Déclaration des variables	**/
+	for(lig=0;lig<N;lig++)								/** Incrémentation de ligne	**/
+	{
+		for(col=0;col<N;col++)							/** Incrémentation de colonne	**/
+		{
+			mat2[lig][col] = mat[lig][col];					/** On copie le contenue de la première matrice dans la seconde	**/
+		}
+	}
+}

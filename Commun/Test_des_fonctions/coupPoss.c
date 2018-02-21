@@ -16,19 +16,6 @@
 #include "gestion_matrice.h"
 #include "define.h"
 
-/**
-*Copie une matrice dans une autre
-**/
-void copie(char mat[N][N], char mat2[N][N]){
-
-	int i, j;
-
-	for(i=0;i<N;i++){
-		for(j=0;j<N;j++){
-			mat2[i][j] = mat[i][j];
-		}
-	}
-}
 
 /**
 *Renvoie le nombre de pions retourné, si aucun retourné, return 0
