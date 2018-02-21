@@ -3,16 +3,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.11"/>
-<title>othello: Référence du fichier gestion_matrice.c</title>
+<meta name="generator" content="Doxygen 1.8.3.1"/>
+<title>OTHELLO: Référence du fichier gestion_matrice.c</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
-  $(document).ready(function() { init_search(); });
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
 </script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
@@ -22,17 +21,18 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">othello
+  <td id="projectlogo"><img alt="Logo" src="image.bmp"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">OTHELLO
    </div>
-   <div id="projectbrief">Othello</div>
+   <div id="projectbrief">OTHELLO</div>
   </td>
  </tr>
  </tbody>
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.11 -->
+<!-- Généré par Doxygen 1.8.3.1 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -69,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-</div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fonctions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -87,42 +87,38 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </div><!--header-->
 <div class="contents">
 
-<p>Ce fichier contient des fonctions permettant la gestion de matrice tel que initialisé une matrice, lire une matrice, ecrire dans une matrice, compter le nombre d'elem dans une matrice, verifier si on est dans la matrice.  
+<p>Ce fichier contient des fonctions permettant la gestion de matrice tel que initialisé une matrice, lire une matrice, ecrire dans une matrice, compter le nombre d'elem dans une matrice, verifier si on est dans la matrice et copier une matrice dans une autre.  
 <a href="#details">Plus de détails...</a></p>
-<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
-<code>#include &lt;stdlib.h&gt;</code><br />
-<code>#include &quot;gestion_matrice.h&quot;</code><br />
-<code>#include &quot;define.h&quot;</code><br />
-</div><div class="textblock"><div class="dynheader">
-Graphe des dépendances par inclusion de gestion_matrice.c:</div>
-<div class="dyncontent">
-<div class="center"><img src="gestion__matrice_8c__incl.png" border="0" usemap="#gestion__matrice_8c" alt=""/></div>
-<map name="gestion__matrice_8c" id="gestion__matrice_8c">
-</map>
-</div>
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br/>
+<code>#include &lt;stdlib.h&gt;</code><br/>
+<code>#include &quot;gestion_matrice.h&quot;</code><br/>
+<code>#include &quot;define.h&quot;</code><br/>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr class="memitem:a55e4fc67b36d807a6f03b766aedfbc6a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gestion__matrice_8c.html#a55e4fc67b36d807a6f03b766aedfbc6a">init_mat</a> (char mat[N][N])</td></tr>
-<tr class="memdesc:a55e4fc67b36d807a6f03b766aedfbc6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">La fonction init_mat permet d'initialiser la matrice.  <a href="#a55e4fc67b36d807a6f03b766aedfbc6a">Plus de détails...</a><br /></td></tr>
+<tr class="memdesc:a55e4fc67b36d807a6f03b766aedfbc6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">La fonction init_mat permet d'initialiser la matrice.  <a href="#a55e4fc67b36d807a6f03b766aedfbc6a">Plus de détails...</a><br/></td></tr>
 <tr class="separator:a55e4fc67b36d807a6f03b766aedfbc6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0748a671e2cb038f4265b1be7587ee79"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gestion__matrice_8c.html#a0748a671e2cb038f4265b1be7587ee79">lire_mat</a> (char mat[N][N])</td></tr>
-<tr class="memdesc:a0748a671e2cb038f4265b1be7587ee79"><td class="mdescLeft">&#160;</td><td class="mdescRight">La fonction lire_mat permet de lire la matrice.  <a href="#a0748a671e2cb038f4265b1be7587ee79">Plus de détails...</a><br /></td></tr>
+<tr class="memdesc:a0748a671e2cb038f4265b1be7587ee79"><td class="mdescLeft">&#160;</td><td class="mdescRight">La fonction lire_mat permet de lire la matrice.  <a href="#a0748a671e2cb038f4265b1be7587ee79">Plus de détails...</a><br/></td></tr>
 <tr class="separator:a0748a671e2cb038f4265b1be7587ee79"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2b06905823e2bfe7ec80a6d1b2a45318"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gestion__matrice_8c.html#a2b06905823e2bfe7ec80a6d1b2a45318">ecrire_mat</a> (char mat[N][N], char symbole, int lig, int col)</td></tr>
-<tr class="memdesc:a2b06905823e2bfe7ec80a6d1b2a45318"><td class="mdescLeft">&#160;</td><td class="mdescRight">La fonction ecrire_mat permet d'ecrire dans une matrice a une case donnée.  <a href="#a2b06905823e2bfe7ec80a6d1b2a45318">Plus de détails...</a><br /></td></tr>
+<tr class="memdesc:a2b06905823e2bfe7ec80a6d1b2a45318"><td class="mdescLeft">&#160;</td><td class="mdescRight">La fonction ecrire_mat permet d'ecrire dans une matrice a une case donnée.  <a href="#a2b06905823e2bfe7ec80a6d1b2a45318">Plus de détails...</a><br/></td></tr>
 <tr class="separator:a2b06905823e2bfe7ec80a6d1b2a45318"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ea0b8baf89d0a54ec6881c94a8d4c2f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gestion__matrice_8c.html#a8ea0b8baf89d0a54ec6881c94a8d4c2f">compter_elem</a> (char mat[N][N], char elem)</td></tr>
-<tr class="memdesc:a8ea0b8baf89d0a54ec6881c94a8d4c2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">La fonction compter_elem permet de compter le nombre d'element elem sur le plateau.  <a href="#a8ea0b8baf89d0a54ec6881c94a8d4c2f">Plus de détails...</a><br /></td></tr>
+<tr class="memdesc:a8ea0b8baf89d0a54ec6881c94a8d4c2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">La fonction compter_elem permet de compter le nombre d'element elem sur le plateau.  <a href="#a8ea0b8baf89d0a54ec6881c94a8d4c2f">Plus de détails...</a><br/></td></tr>
 <tr class="separator:a8ea0b8baf89d0a54ec6881c94a8d4c2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeab65e04938f826b414bf2a81efecf14"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gestion__matrice_8c.html#aeab65e04938f826b414bf2a81efecf14">hors_mat</a> (int lig, int col)</td></tr>
-<tr class="memdesc:aeab65e04938f826b414bf2a81efecf14"><td class="mdescLeft">&#160;</td><td class="mdescRight">La fonction hors_mat nous permet de voir si l'on est en dehors de la matrice.  <a href="#aeab65e04938f826b414bf2a81efecf14">Plus de détails...</a><br /></td></tr>
+<tr class="memdesc:aeab65e04938f826b414bf2a81efecf14"><td class="mdescLeft">&#160;</td><td class="mdescRight">La fonction hors_mat nous permet de voir si l'on est en dehors de la matrice.  <a href="#aeab65e04938f826b414bf2a81efecf14">Plus de détails...</a><br/></td></tr>
 <tr class="separator:aeab65e04938f826b414bf2a81efecf14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac815820e9cc0573fe383e42d58e89e01"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gestion__matrice_8c.html#ac815820e9cc0573fe383e42d58e89e01">copie</a> (char mat[N][N], char mat2[N][N])</td></tr>
+<tr class="memdesc:ac815820e9cc0573fe383e42d58e89e01"><td class="mdescLeft">&#160;</td><td class="mdescRight">la fonction copie permet de copier une matrice dans une autre  <a href="#ac815820e9cc0573fe383e42d58e89e01">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ac815820e9cc0573fe383e42d58e89e01"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<div class="textblock"><p>Ce fichier contient des fonctions permettant la gestion de matrice tel que initialisé une matrice, lire une matrice, ecrire dans une matrice, compter le nombre d'elem dans une matrice, verifier si on est dans la matrice. </p>
+<div class="textblock"><p>Ce fichier contient des fonctions permettant la gestion de matrice tel que initialisé une matrice, lire une matrice, ecrire dans une matrice, compter le nombre d'elem dans une matrice, verifier si on est dans la matrice et copier une matrice dans une autre. </p>
 <dl class="section author"><dt>Auteur</dt><dd>Jérôme Le Querrec </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.1 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>01 fevrier 2018 </dd></dl>
 </div><h2 class="groupheader">Documentation des fonctions</h2>
 <a class="anchor" id="a8ea0b8baf89d0a54ec6881c94a8d4c2f"></a>
@@ -155,6 +151,38 @@ Fonctions</h2></td></tr>
 <p>Incrementation de colonne</p>
 <p>Incrementation du compteur si la case contient l'elem</p>
 <p>Retourne la valeur de cpt_elem </p>
+
+</div>
+</div>
+<a class="anchor" id="ac815820e9cc0573fe383e42d58e89e01"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void copie </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>mat</em>[N][N], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>mat2</em>[N][N]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>la fonction copie permet de copier une matrice dans une autre </p>
+<p>Déclaration des variables</p>
+<p>Incrémentation de ligne</p>
+<p>Incrémentation de colonne</p>
+<p>On copie le contenue de la première matrice dans la seconde </p>
 
 </div>
 </div>
@@ -225,7 +253,7 @@ Fonctions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>La fonction hors_mat nous permet de voir si l'on est en dehors de la matrice. </p>
-<p>ce test nous permet de verifier si l'on est en dehors de la matrice si c'est le cas on return 1</p>
+<p>Ce test nous permet de verifier si l'on est en dehors de la matrice si c'est le cas on return 1</p>
 <p>Autrement on return 0 </p>
 
 </div>
@@ -280,7 +308,7 @@ Fonctions</h2></td></tr>
 <hr class="footer"/><address class="footer"><small>
 Généré par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.11
+</a> 1.8.3.1
 </small></address>
 </body>
 </html>

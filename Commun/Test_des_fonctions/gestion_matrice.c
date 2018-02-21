@@ -2,7 +2,7 @@
 *\file gestion_matrice.c
 *\brief Ce fichier contient des fonctions permettant la gestion de matrice tel que initialisé une matrice, lire une matrice, ecrire dans une matrice, compter le nombre d'elem dans une matrice, verifier si on est dans la matrice et copier une matrice dans une autre
 *\author Jérôme Le Querrec
-*\version 1.0
+*\version 1.1
 *\date 01 fevrier 2018
 **/
 
@@ -29,16 +29,16 @@ void init_mat(char mat[N][N])
 		{
 			mat[lig][col]='*';						/** On place des points dans chaque case	**/
 			if((lig == 3 && col == 3) || (lig == 4 && col == 4))		/** Sauf les cases ou nous plaçons les pions du départ	**/
-				mat[lig][col] = 'b';
+				mat[lig][col] = blanc;
 			else if((lig == 3 && col == 4) || (lig == 4 && col == 3))
-				mat[lig][col] = 'n';
+				mat[lig][col] = noir;
 		}
 	}
 }
+
 /**
 *\brief La fonction lire_mat permet de lire la matrice
 **/
-
 void lire_mat(char mat[N][N])
 {	
 	int lig,col;									/** Declaration des variables a incrementer	**/
@@ -54,10 +54,10 @@ void lire_mat(char mat[N][N])
 	}
 	printf("\n\n");
 }
+
 /**
 *\brief La fonction ecrire_mat permet d'ecrire dans une matrice a une case donnée
 **/
-
 void ecrire_mat(char mat[N][N],char symbole,int lig,int col)
 {	
 	mat[lig][col] = symbole;							/** On met le symbole au coordonnées souhaité	**/
