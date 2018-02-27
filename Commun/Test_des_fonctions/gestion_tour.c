@@ -61,6 +61,7 @@ void gestion_tour(char mat[N][N])
 				scanf("%i%i",&lig,&col);
 			}
 			ecrire_mat(mat,noir,lig,col);				/** Une fois que l'endroit où le joueur a décider de jouer est possible on l'ecrit dans la matrice	**/
+			retourner(mat,noir,lig,col);
 			sleep(1);
 			lire_mat(mat);						/** On affiche la matrice une fois le coup fait	**/
 			sleep(1);
@@ -79,6 +80,7 @@ void gestion_tour(char mat[N][N])
 				scanf("%i%i",&lig,&col);
 			}
 			ecrire_mat(mat,blanc,lig,col);				/** Une fois que l'endroit ou le joueur a décider de jouer est possible on l'ecrit dans la matrice	**/
+			retourner(mat,blanc,lig,col);
 			sleep(1);
 			lire_mat(mat);						/** On affiche la matrice une fois le coup fait	**/
 			sleep(1);
