@@ -15,8 +15,6 @@
 #include "define.h"
 #include "coupPoss.c"
 
-char noir = 'n';
-char blanc = 'b';
 
 /**
 *\brief la fonction gagnant permet de savoir qui a gagné

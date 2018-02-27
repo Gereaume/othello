@@ -68,7 +68,6 @@ Il y a 8 fois ce traitement pour les 8 directions possibles pour retourner un pi
 			j = col;
 			for(x=0;x<cpt;x++){
 				mat[i][j] = couleur;
-				
 				i--;
 				cpt_final++;
 			}

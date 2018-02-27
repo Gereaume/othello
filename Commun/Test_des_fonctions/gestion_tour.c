@@ -14,11 +14,13 @@
 #include "gestion_tour.h"
 #include "define.h"
 #include "coupPoss.c"
-
+#include "joueur.c"
 
 /**
 *\brief la fonction gagnant permet de savoir qui a gagné
 **/
+
+
 
 int gagnant(char mat[N][N])
 {
@@ -44,7 +46,6 @@ void gestion_tour(char mat[N][N])
 
 	int i = 0, lig=0, col=0;						/** Déclaration des variables	**/
 	
-	char mat2[N][N];							/** On crée une deuxieme matrice qui sera utile a la fonction coupPoss	**/
 	while(i<63)
 	{	
 		if((i%2)!=1)
@@ -54,7 +55,7 @@ void gestion_tour(char mat[N][N])
 			lire_mat(mat);						/** On affiche la matrice	**/
 			printf("\n\tVeuillez saisir les coordonnées ou vous souhaitez jouer");
 			scanf("%i%i",&lig,&col);				/** Le joueur saisie les coordonnées où il veut jouer	**/
-			while(coupPoss(mat,mat2,noir,lig,col) == 0)		/** Tant que le coup est impossible le joueur doit ressaisir les coordonnées de l'endroit ou il veut jouer	**/
+			while(coupPoss(mat,noir,lig,col) == 0)		/** Tant que le coup est impossible le joueur doit ressaisir les coordonnées de l'endroit ou il veut jouer	**/
 			{
 				printf("\n\tCe coup la n'est pas possible ");
 				scanf("%i%i",&lig,&col);
@@ -72,7 +73,7 @@ void gestion_tour(char mat[N][N])
 			lire_mat(mat);						/** On affiche la matrice	**/
 			printf("\n\tVeuillez saisir les coordonnées ou vous souhaitez jouer");
 			scanf("%i%i",&lig,&col);				/** Le joueur saisie les coordonnées où il veut jouer	**/
-			while(coupPoss(mat,mat2,blanc,lig,col) == 0)		/** Tant que le coup est impossible le joueur doit ressaisir les coordonnées de l'endroit ou il veut jouer	**/
+			while(coupPoss(mat,blanc,lig,col) == 0)		/** Tant que le coup est impossible le joueur doit ressaisir les coordonnées de l'endroit ou il veut jouer	**/
 			{
 				printf("\n\tCe coup la n'est pas possible ");
 				scanf("%i%i",&lig,&col);

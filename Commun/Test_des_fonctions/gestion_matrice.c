@@ -109,3 +109,20 @@ void copie(char mat[N][N], char mat2[N][N])
 		}
 	}
 }
+/*
+int ecrire_mat_clic(mat[N][N])
+{
+	int lig = 0;
+	int col = 0;
+	coordonnes(lig,col)
+	lig /= 100;
+	col /= 100;
+	if(coupPoss(mat,mat2,blanc,lig,col) == 0))
+		return 0;
+	else
+	{
+		mat[lig][col] = ;
+		return 1;
+	}
+}
+*/

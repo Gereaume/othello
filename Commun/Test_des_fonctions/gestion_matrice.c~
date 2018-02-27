@@ -29,9 +29,9 @@ void init_mat(char mat[N][N])
 		{
 			mat[lig][col]='*';						/** On place des points dans chaque case	**/
 			if((lig == 3 && col == 3) || (lig == 4 && col == 4))		/** Sauf les cases ou nous plaçons les pions du départ	**/
-				mat[lig][col] = 'b';
+				mat[lig][col] = blanc;
 			else if((lig == 3 && col == 4) || (lig == 4 && col == 3))
-				mat[lig][col] = 'n';
+				mat[lig][col] = noir;
 		}
 	}
 }
