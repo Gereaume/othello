@@ -3,15 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.3.1"/>
+<meta name="generator" content="Doxygen 1.8.11"/>
 <title>OTHELLO:  Fichier source de gestion_matrice.h</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <script type="text/javascript">
-  $(document).ready(function() { searchBox.OnSelectItem(0); });
+  $(document).ready(function() { init_search(); });
 </script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
@@ -22,7 +23,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="image.bmp"/></td>
-  <td style="padding-left: 0.5em;">
+  <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">OTHELLO
    </div>
    <div id="projectbrief">OTHELLO</div>
@@ -32,13 +33,14 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.3.1 -->
+<!-- Généré par Doxygen 1.8.11 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -70,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fonctions</a></div>
+</div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -84,26 +86,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="title">gestion_matrice.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;define.h&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keywordtype">void</span> <a class="code" href="gestion__matrice_8c.html#a55e4fc67b36d807a6f03b766aedfbc6a" title="La fonction init_mat permet d&#39;initialiser la matrice.">init_mat</a>(<span class="keywordtype">char</span> mat[N][N]);</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keywordtype">void</span> <a class="code" href="gestion__matrice_8c.html#a0748a671e2cb038f4265b1be7587ee79" title="La fonction lire_mat permet de lire la matrice.">lire_mat</a>(<span class="keywordtype">char</span> mat[N][N]);</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">void</span> <a class="code" href="gestion__matrice_8c.html#a2b06905823e2bfe7ec80a6d1b2a45318" title="La fonction ecrire_mat permet d&#39;ecrire dans une matrice a une case donnée.">ecrire_mat</a>(<span class="keywordtype">char</span> mat[N][N],<span class="keywordtype">char</span> symbole,<span class="keywordtype">int</span> lig,<span class="keywordtype">int</span> col);</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">int</span> <a class="code" href="gestion__matrice_8c.html#a8ea0b8baf89d0a54ec6881c94a8d4c2f" title="La fonction compter_elem permet de compter le nombre d&#39;element elem sur le plateau.">compter_elem</a>(<span class="keywordtype">char</span> mat[N][N],<span class="keywordtype">char</span> elem);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">int</span> <a class="code" href="gestion__matrice_8c.html#aeab65e04938f826b414bf2a81efecf14" title="La fonction hors_mat nous permet de voir si l&#39;on est en dehors de la matrice.">hors_mat</a>(<span class="keywordtype">int</span> lig,<span class="keywordtype">int</span> col);</div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;define.h&quot;</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keywordtype">void</span> <a class="code" href="gestion__matrice_8c.html#a55e4fc67b36d807a6f03b766aedfbc6a">init_mat</a>(<span class="keywordtype">char</span> mat[N][N]);</div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keywordtype">void</span> <a class="code" href="gestion__matrice_8c.html#a0748a671e2cb038f4265b1be7587ee79">lire_mat</a>(<span class="keywordtype">char</span> mat[N][N]);</div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keywordtype">void</span> <a class="code" href="gestion__matrice_8c.html#a2b06905823e2bfe7ec80a6d1b2a45318">ecrire_mat</a>(<span class="keywordtype">char</span> mat[N][N],<span class="keywordtype">char</span> symbole,<span class="keywordtype">int</span> lig,<span class="keywordtype">int</span> col);</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">int</span> <a class="code" href="gestion__matrice_8c.html#a8ea0b8baf89d0a54ec6881c94a8d4c2f">compter_elem</a>(<span class="keywordtype">char</span> mat[N][N],<span class="keywordtype">char</span> elem);</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">int</span> <a class="code" href="gestion__matrice_8c.html#aeab65e04938f826b414bf2a81efecf14">hors_mat</a>(<span class="keywordtype">int</span> lig,<span class="keywordtype">int</span> col);</div><div class="ttc" id="gestion__matrice_8c_html_aeab65e04938f826b414bf2a81efecf14"><div class="ttname"><a href="gestion__matrice_8c.html#aeab65e04938f826b414bf2a81efecf14">hors_mat</a></div><div class="ttdeci">int hors_mat(int lig, int col)</div><div class="ttdoc">La fonction hors_mat nous permet de voir si l&amp;#39;on est en dehors de la matrice. </div><div class="ttdef"><b>Definition:</b> gestion_matrice.c:90</div></div>
+<div class="ttc" id="gestion__matrice_8c_html_a2b06905823e2bfe7ec80a6d1b2a45318"><div class="ttname"><a href="gestion__matrice_8c.html#a2b06905823e2bfe7ec80a6d1b2a45318">ecrire_mat</a></div><div class="ttdeci">void ecrire_mat(char mat[N][N], char symbole, int lig, int col)</div><div class="ttdoc">La fonction ecrire_mat permet d&amp;#39;ecrire dans une matrice a une case donnée. </div><div class="ttdef"><b>Definition:</b> gestion_matrice.c:61</div></div>
+<div class="ttc" id="gestion__matrice_8c_html_a0748a671e2cb038f4265b1be7587ee79"><div class="ttname"><a href="gestion__matrice_8c.html#a0748a671e2cb038f4265b1be7587ee79">lire_mat</a></div><div class="ttdeci">void lire_mat(char mat[N][N])</div><div class="ttdoc">La fonction lire_mat permet de lire la matrice. </div><div class="ttdef"><b>Definition:</b> gestion_matrice.c:42</div></div>
+<div class="ttc" id="gestion__matrice_8c_html_a8ea0b8baf89d0a54ec6881c94a8d4c2f"><div class="ttname"><a href="gestion__matrice_8c.html#a8ea0b8baf89d0a54ec6881c94a8d4c2f">compter_elem</a></div><div class="ttdeci">int compter_elem(char mat[N][N], char elem)</div><div class="ttdoc">La fonction compter_elem permet de compter le nombre d&amp;#39;element elem sur le plateau. </div><div class="ttdef"><b>Definition:</b> gestion_matrice.c:71</div></div>
+<div class="ttc" id="gestion__matrice_8c_html_a55e4fc67b36d807a6f03b766aedfbc6a"><div class="ttname"><a href="gestion__matrice_8c.html#a55e4fc67b36d807a6f03b766aedfbc6a">init_mat</a></div><div class="ttdeci">void init_mat(char mat[N][N])</div><div class="ttdoc">La fonction init_mat permet d&amp;#39;initialiser la matrice. </div><div class="ttdef"><b>Definition:</b> gestion_matrice.c:21</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Généré par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.3.1
+</a> 1.8.11
 </small></address>
 </body>
 </html>
