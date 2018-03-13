@@ -42,13 +42,33 @@ void init_mat(char mat[N][N])
 void lire_mat(char mat[N][N])
 {	
 	int lig,col;									/** Declaration des variables a incrementer	**/
-	printf("\t X |0|1|2|3|4|5|6|7|");	
+	printf("\n\t + |");
+	for(int i= 0;i<N;i++)
+	{
+		if(i<=9)
+		{
+			printf(" %i |",i);
+		}
+		else
+		{
+			printf("%i |",i);	
+		}
+	}
+	
 	for(lig=0;lig<N;lig++)								/** Incrementation de ligne	**/
 	{
-		printf("\n\t %i |",lig);
+		if(lig<=9)
+		{
+			printf("\n\t %i |",lig);
+		}
+		else
+		{
+			printf("\n\t%i |",lig);
+		}
+		
 		for(col=0;col<N;col++)							/** Incrementation de colonne	**/
 		{
-			printf("%c|",mat[lig][col]);					/** Affichage de la matrice	**/
+			printf(" %c |",mat[lig][col]);					/** Affichage de la matrice	**/
 		}
 		
 	}

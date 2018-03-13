@@ -30,8 +30,10 @@ int gagnant(char mat[N][N])
 	
 	if(nb_noir>nb_blanc)							/** Si il y a plus de pion noir on return 1 donc le joueur n°1 a gagné	**/
 		return 1;
-	else									/** Si il y a plus de pion blanc on return donc le joueur n°2 a gagné	**/
+	else if(nb_noir<nb_blanc)								/** Si il y a plus de pion blanc on return donc le joueur n°2 a gagné	**/
 		return 0;
+	else
+		return -1;
 
 }
 
@@ -46,7 +48,7 @@ void gestion_tour(char mat[N][N])
 
 	int i = 0, lig=0, col=0;						/** Déclaration des variables	**/
 	
-	while(i<60)
+	while(i<(N*N)-4)
 	{	
 		if((i%2)!=1)
 		{
@@ -90,8 +92,10 @@ void gestion_tour(char mat[N][N])
 	
 	if(gagnant(mat) == 1)
 		printf("\tC'est le joueur n°1 qui a gagné\n");
-	else
+	else if(gagnant(mat) == 0)
 		printf("\tC'est le joueur n°2 qui a gagné\n");
+	else
+		printf("\tEx-aequo !\n");
 	return;
 
 }
