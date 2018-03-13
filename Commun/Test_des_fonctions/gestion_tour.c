@@ -50,7 +50,7 @@ void gestion_tour(char mat[N][N])
 	
 	while(i<(N*N)-4)
 	{	
-		if((i%2)!=1)
+		if((i%2)==0)
 		{
 			system("clear");					/** On nettoie le terminal au debut du tour	**/
 			printf("\tTour du joueur n°1 (noir)\n");			/** On indique que c'est le tour du joueur n°1	**/
@@ -63,13 +63,14 @@ void gestion_tour(char mat[N][N])
 				scanf("%i%i",&lig,&col);
 			}
 			ecrire_mat(mat,noir,lig,col);				/** Une fois que l'endroit où le joueur a décider de jouer est possible on l'ecrit dans la matrice	**/
-			retourner(mat,noir,lig,col);
-			sleep(1);
-			lire_mat(mat);						/** On affiche la matrice une fois le coup fait	**/
-			sleep(1);
+			
+			/* cette fonction renvoie un entier dont on ne se sert pas */
+			retourner(mat,noir,lig,col);	
+			sleep(2);
+			
 			i+=1;							/** On incrémente i	**/
 		}		
-		else if((i%2)==1)
+		else if((i%2)!=0)
 		{
 			system("clear");					/** On nettoie le terminal au debut du tour	**/
 			printf("\tTour du joueur n°2 (blanc)\n");			/** On indique que c'est le tour du joueur n°2	**/
@@ -83,13 +84,13 @@ void gestion_tour(char mat[N][N])
 			}
 			ecrire_mat(mat,blanc,lig,col);				/** Une fois que l'endroit ou le joueur a décider de jouer est possible on l'ecrit dans la matrice	**/
 			retourner(mat,blanc,lig,col);
-			sleep(1);
-			lire_mat(mat);						/** On affiche la matrice une fois le coup fait	**/
-			sleep(1);
+			sleep(2);
+			
 			i+=1;							/** On incrémente i	**/
 		}
 	}
-	
+	system("clear");
+	lire_mat(mat);
 	if(gagnant(mat) == 1)
 		printf("\tC'est le joueur n°1 qui a gagné\n");
 	else if(gagnant(mat) == 0)

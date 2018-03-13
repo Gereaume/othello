@@ -39,7 +39,7 @@ Il y a 8 fois ce traitement pour les 8 directions possibles pour retourner un pi
 		i = lig-1;
 		j = col-1;
 		cpt = 0;
-		while(mat[i][j] != couleur && mat[i][j] != '*' && !hors_mat(i, j) ){
+		while(mat[i][j] != couleur && mat[i][j] != '*' && !hors_mat(i, j) ){	/** Tant que la case est de la couleur de l'adversaire **/
 			i--;
 			j--;
 			cpt++;

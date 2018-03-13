@@ -81,7 +81,6 @@ void lire_mat(char mat[N][N])
 void ecrire_mat(char mat[N][N],char symbole,int lig,int col)
 {	
 	mat[lig][col] = symbole;							/** On met le symbole au coordonnées souhaité	**/
-	system("clear");								/** On nettoie l'affichage du terminal pour ne pu voir les coordonnées précedentes	**/
 }
 
 /**
@@ -109,7 +108,7 @@ int compter_elem(char mat[N][N],char elem)
 
 int hors_mat(int lig,int col)
 {
-	if((lig < 0 || lig > 7) || (col < 0 || col > 7))				/** Ce test nous permet de verifier si l'on  est en dehors de la matrice si c'est le cas on return 1	**/
+	if( (lig < 0 || lig > (N-1)) || (col < 0 || col > (N-1)) )				/** Ce test nous permet de verifier si l'on  est en dehors de la matrice si c'est le cas on return 1	**/
 		return 1;
 	else										/** Autrement on return 0	**/
 		return 0;
