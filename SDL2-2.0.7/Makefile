@@ -17,13 +17,13 @@ distdir = SDL2-2.0.7
 distfile = $(distdir).tar.gz
 
 
-SHELL	= /bin/sh
+SHELL	= /bin/bash
 CC      = gcc
 INCLUDE = -Iinclude -I/info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/include -idirafter /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/video/khronos
 CFLAGS  = -g -O3 -DUSING_GENERATED_CONFIG_H
-EXTRA_CFLAGS = -Iinclude -I/info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/include -idirafter /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/video/khronos  -mmmx -m3dnow -msse -msse2 -msse3 -Wall -DTARGET_API_MAC_CARBON -DTARGET_API_MAC_OSX -fvisibility=hidden -Wdeclaration-after-statement -Werror=declaration-after-statement  -I/usr/X11/include -D_THREAD_SAFE
+EXTRA_CFLAGS = -Iinclude -I/info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/include -idirafter /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/video/khronos  -mmmx -m3dnow -msse -msse2 -msse3 -Wall -fvisibility=hidden -Wdeclaration-after-statement -Werror=declaration-after-statement  -pthread -I/usr/include/mirclient -I/usr/include/mircookie -I/usr/include/mircore -I/usr/include/libdrm -I/usr/include/dbus-1.0 -I/usr/lib/x86_64-linux-gnu/dbus-1.0/include -D_REENTRANT -DHAVE_LINUX_VERSION_H
 LDFLAGS = 
-EXTRA_LDFLAGS =  -lm -liconv  -Wl,-framework,CoreAudio -Wl,-framework,AudioToolbox -Wl,-framework,ForceFeedback -lobjc -Wl,-framework,CoreVideo -Wl,-framework,Cocoa -Wl,-framework,Carbon -Wl,-framework,IOKit
+EXTRA_LDFLAGS =  -Wl,--no-undefined -lm -ldl -lpthread -lrt
 LIBTOOL = $(SHELL) $(top_builddir)/libtool
 INSTALL = /usr/bin/install -c
 AR	= ar
@@ -31,7 +31,7 @@ RANLIB	= ranlib
 WINDRES	= :
 
 TARGET  = libSDL2.la
-OBJECTS = $(objects)/SDL.lo $(objects)/SDL_assert.lo $(objects)/SDL_dataqueue.lo $(objects)/SDL_error.lo $(objects)/SDL_hints.lo $(objects)/SDL_log.lo $(objects)/SDL_atomic.lo $(objects)/SDL_spinlock.lo $(objects)/SDL_audio.lo $(objects)/SDL_audiocvt.lo $(objects)/SDL_audiodev.lo $(objects)/SDL_audiotypecvt.lo $(objects)/SDL_mixer.lo $(objects)/SDL_wave.lo $(objects)/SDL_cpuinfo.lo $(objects)/SDL_dynapi.lo $(objects)/SDL_clipboardevents.lo $(objects)/SDL_dropevents.lo $(objects)/SDL_events.lo $(objects)/SDL_gesture.lo $(objects)/SDL_keyboard.lo $(objects)/SDL_mouse.lo $(objects)/SDL_quit.lo $(objects)/SDL_touch.lo $(objects)/SDL_windowevents.lo $(objects)/SDL_rwops.lo $(objects)/SDL_haptic.lo $(objects)/SDL_gamecontroller.lo $(objects)/SDL_joystick.lo $(objects)/e_atan2.lo $(objects)/e_log.lo $(objects)/e_pow.lo $(objects)/e_rem_pio2.lo $(objects)/e_sqrt.lo $(objects)/k_cos.lo $(objects)/k_rem_pio2.lo $(objects)/k_sin.lo $(objects)/k_tan.lo $(objects)/s_atan.lo $(objects)/s_copysign.lo $(objects)/s_cos.lo $(objects)/s_fabs.lo $(objects)/s_floor.lo $(objects)/s_scalbn.lo $(objects)/s_sin.lo $(objects)/s_tan.lo $(objects)/SDL_power.lo $(objects)/SDL_d3dmath.lo $(objects)/SDL_render.lo $(objects)/SDL_yuv_mmx.lo $(objects)/SDL_yuv_sw.lo $(objects)/SDL_render_d3d.lo $(objects)/SDL_render_d3d11.lo $(objects)/SDL_render_gl.lo $(objects)/SDL_shaders_gl.lo $(objects)/SDL_render_gles.lo $(objects)/SDL_render_gles2.lo $(objects)/SDL_shaders_gles2.lo $(objects)/SDL_render_psp.lo $(objects)/SDL_blendfillrect.lo $(objects)/SDL_blendline.lo $(objects)/SDL_blendpoint.lo $(objects)/SDL_drawline.lo $(objects)/SDL_drawpoint.lo $(objects)/SDL_render_sw.lo $(objects)/SDL_rotate.lo $(objects)/SDL_getenv.lo $(objects)/SDL_iconv.lo $(objects)/SDL_malloc.lo $(objects)/SDL_qsort.lo $(objects)/SDL_stdlib.lo $(objects)/SDL_string.lo $(objects)/SDL_thread.lo $(objects)/SDL_timer.lo $(objects)/SDL_RLEaccel.lo $(objects)/SDL_blit.lo $(objects)/SDL_blit_0.lo $(objects)/SDL_blit_1.lo $(objects)/SDL_blit_A.lo $(objects)/SDL_blit_N.lo $(objects)/SDL_blit_auto.lo $(objects)/SDL_blit_copy.lo $(objects)/SDL_blit_slow.lo $(objects)/SDL_bmp.lo $(objects)/SDL_clipboard.lo $(objects)/SDL_egl.lo $(objects)/SDL_fillrect.lo $(objects)/SDL_pixels.lo $(objects)/SDL_rect.lo $(objects)/SDL_shape.lo $(objects)/SDL_stretch.lo $(objects)/SDL_surface.lo $(objects)/SDL_video.lo $(objects)/SDL_vulkan_utils.lo $(objects)/SDL_nullevents.lo $(objects)/SDL_nullframebuffer.lo $(objects)/SDL_nullvideo.lo $(objects)/SDL_diskaudio.lo $(objects)/SDL_dummyaudio.lo $(objects)/SDL_sysloadso.lo $(objects)/SDL_cocoaclipboard.lo $(objects)/SDL_cocoaevents.lo $(objects)/SDL_cocoakeyboard.lo $(objects)/SDL_cocoamessagebox.lo $(objects)/SDL_cocoametalview.lo $(objects)/SDL_cocoamodes.lo $(objects)/SDL_cocoamouse.lo $(objects)/SDL_cocoamousetap.lo $(objects)/SDL_cocoaopengl.lo $(objects)/SDL_cocoashape.lo $(objects)/SDL_cocoavideo.lo $(objects)/SDL_cocoavulkan.lo $(objects)/SDL_cocoawindow.lo $(objects)/SDL_x11clipboard.lo $(objects)/SDL_x11dyn.lo $(objects)/SDL_x11events.lo $(objects)/SDL_x11framebuffer.lo $(objects)/SDL_x11keyboard.lo $(objects)/SDL_x11messagebox.lo $(objects)/SDL_x11modes.lo $(objects)/SDL_x11mouse.lo $(objects)/SDL_x11opengl.lo $(objects)/SDL_x11opengles.lo $(objects)/SDL_x11shape.lo $(objects)/SDL_x11touch.lo $(objects)/SDL_x11video.lo $(objects)/SDL_x11vulkan.lo $(objects)/SDL_x11window.lo $(objects)/SDL_x11xinput2.lo $(objects)/edid-parse.lo $(objects)/imKStoUCS.lo $(objects)/SDL_systhread.lo $(objects)/SDL_syssem.lo $(objects)/SDL_sysmutex.lo $(objects)/SDL_syscond.lo $(objects)/SDL_systls.lo $(objects)/SDL_coreaudio.lo $(objects)/SDL_sysjoystick.lo $(objects)/SDL_syshaptic.lo $(objects)/SDL_syspower.lo $(objects)/SDL_sysfilesystem.lo $(objects)/SDL_systimer.lo $(objects)/SDL_rwopsbundlesupport.lo $(objects)/SDL_poll.lo
+OBJECTS = $(objects)/SDL.lo $(objects)/SDL_assert.lo $(objects)/SDL_dataqueue.lo $(objects)/SDL_error.lo $(objects)/SDL_hints.lo $(objects)/SDL_log.lo $(objects)/SDL_atomic.lo $(objects)/SDL_spinlock.lo $(objects)/SDL_audio.lo $(objects)/SDL_audiocvt.lo $(objects)/SDL_audiodev.lo $(objects)/SDL_audiotypecvt.lo $(objects)/SDL_mixer.lo $(objects)/SDL_wave.lo $(objects)/SDL_cpuinfo.lo $(objects)/SDL_dynapi.lo $(objects)/SDL_clipboardevents.lo $(objects)/SDL_dropevents.lo $(objects)/SDL_events.lo $(objects)/SDL_gesture.lo $(objects)/SDL_keyboard.lo $(objects)/SDL_mouse.lo $(objects)/SDL_quit.lo $(objects)/SDL_touch.lo $(objects)/SDL_windowevents.lo $(objects)/SDL_rwops.lo $(objects)/SDL_haptic.lo $(objects)/SDL_gamecontroller.lo $(objects)/SDL_joystick.lo $(objects)/e_atan2.lo $(objects)/e_log.lo $(objects)/e_pow.lo $(objects)/e_rem_pio2.lo $(objects)/e_sqrt.lo $(objects)/k_cos.lo $(objects)/k_rem_pio2.lo $(objects)/k_sin.lo $(objects)/k_tan.lo $(objects)/s_atan.lo $(objects)/s_copysign.lo $(objects)/s_cos.lo $(objects)/s_fabs.lo $(objects)/s_floor.lo $(objects)/s_scalbn.lo $(objects)/s_sin.lo $(objects)/s_tan.lo $(objects)/SDL_power.lo $(objects)/SDL_d3dmath.lo $(objects)/SDL_render.lo $(objects)/SDL_yuv_mmx.lo $(objects)/SDL_yuv_sw.lo $(objects)/SDL_render_d3d.lo $(objects)/SDL_render_d3d11.lo $(objects)/SDL_render_gl.lo $(objects)/SDL_shaders_gl.lo $(objects)/SDL_render_gles.lo $(objects)/SDL_render_gles2.lo $(objects)/SDL_shaders_gles2.lo $(objects)/SDL_render_psp.lo $(objects)/SDL_blendfillrect.lo $(objects)/SDL_blendline.lo $(objects)/SDL_blendpoint.lo $(objects)/SDL_drawline.lo $(objects)/SDL_drawpoint.lo $(objects)/SDL_render_sw.lo $(objects)/SDL_rotate.lo $(objects)/SDL_getenv.lo $(objects)/SDL_iconv.lo $(objects)/SDL_malloc.lo $(objects)/SDL_qsort.lo $(objects)/SDL_stdlib.lo $(objects)/SDL_string.lo $(objects)/SDL_thread.lo $(objects)/SDL_timer.lo $(objects)/SDL_RLEaccel.lo $(objects)/SDL_blit.lo $(objects)/SDL_blit_0.lo $(objects)/SDL_blit_1.lo $(objects)/SDL_blit_A.lo $(objects)/SDL_blit_N.lo $(objects)/SDL_blit_auto.lo $(objects)/SDL_blit_copy.lo $(objects)/SDL_blit_slow.lo $(objects)/SDL_bmp.lo $(objects)/SDL_clipboard.lo $(objects)/SDL_egl.lo $(objects)/SDL_fillrect.lo $(objects)/SDL_pixels.lo $(objects)/SDL_rect.lo $(objects)/SDL_shape.lo $(objects)/SDL_stretch.lo $(objects)/SDL_surface.lo $(objects)/SDL_video.lo $(objects)/SDL_vulkan_utils.lo $(objects)/SDL_nullevents.lo $(objects)/SDL_nullframebuffer.lo $(objects)/SDL_nullvideo.lo $(objects)/SDL_diskaudio.lo $(objects)/SDL_dummyaudio.lo $(objects)/SDL_sysloadso.lo $(objects)/SDL_dspaudio.lo $(objects)/SDL_x11clipboard.lo $(objects)/SDL_x11dyn.lo $(objects)/SDL_x11events.lo $(objects)/SDL_x11framebuffer.lo $(objects)/SDL_x11keyboard.lo $(objects)/SDL_x11messagebox.lo $(objects)/SDL_x11modes.lo $(objects)/SDL_x11mouse.lo $(objects)/SDL_x11opengl.lo $(objects)/SDL_x11opengles.lo $(objects)/SDL_x11shape.lo $(objects)/SDL_x11touch.lo $(objects)/SDL_x11video.lo $(objects)/SDL_x11vulkan.lo $(objects)/SDL_x11window.lo $(objects)/SDL_x11xinput2.lo $(objects)/edid-parse.lo $(objects)/imKStoUCS.lo $(objects)/SDL_mirdyn.lo $(objects)/SDL_mirevents.lo $(objects)/SDL_mirframebuffer.lo $(objects)/SDL_mirmouse.lo $(objects)/SDL_miropengl.lo $(objects)/SDL_mirvideo.lo $(objects)/SDL_mirvulkan.lo $(objects)/SDL_mirwindow.lo $(objects)/SDL_dbus.lo $(objects)/SDL_ime.lo $(objects)/SDL_systhread.lo $(objects)/SDL_syssem.lo $(objects)/SDL_sysmutex.lo $(objects)/SDL_syscond.lo $(objects)/SDL_systls.lo $(objects)/SDL_sysjoystick.lo $(objects)/SDL_steamcontroller.lo $(objects)/SDL_syshaptic.lo $(objects)/SDL_syspower.lo $(objects)/SDL_sysfilesystem.lo $(objects)/SDL_systimer.lo $(objects)/SDL_evdev.lo $(objects)/SDL_evdev_kbd.lo $(objects)/SDL_poll.lo
 GEN_HEADERS = 
 GEN_OBJECTS = 
 VERSION_OBJECTS = 
@@ -544,43 +544,7 @@ $(objects)/SDL_dummyaudio.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0
 $(objects)/SDL_sysloadso.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/loadso/dlopen/SDL_sysloadso.c
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_cocoaclipboard.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/video/cocoa/SDL_cocoaclipboard.m
-	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
-
-$(objects)/SDL_cocoaevents.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/video/cocoa/SDL_cocoaevents.m
-	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
-
-$(objects)/SDL_cocoakeyboard.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/video/cocoa/SDL_cocoakeyboard.m
-	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
-
-$(objects)/SDL_cocoamessagebox.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/video/cocoa/SDL_cocoamessagebox.m
-	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
-
-$(objects)/SDL_cocoametalview.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/video/cocoa/SDL_cocoametalview.m
-	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
-
-$(objects)/SDL_cocoamodes.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/video/cocoa/SDL_cocoamodes.m
-	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
-
-$(objects)/SDL_cocoamouse.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/video/cocoa/SDL_cocoamouse.m
-	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
-
-$(objects)/SDL_cocoamousetap.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/video/cocoa/SDL_cocoamousetap.m
-	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
-
-$(objects)/SDL_cocoaopengl.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/video/cocoa/SDL_cocoaopengl.m
-	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
-
-$(objects)/SDL_cocoashape.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/video/cocoa/SDL_cocoashape.m
-	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
-
-$(objects)/SDL_cocoavideo.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/video/cocoa/SDL_cocoavideo.m
-	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
-
-$(objects)/SDL_cocoavulkan.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/video/cocoa/SDL_cocoavulkan.m
-	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
-
-$(objects)/SDL_cocoawindow.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/video/cocoa/SDL_cocoawindow.m
+$(objects)/SDL_dspaudio.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/audio/dsp/SDL_dspaudio.c
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
 $(objects)/SDL_x11clipboard.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/video/x11/SDL_x11clipboard.c
@@ -637,6 +601,36 @@ $(objects)/edid-parse.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/s
 $(objects)/imKStoUCS.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/video/x11/imKStoUCS.c
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
+$(objects)/SDL_mirdyn.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/video/mir/SDL_mirdyn.c
+	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
+
+$(objects)/SDL_mirevents.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/video/mir/SDL_mirevents.c
+	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
+
+$(objects)/SDL_mirframebuffer.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/video/mir/SDL_mirframebuffer.c
+	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
+
+$(objects)/SDL_mirmouse.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/video/mir/SDL_mirmouse.c
+	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
+
+$(objects)/SDL_miropengl.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/video/mir/SDL_miropengl.c
+	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
+
+$(objects)/SDL_mirvideo.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/video/mir/SDL_mirvideo.c
+	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
+
+$(objects)/SDL_mirvulkan.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/video/mir/SDL_mirvulkan.c
+	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
+
+$(objects)/SDL_mirwindow.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/video/mir/SDL_mirwindow.c
+	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
+
+$(objects)/SDL_dbus.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/core/linux/SDL_dbus.c
+	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
+
+$(objects)/SDL_ime.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/core/linux/SDL_ime.c
+	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
+
 $(objects)/SDL_systhread.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/thread/pthread/SDL_systhread.c
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
@@ -652,25 +646,28 @@ $(objects)/SDL_syscond.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/
 $(objects)/SDL_systls.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/thread/pthread/SDL_systls.c
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_coreaudio.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/audio/coreaudio/SDL_coreaudio.m
+$(objects)/SDL_sysjoystick.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/joystick/linux/SDL_sysjoystick.c
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_sysjoystick.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/joystick/darwin/SDL_sysjoystick.c
+$(objects)/SDL_steamcontroller.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/joystick/steam/SDL_steamcontroller.c
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_syshaptic.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/haptic/darwin/SDL_syshaptic.c
+$(objects)/SDL_syshaptic.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/haptic/linux/SDL_syshaptic.c
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_syspower.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/power/macosx/SDL_syspower.c
+$(objects)/SDL_syspower.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/power/linux/SDL_syspower.c
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_sysfilesystem.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/filesystem/cocoa/SDL_sysfilesystem.m
+$(objects)/SDL_sysfilesystem.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/filesystem/unix/SDL_sysfilesystem.c
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
 $(objects)/SDL_systimer.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/timer/unix/SDL_systimer.c
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
-$(objects)/SDL_rwopsbundlesupport.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/file/cocoa/SDL_rwopsbundlesupport.m
+$(objects)/SDL_evdev.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/core/linux/SDL_evdev.c
+	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
+
+$(objects)/SDL_evdev_kbd.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/core/linux/SDL_evdev_kbd.c
 	$(RUN_CMD_CC)$(LIBTOOL) --tag=CC --mode=compile $(CC) $(CFLAGS) $(EXTRA_CFLAGS) -MMD -MT $@ -c $< -o $@
 
 $(objects)/SDL_poll.lo: /info/etu/l2info/l2info022/Projet/othello/SDL2-2.0.7/src/core/unix/SDL_poll.c
