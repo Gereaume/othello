@@ -2,8 +2,12 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
+/*#include <SDL2/SDL_ttf.h>
+/*#include<SDL2/SDL_image.h>*/
 
 
+
+/*
 void Draw_Cercle(SDL_Renderer* renderer)
 {
   int an = 0;
@@ -21,6 +25,9 @@ void Draw_Cercle(SDL_Renderer* renderer)
   }
   SDL_RenderPresent(renderer);
 }
+*/
+
+
 
 
 void coordonnees(int cont, int posx, int posy){
@@ -46,40 +53,36 @@ void coordonnees(int cont, int posx, int posy){
 
 }
 
-
+/*
 void aff_joueur1(int posx, int posy){
 
-	while(coupPoss(char mat[N][N], char mat2[N][N], char couleur, posx,posy)==0){
+	while(coupPoss(char mat[N][N], char mat2[N][N], char couleur, posx,posy)==0){*/
 		/** affichage message "Vous ne pouvez pas jouer ici, recommencez"	**/
-	}
-	else{
+	/*}
+	else{*/
 		/** afficher un cercle noir aux bonnes coordonnées	**/
-	}
+	/*}
 	
-}
+}*/
 
 
-
+/*
 void aff_joueur2(int posx, int posy){
 
 	while(coupPoss(char mat[N][N], char mat2[N][N], char couleur, posx,posy)==0){
-		/** affichage message "Vous ne pouvez pas jouer ici, recommencez"	**/
-	}
-	else{
+		*//** affichage message "Vous ne pouvez pas jouer ici, recommencez"	**/
+	/*}
+	else{*/
 		/** afficher un cercle noir aux bonnes coordonnées	**/
-	}
+	/*}
 }
-
-
-
-
-
+*/
 
 
 
 int aff_mat(SDL_Renderer* renderer){
 		
-		SDL_Point ligne_depart,ligne_arrivee; // Déclaration point de départ et point d'arrivée d'une ligne
+	SDL_Point ligne_depart,ligne_arrivee; // Déclaration point de départ et point d'arrivée d'une ligne
 		
     	if(renderer == NULL) // Gestion des erreurs
     	{
@@ -121,7 +124,7 @@ int aff_mat(SDL_Renderer* renderer){
     	}
 
 
-    	SDL_SetRenderDrawColor(renderer,0,0,0,0);//Couleur blanc
+    	SDL_SetRenderDrawColor(renderer,0,0,0,0);//Couleur noir
 
 		// Lignes horizontales
     	ligne_depart.x = 0;
@@ -148,6 +151,11 @@ int aff_mat(SDL_Renderer* renderer){
     	return 1;
 
 }
+void Draw_Ellipse(SDL_Surface *super,
+                  Sint16 x0, Sint16 y0,
+                  Uint16 Xradius, Uint16 Yradius,
+                  Uint32 color);
+
 
 
 int main(int argc, char** argv)
@@ -158,9 +166,16 @@ int main(int argc, char** argv)
         fprintf(stdout,"Échec de l'initialisation de la SDL (%s)\n",SDL_GetError());
         return -1;
     }
+    /*SDL_Surface *texte=NULL;
+    TTF_Init();
+    TTF_Font *police = NULL;
+    SDL_Color noir = {0, 0, 0};
+
+    texte = TTF_RenderText_Blended(police, "bonjour", noir);*/
     
+
     int posx = 0;  /** position en abscisse 	**/
-	int posy = 0;  /** position en ordonnée		**/
+    int posy = 0;  /** position en ordonnée		**/
 	
     SDL_Window* fenetre = SDL_CreateWindow("Interface graphique de l'othello" , SDL_WINDOWPOS_CENTERED , SDL_WINDOWPOS_CENTERED , 800 , 800 , 0);
 	
@@ -194,6 +209,11 @@ int main(int argc, char** argv)
     	fprintf(stderr,"erreur creation fenetre : %s\n",SDL_GetError());
     	return EXIT_FAILURE;
     }
-    SDL_Quit();  /** quitter 	**/
+
+    /*TTF_CloseFont(police);
+    TTF_Quit();
+
+    SDL_Quit();*/  /** quitter 	**/
+    
     return 0;
 }
