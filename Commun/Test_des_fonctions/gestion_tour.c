@@ -46,7 +46,7 @@ void gestion_tour(char mat[N][N])
 
 	int i = 0, lig=0, col=0;						/** Déclaration des variables	**/
 	
-	while(i<63)
+	while(i<61)
 	{	
 		if((i%2)!=1)
 		{
