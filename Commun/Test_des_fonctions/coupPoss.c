@@ -18,7 +18,7 @@
 
 
 /**
-*\brief Renvoie le nombre de pions retourné, si aucun retourné, return 0
+\brief Renvoie le nombre de pions retourné, si aucun retourné, return 0
 **/
 int retourner(char mat[N][N], char couleur, int lig, int col){
 
@@ -32,6 +32,9 @@ int retourner(char mat[N][N], char couleur, int lig, int col){
 Il y a 8 fois ce traitement pour les 8 directions possibles pour retourner un pion
 *********************************************************************************/
 
+	/***************
+	En haut à gauche
+	***************/
 	if(mat[lig-1][col-1] != '*' && mat[lig-1][col-1] != couleur){	/** Si la case est de la couleur de l'adversaire **/
 		i = lig-1;
 		j = col-1;
@@ -53,6 +56,9 @@ Il y a 8 fois ce traitement pour les 8 directions possibles pour retourner un pi
 		}
 	}
 
+	/******
+	En haut
+	******/
 	if(mat[lig-1][col] != '*' && mat[lig-1][col] != couleur){
 		i = lig-1;
 		j = col;
@@ -73,6 +79,9 @@ Il y a 8 fois ce traitement pour les 8 directions possibles pour retourner un pi
 		}
 	}
 
+	/***************
+	En haut à droite
+	***************/
 	if(mat[lig-1][col+1] != '*' && mat[lig-1][col+1] != couleur){
 		i = lig-1;
 		j = col+1;
@@ -94,6 +103,9 @@ Il y a 8 fois ce traitement pour les 8 directions possibles pour retourner un pi
 		}
 	}
 
+	/*******
+	A gauche
+	*******/
 	if(mat[lig][col-1] != '*' && mat[lig][col-1] != couleur){
 		i = lig;
 		j = col-1;
@@ -115,6 +127,9 @@ Il y a 8 fois ce traitement pour les 8 directions possibles pour retourner un pi
 		}
 	}
 
+	/*******
+	A droite
+	*******/
 	if(mat[lig][col+1] != '*' && mat[lig][col+1] != couleur){
 		i = lig;
 		j = col+1;
@@ -136,6 +151,9 @@ Il y a 8 fois ce traitement pour les 8 directions possibles pour retourner un pi
 		}
 	}
 
+	/**************
+	En bas à gauche
+	**************/
 	if(mat[lig+1][col-1] != '*' && mat[lig+1][col-1] != couleur){
 		i = lig+1;
 		j = col-1;
@@ -157,6 +175,9 @@ Il y a 8 fois ce traitement pour les 8 directions possibles pour retourner un pi
 		}
 	}
 
+	/*****
+	En bas
+	*****/
 	if(mat[lig+1][col] != '*' && mat[lig+1][col] != couleur){
 		i = lig+1;
 		j = col;
@@ -178,6 +199,9 @@ Il y a 8 fois ce traitement pour les 8 directions possibles pour retourner un pi
 		}
 	}
 
+	/**************
+	En bas à droite
+	**************/
 	if(mat[lig+1][col+1] != '*' && mat[lig+1][col+1] != couleur){
 		i = lig+1;
 		j = col+1;

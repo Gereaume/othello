@@ -6,5 +6,5 @@ struct JOUEUR
 {
 	char nom_joueur[50];
 	int score_joueur;
-	int nb_partie_gagné;
+	int nb_partie_gagne;
 };
