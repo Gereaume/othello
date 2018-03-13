@@ -28,9 +28,9 @@ void init_mat(char mat[N][N])
 		for(col=0;col<N;col++)							/** Incrementation de colonne	**/
 		{
 			mat[lig][col]='*';						/** On place des points dans chaque case	**/
-			if((lig == 3 && col == 3) || (lig == 4 && col == 4))		/** Sauf les cases ou nous plaçons les pions du départ	**/
+			if((lig == (N/2)-1 && col == (N/2)-1) || (lig == N/2 && col == N/2))		/** Sauf les cases ou nous plaçons les pions du départ	**/
 				mat[lig][col] = blanc;
-			else if((lig == 3 && col == 4) || (lig == 4 && col == 3))
+			else if((lig == (N/2)-1 && col == N/2) || (lig == N/2 && col == (N/2)-1))
 				mat[lig][col] = noir;
 		}
 	}
