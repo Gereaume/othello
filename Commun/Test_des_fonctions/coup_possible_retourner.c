@@ -12,7 +12,7 @@
 #include <stdlib.h>
 
 
-#include "coupPoss.h"
+#include "coup_possible_retourner.h"
 #include "gestion_matrice.h"
 #include "define.h"
 
@@ -230,7 +230,7 @@ Il y a 8 fois ce traitement pour les 8 directions possibles pour retourner un pi
 /**
 *\brief La fonction coup_possible nous renvoie 1 si le coup est possible et renvoie 0 si le coup n'est pas possible
 **/
-int coupPoss(char mat[N][N], char couleur, int lig, int col){
+int coup_possible(char mat[N][N], char couleur, int lig, int col){
 	char mat2[N][N];
 	int nb_pions_ret;
 	copie(mat, mat2);	/** copie contenu de mat dans mat2	**/
