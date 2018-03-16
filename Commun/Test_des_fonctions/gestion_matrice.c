@@ -128,6 +128,8 @@ void copie(char mat[N][N], char mat2[N][N])
 		}
 	}
 }
+
+
 /*
 int ecrire_mat_clic(mat[N][N])
 {

@@ -241,7 +241,7 @@ int coup_possible(char mat[N][N], char couleur, int lig, int col){
 		
 		if(nb_pions_ret != 0){
 			
-			printf("Le nb retourner est de %i\n", nb_pions_ret);
+			printf("Le nb de pion(s) retourné(s) est de %i.\n", nb_pions_ret);
 			return 1;
 		}
 		else{

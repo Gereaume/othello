@@ -1,3 +1,3 @@
-#define N 4
+#define N 3
 #define noir 'n'
 #define blanc 'b'

@@ -8,7 +8,6 @@
 int main(){
 	char mat[N][N];
 	init_mat(mat);
-	lire_mat(mat);
 	gestion_tour(mat);
 	
 }
