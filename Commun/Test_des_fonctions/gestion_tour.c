@@ -8,6 +8,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 #include <time.h>
 	
 #include "gestion_matrice.h"
@@ -46,7 +47,10 @@ void gestion_tour(char mat[N][N])
 {
 
 
-	int i = 0, lig=0, col=0;						/** Déclaration des variables	**/
+	int i = 0;
+	int lig = 0,col = 0;
+	char chlig;
+	char chcol;						/** Déclaration des variables	**/
 	
 	system("clear");
 	printf("\nBIENVENUE AU JEU DE L'OTHELLO\n\n");
@@ -64,12 +68,21 @@ void gestion_tour(char mat[N][N])
 			printf("\n\tTour du joueur n°1 (noir)\n");			/** On indique que c'est le tour du joueur n°1	**/
 			lire_mat(mat);						/** On affiche la matrice	**/
 			printf("\n\tVeuillez saisir les coordonnées ou vous souhaitez jouer \n\t(d'abord la ligne puis la colonne) : ");
-			scanf("%i%i",&lig,&col);				/** Le joueur saisie les coordonnées où il veut jouer	**/
+			scanf("%c%*c",&chlig);
+			scanf("%c%*c",&chcol);				/** Le joueur saisie les coordonnées où il veut jouer	**/
+			while(!isdigit(chlig)||!isdigit(chcol))
+			{
+				printf("\n\tIl y a eu un soucis avec la saisie veuillez recommencer\t");
+				scanf("%c%*c",&chlig);
+				scanf("%c%*c",&chcol);
+			}
+			lig =chlig - '0',col = chcol - '0';			
 			while(coup_possible(mat,noir,lig,col) == 0)		/** Tant que le coup est impossible le joueur doit ressaisir les coordonnées de l'endroit ou il veut jouer	**/
 			{
 				printf("\n\tCe coup la n'est pas possible\n\tVeuillez resaisir : ");
 				scanf("%i%i",&lig,&col);
 			}
+			
 			ecrire_mat(mat,noir,lig,col);				/** Une fois que l'endroit où le joueur a décider de jouer est possible on l'ecrit dans la matrice	**/
 			
 			/* cette fonction renvoie un entier dont on ne se sert pas */
