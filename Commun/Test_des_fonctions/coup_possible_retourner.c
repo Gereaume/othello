@@ -240,9 +240,7 @@ int coup_possible(char mat[N][N], char couleur, int lig, int col){
 		nb_pions_ret = retourner(mat2, couleur, lig, col); // si le pion posé retourne au moins 1 pion
 		
 		if(nb_pions_ret != 0){
-			
-			printf("Le nb de pion(s) retourné(s) est de %i.\n", nb_pions_ret);
-			return 1;
+			return nb_pions_ret;
 		}
 		else{
 			return 0;
