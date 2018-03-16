@@ -15,7 +15,7 @@
 #include "gestion_tour.h"
 #include "define.h"
 #include "coup_possible_retourner.c"
-#include "joueur.c"
+#include <joueur.h>
 
 /**
 *\brief la fonction gagnant permet de savoir qui a gagné
@@ -43,7 +43,7 @@ int gagnant(char mat[N][N])
 /**
 *\brief Cette fonction permet le bon déroulement du tour des différents joueurs
 **/
-void gestion_tour(char mat[N][N])
+void gestion_tour(char mat[N][N],t_joueur joueur1,t_joueur joueur2)
 {
 
 
@@ -66,7 +66,7 @@ void gestion_tour(char mat[N][N])
 		
 			printf("\n\tNb de pions blanc %i", compter_elem(mat, blanc)); /** On affiche le score actuel **/
 			printf("\n\tNb de pions noir %i", compter_elem(mat, noir));
-			printf("\n\tTour du joueur n°1 (noir)\n");			/** On indique que c'est le tour du joueur n°1	**/
+			printf("\n\tTour de %s (noir)\n",&joueur1.nom_joueur);			/** On indique que c'est le tour du joueur n°1	**/
 			
 			lire_mat(mat);						/** On affiche la matrice	**/
 
@@ -88,7 +88,7 @@ void gestion_tour(char mat[N][N])
 
 		}	
 		else{
-			printf("\n\tLe joueur noir ne peut pas jouer");
+			printf("\n\t%s ne peut pas jouer",&joueur1.nom_joueur);
 		}	
 
 
@@ -99,7 +99,7 @@ void gestion_tour(char mat[N][N])
 		
 			printf("\n\tNb de pions blanc %i", compter_elem(mat, blanc)); /** On affiche le score actuel **/
 			printf("\n\tNb de pions noir %i", compter_elem(mat, noir));
-			printf("\n\tTour du joueur n°2 (blanc)\n");			/** On indique que c'est le tour du joueur n°2	**/
+			printf("\n\tTour de %s (blanc)\n",&joueur2.nom_joueur);			/** On indique que c'est le tour du joueur n°2	**/
 
 			lire_mat(mat);						/** On affiche la matrice	**/
 
@@ -120,7 +120,7 @@ void gestion_tour(char mat[N][N])
 			i+=1;							/** On incrémente i	**/
 		}
 		else{
-			printf("\n\tLe joueur blanc ne peut pas jouer");
+			printf("\n\t%s ne peut pas jouer",&joueur2.nom_joueur);
 		}
 		if(peut_jouer(mat, blanc) == 0 && peut_jouer(mat, noir) == 0){
 			printf("\n\tAucun joueur ne peut jouer");
