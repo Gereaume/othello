@@ -47,20 +47,13 @@ void gestion_tour(char mat[N][N])
 {
 
 
-<<<<<<< HEAD
-	int i = 0, lig=0, col=0, peut_jouer_noir, peut_jouer_blanc;						/** Déclaration des variables	**/
-	
-	system("clear");
-	printf("\nBIENVENUE AU JEU DE L'OTHELLO\n\n");
-	sleep(1);
-=======
-	int i = 0;
-	char lig = '0',col = '0';				/** Déclaration des variables	**/
+	int i = 0, peut_jouer_noir, peut_jouer_blanc;						/** Déclaration des variables	**/
+	char lig = '0',col = '0';
 	
 	system("clear");
 	printf("\nBIENVENUE AU JEU DE L'OTHELLO\n\n");
 	sleep(0.1);
->>>>>>> d6ec5c84a11cf6d87a7bc4e4886d33801adc21d8
+
 	
 
 	while(i<(N*N)-4)
@@ -87,32 +80,21 @@ void gestion_tour(char mat[N][N])
 			printf("\n\tVeuillez saisir les coordonnées ou vous souhaitez jouer \n\t(d'abord la ligne puis la colonne) : ");
 			scanf("%c%*c",&lig);
 			scanf("%c%*c",&col);				/** Le joueur saisie les coordonnées où il veut jouer	**/
-			while(!isdigit(lig)||!isdigit(col))
+			/*while(!isdigit(lig)||!isdigit(col))
 			{
 				printf("\n\tIl y a eu un soucis avec la saisie veuillez recommencer\t");
 				scanf("%c%*c",&lig);
 				scanf("%c%*c",&col);
-			}			
-			while(coup_possible(mat,noir,lig-'0',col - '0') == 0)		/** Tant que le coup est impossible le joueur doit ressaisir les coordonnées de l'endroit ou il veut jouer	**/
+			}*/			
+			while(coup_possible(mat,noir,lig-'0',col - '0') == 0 && (!isdigit(lig)||!isdigit(col)))		/** Tant que le coup est impossible le joueur doit ressaisir les coordonnées de l'endroit ou il veut jouer	**/
 			{
 				printf("\n\tCe coup la n'est pas possible\n\tVeuillez resaisir : ");
 				scanf("%c%*c",&lig);
 				scanf("%c%*c",&col);
-				printf("%c    ;  %c",lig,col);
 			}
-<<<<<<< HEAD
-			
-			ecrire_mat(mat,noir,lig,col);				/** Une fois que l'endroit où le joueur a décider de jouer est possible on l'ecrit dans la matrice	**/
-=======
-			
+		
 			ecrire_mat(mat,noir,lig-'0',col-'0');				/** Une fois que l'endroit où le joueur a décider de jouer est possible on l'ecrit dans la matrice	**/
-			
-			/* cette fonction renvoie un entier dont on ne se sert pas */
-			retourner(mat,noir,lig-'0',col-'0');	
-			sleep(1.5);
->>>>>>> d6ec5c84a11cf6d87a7bc4e4886d33801adc21d8
-			
-			printf("\n\tLe nb de pion(s) retourné(s) est de %i", retourner(mat,noir,lig,col));
+			printf("\n\tLe nb de pion(s) retourné(s) est de %i", retourner(mat,noir,lig-'0',col-'0'));
 			i+=1;							/** On incrémente i	**/
 		}	
 		else{
@@ -139,15 +121,18 @@ void gestion_tour(char mat[N][N])
 			printf("\n\tTour du joueur n°2 (blanc)\n");			/** On indique que c'est le tour du joueur n°2	**/
 			lire_mat(mat);						/** On affiche la matrice	**/
 			printf("\n\tVeuillez saisir les coordonnées ou vous souhaitez jouer \n\t(d'abord la ligne puis la colonne) : ");
-			//scanf("%i%i",&lig,&col);				/** Le joueur saisie les coordonnées où il veut jouer	**/
-			while(coup_possible(mat,blanc,lig,col) == 0)		/** Tant que le coup est impossible le joueur doit ressaisir les coordonnées de l'endroit ou il veut jouer	**/
+			scanf("%c%*c",&lig);
+			scanf("%c%*c",&col);				/** Le joueur saisie les coordonnées où il veut jouer	**/
+			while(coup_possible(mat,noir,lig-'0',col - '0') == 0 && (!isdigit(lig)||!isdigit(col)))		/** Tant que le coup est impossible le joueur doit ressaisir les coordonnées de l'endroit ou il veut jouer	**/
 			{
 				printf("\n\tCe coup la n'est pas possible\n\tVeuillez resaisir : ");
-				//scanf("%i%i",&lig,&col);
+				scanf("%c%*c",&lig);
+				scanf("%c%*c",&col);
 			}
-			ecrire_mat(mat,blanc,lig,col);				/** Une fois que l'endroit ou le joueur a décider de jouer est possible on l'ecrit dans la matrice	**/
+		
+			ecrire_mat(mat,blanc,lig-'0',col-'0');				/** Une fois que l'endroit ou le joueur a décider de jouer est possible on l'ecrit dans la matrice	**/
 			
-			printf("\n\tLe nb de pion(s) retourné(s) est de %i", retourner(mat,blanc,lig,col));
+			printf("\n\tLe nb de pion(s) retourné(s) est de %i", retourner(mat,blanc,lig-'0',col-'0'));
 			i+=1;							/** On incrémente i	**/
 		}
 		else{
