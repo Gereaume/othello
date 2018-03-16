@@ -253,3 +253,15 @@ int coup_possible(char mat[N][N], char couleur, int lig, int col){
 
 
 
+int peut_jouer(char mat[N][N], char couleur){
+	int peut_jouer, lig, col;
+
+	for(lig=0;lig<N;lig++){
+		for(col=0;col<N;col++){
+			if(coup_possible(mat,noir,lig,col) != 0){
+				return 1;
+			}
+		}
+	}
+	return 0;
+}

@@ -59,16 +59,8 @@ void gestion_tour(char mat[N][N])
 	while(i<(N*N)-4)
 	{	
 		
-		peut_jouer_noir = 0;
-		for(lig=0;lig<N;lig++){
-			for(col=0;col<N;col++){
-				if(coup_possible(mat,noir,lig,col) != 0){
-					peut_jouer_noir = 1;
-				}
-			}
-		}
-
-		if(peut_jouer_noir == 1)
+		
+		if(peut_jouer(mat, noir) == 1)
 		{
 			system("clear");					/** On nettoie le terminal au debut du tour	**/
 		
@@ -102,16 +94,8 @@ void gestion_tour(char mat[N][N])
 		}	
 
 
-		peut_jouer_blanc = 0;
-		for(lig=0;lig<N;lig++){
-			for(col=0;col<N;col++){
-				if(coup_possible(mat,blanc,lig,col) != 0){
-					peut_jouer_blanc = 1;
-				}
-			}
-		}
-
-		if(peut_jouer_blanc == 1)
+		
+		if(peut_jouer(mat, blanc) == 1)
 		{
 			system("clear");					/** On nettoie le terminal au debut du tour	**/
 		
@@ -138,7 +122,7 @@ void gestion_tour(char mat[N][N])
 		else{
 			printf("\n\tLe joueur noir ne peut pas jouer");
 		}
-		if(peut_jouer_noir == 0 && peut_jouer_blanc == 0){
+		if(peut_jouer(mat, blanc) == 0 && peut_jouer(mat, noir) == 0){
 			printf("\n\tAucun joueur ne peut jouer");
 			sleep(1.5);
 			break;
