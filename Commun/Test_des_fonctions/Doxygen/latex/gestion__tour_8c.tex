@@ -7,18 +7,19 @@ Ce fichier contient des fonctions permettant la gestion des tours tel que le bon
 
 {\ttfamily \#include $<$stdio.\+h$>$}\\*
 {\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$ctype.\+h$>$}\\*
 {\ttfamily \#include $<$time.\+h$>$}\\*
 {\ttfamily \#include \char`\"{}gestion\+\_\+matrice.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}gestion\+\_\+tour.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}define.\+h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}coup\+Poss.\+c\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}joueur.\+c\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}coup\+\_\+possible\+\_\+retourner.\+c\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}joueur.\+h\char`\"{}}\\*
 \subsection*{Fonctions}
 \begin{DoxyCompactItemize}
 \item 
 int \hyperlink{gestion__tour_8c_a2dd4ffd5c7b382ce82f064177d5d4560}{gagnant} (char mat\mbox{[}N\mbox{]}\mbox{[}N\mbox{]})
 \begin{DoxyCompactList}\small\item\em la fonction gagnant permet de savoir qui a gagné \end{DoxyCompactList}\item 
-void \hyperlink{gestion__tour_8c_aa4ce5068824c867ec6e0a9338ad0052b}{gestion\+\_\+tour} (char mat\mbox{[}N\mbox{]}\mbox{[}N\mbox{]})
+void \hyperlink{gestion__tour_8c_add8207bffceb5496f9497d925dded1e0}{gestion\+\_\+tour} (char mat\mbox{[}N\mbox{]}\mbox{[}N\mbox{]}, \hyperlink{structjoueur__s}{t\+\_\+joueur} joueur1, \hyperlink{structjoueur__s}{t\+\_\+joueur} joueur2)
 \begin{DoxyCompactList}\small\item\em Cette fonction permet le bon déroulement du tour des différents joueurs. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -58,11 +59,13 @@ Si il y a plus de pion noir on return 1 donc le joueur n°1 a gagné
 
 Si il y a plus de pion blanc on return donc le joueur n°2 a gagné \index{gestion\+\_\+tour.\+c@{gestion\+\_\+tour.\+c}!gestion\+\_\+tour@{gestion\+\_\+tour}}
 \index{gestion\+\_\+tour@{gestion\+\_\+tour}!gestion\+\_\+tour.\+c@{gestion\+\_\+tour.\+c}}
-\subsubsection[{\texorpdfstring{gestion\+\_\+tour(char mat[N][N])}{gestion_tour(char mat[N][N])}}]{\setlength{\rightskip}{0pt plus 5cm}void gestion\+\_\+tour (
+\subsubsection[{\texorpdfstring{gestion\+\_\+tour(char mat[N][N], t\+\_\+joueur joueur1, t\+\_\+joueur joueur2)}{gestion_tour(char mat[N][N], t_joueur joueur1, t_joueur joueur2)}}]{\setlength{\rightskip}{0pt plus 5cm}void gestion\+\_\+tour (
 \begin{DoxyParamCaption}
-\item[{char}]{mat\mbox{[}\+N\mbox{]}\mbox{[}\+N\mbox{]}}
+\item[{char}]{mat\mbox{[}\+N\mbox{]}\mbox{[}\+N\mbox{]}, }
+\item[{{\bf t\+\_\+joueur}}]{joueur1, }
+\item[{{\bf t\+\_\+joueur}}]{joueur2}
 \end{DoxyParamCaption}
-)}\hypertarget{gestion__tour_8c_aa4ce5068824c867ec6e0a9338ad0052b}{}\label{gestion__tour_8c_aa4ce5068824c867ec6e0a9338ad0052b}
+)}\hypertarget{gestion__tour_8c_add8207bffceb5496f9497d925dded1e0}{}\label{gestion__tour_8c_add8207bffceb5496f9497d925dded1e0}
 
 
 Cette fonction permet le bon déroulement du tour des différents joueurs. 
@@ -70,6 +73,8 @@ Cette fonction permet le bon déroulement du tour des différents joueurs.
 Déclaration des variables
 
 On nettoie le terminal au debut du tour
+
+On affiche le score actuel
 
 On indique que c\textquotesingle{}est le tour du joueur n°1
 
@@ -81,11 +86,11 @@ Tant que le coup est impossible le joueur doit ressaisir les coordonnées de l\t
 
 Une fois que l\textquotesingle{}endroit où le joueur a décider de jouer est possible on l\textquotesingle{}ecrit dans la matrice
 
-On affiche la matrice une fois le coup fait
-
 On incrémente i
 
 On nettoie le terminal au debut du tour
+
+On affiche le score actuel
 
 On indique que c\textquotesingle{}est le tour du joueur n°2
 
@@ -96,7 +101,5 @@ Le joueur saisie les coordonnées où il veut jouer
 Tant que le coup est impossible le joueur doit ressaisir les coordonnées de l\textquotesingle{}endroit ou il veut jouer
 
 Une fois que l\textquotesingle{}endroit ou le joueur a décider de jouer est possible on l\textquotesingle{}ecrit dans la matrice
-
-On affiche la matrice une fois le coup fait
 
 On incrémente i 

@@ -93,21 +93,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <a href="#details">Plus de détails...</a></p>
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;ctype.h&gt;</code><br />
 <code>#include &lt;time.h&gt;</code><br />
 <code>#include &quot;gestion_matrice.h&quot;</code><br />
 <code>#include &quot;gestion_tour.h&quot;</code><br />
 <code>#include &quot;define.h&quot;</code><br />
-<code>#include &quot;<a class="el" href="coupPoss_8c.html">coupPoss.c</a>&quot;</code><br />
-<code>#include &quot;joueur.c&quot;</code><br />
+<code>#include &quot;coup_possible_retourner.c&quot;</code><br />
+<code>#include &quot;joueur.h&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr class="memitem:a2dd4ffd5c7b382ce82f064177d5d4560"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gestion__tour_8c.html#a2dd4ffd5c7b382ce82f064177d5d4560">gagnant</a> (char mat[N][N])</td></tr>
 <tr class="memdesc:a2dd4ffd5c7b382ce82f064177d5d4560"><td class="mdescLeft">&#160;</td><td class="mdescRight">la fonction gagnant permet de savoir qui a gagné  <a href="#a2dd4ffd5c7b382ce82f064177d5d4560">Plus de détails...</a><br /></td></tr>
 <tr class="separator:a2dd4ffd5c7b382ce82f064177d5d4560"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa4ce5068824c867ec6e0a9338ad0052b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gestion__tour_8c.html#aa4ce5068824c867ec6e0a9338ad0052b">gestion_tour</a> (char mat[N][N])</td></tr>
-<tr class="memdesc:aa4ce5068824c867ec6e0a9338ad0052b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cette fonction permet le bon déroulement du tour des différents joueurs.  <a href="#aa4ce5068824c867ec6e0a9338ad0052b">Plus de détails...</a><br /></td></tr>
-<tr class="separator:aa4ce5068824c867ec6e0a9338ad0052b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add8207bffceb5496f9497d925dded1e0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gestion__tour_8c.html#add8207bffceb5496f9497d925dded1e0">gestion_tour</a> (char mat[N][N], <a class="el" href="structjoueur__s.html">t_joueur</a> joueur1, <a class="el" href="structjoueur__s.html">t_joueur</a> joueur2)</td></tr>
+<tr class="memdesc:add8207bffceb5496f9497d925dded1e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cette fonction permet le bon déroulement du tour des différents joueurs.  <a href="#add8207bffceb5496f9497d925dded1e0">Plus de détails...</a><br /></td></tr>
+<tr class="separator:add8207bffceb5496f9497d925dded1e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Ce fichier contient des fonctions permettant la gestion des tours tel que le bon déroulement des tours et verifier qui est le gagnant. </p>
@@ -138,7 +139,7 @@ Fonctions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="aa4ce5068824c867ec6e0a9338ad0052b"></a>
+<a class="anchor" id="add8207bffceb5496f9497d925dded1e0"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -146,8 +147,24 @@ Fonctions</h2></td></tr>
           <td class="memname">void gestion_tour </td>
           <td>(</td>
           <td class="paramtype">char&#160;</td>
-          <td class="paramname"><em>mat</em>[N][N]</td><td>)</td>
+          <td class="paramname"><em>mat</em>[N][N], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="structjoueur__s.html">t_joueur</a>&#160;</td>
+          <td class="paramname"><em>joueur1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structjoueur__s.html">t_joueur</a>&#160;</td>
+          <td class="paramname"><em>joueur2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -155,20 +172,20 @@ Fonctions</h2></td></tr>
 <p>Cette fonction permet le bon déroulement du tour des différents joueurs. </p>
 <p>Déclaration des variables</p>
 <p>On nettoie le terminal au debut du tour</p>
+<p>On affiche le score actuel</p>
 <p>On indique que c'est le tour du joueur n°1</p>
 <p>On affiche la matrice</p>
 <p>Le joueur saisie les coordonnées où il veut jouer</p>
 <p>Tant que le coup est impossible le joueur doit ressaisir les coordonnées de l'endroit ou il veut jouer</p>
 <p>Une fois que l'endroit où le joueur a décider de jouer est possible on l'ecrit dans la matrice</p>
-<p>On affiche la matrice une fois le coup fait</p>
 <p>On incrémente i</p>
 <p>On nettoie le terminal au debut du tour</p>
+<p>On affiche le score actuel</p>
 <p>On indique que c'est le tour du joueur n°2</p>
 <p>On affiche la matrice</p>
 <p>Le joueur saisie les coordonnées où il veut jouer</p>
 <p>Tant que le coup est impossible le joueur doit ressaisir les coordonnées de l'endroit ou il veut jouer</p>
 <p>Une fois que l'endroit ou le joueur a décider de jouer est possible on l'ecrit dans la matrice</p>
-<p>On affiche la matrice une fois le coup fait</p>
 <p>On incrémente i </p>
 
 </div>

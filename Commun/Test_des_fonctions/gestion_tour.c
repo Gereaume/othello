@@ -15,7 +15,8 @@
 #include "gestion_tour.h"
 #include "define.h"
 #include "coup_possible_retourner.c"
-#include <joueur.h>
+#include "joueur.h"
+
 
 /**
 *\brief la fonction gagnant permet de savoir qui a gagné
@@ -64,20 +65,21 @@ void gestion_tour(char mat[N][N],t_joueur joueur1,t_joueur joueur2)
 		{
 			system("clear");					/** On nettoie le terminal au debut du tour	**/
 		
-			printf("\n\tNb de pions blanc %i", compter_elem(mat, blanc)); /** On affiche le score actuel **/
-			printf("\n\tNb de pions noir %i", compter_elem(mat, noir));
-			printf("\n\tTour de %s (noir)\n",&joueur1.nom_joueur);			/** On indique que c'est le tour du joueur n°1	**/
-			
+			printf("\n\tNb de pions blanc %i\n", compter_elem(mat, blanc)); /** On affiche le score actuel **/
+			printf("\n\tNb de pions noir %i\n", compter_elem(mat, noir));			
+			printf("\n\t%s c'est ton tour (noir)\n",joueur1.nom_joueur);			/** On indique que c'est le tour du joueur n°1	**/
 			lire_mat(mat);						/** On affiche la matrice	**/
 
-			printf("\n\tVeuillez saisir les coordonnées ou vous souhaitez jouer \n\t(d'abord la ligne puis la colonne) : ");
+			printf("\n\tVeuillez saisir les coordonnées ou vous souhaitez jouer \n\tLa ligne : ");
 			scanf("%c%*c",&lig);
+			printf("\n\tLa colonne : ");
 			scanf("%c%*c",&col);				/** Le joueur saisie les coordonnées où il veut jouer	**/		
 			
 			while(coup_possible(mat,noir,lig-'0',col-'0') == 0 || (!isdigit(lig)||!isdigit(col)))		/** Tant que le coup est impossible le joueur doit ressaisir les coordonnées de l'endroit ou il veut jouer	**/
 			{
-				printf("\n\tCe coup la n'est pas possible\n\tVeuillez resaisir : ");
+				printf("\n\tCe coup la n'est pas possible\n\tVeuillez resaisir\n\tLa ligne : ");
 				scanf("%c%*c",&lig);
+				printf("\n\tLa colonne : ");
 				scanf("%c%*c",&col);
 			}
 		
@@ -87,9 +89,9 @@ void gestion_tour(char mat[N][N],t_joueur joueur1,t_joueur joueur2)
 			i+=1;							/** On incrémente i	**/
 
 		}	
-		else{
-			printf("\n\t%s ne peut pas jouer",&joueur1.nom_joueur);
-		}	
+		else{				
+			printf("\n\t%s ne peut pas jouer\n",joueur1.nom_joueur);	
+		}
 
 
 		
@@ -98,19 +100,21 @@ void gestion_tour(char mat[N][N],t_joueur joueur1,t_joueur joueur2)
 			system("clear");					/** On nettoie le terminal au debut du tour	**/
 		
 			printf("\n\tNb de pions blanc %i", compter_elem(mat, blanc)); /** On affiche le score actuel **/
-			printf("\n\tNb de pions noir %i", compter_elem(mat, noir));
-			printf("\n\tTour de %s (blanc)\n",&joueur2.nom_joueur);			/** On indique que c'est le tour du joueur n°2	**/
+			printf("\n\tNb de pions noir %i", compter_elem(mat, noir));			
+			printf("\n\t%s c'est ton tour (blanc)\n",joueur2.nom_joueur);		/** On indique que c'est le tour du joueur n°2	**/
 
 			lire_mat(mat);						/** On affiche la matrice	**/
 
-			printf("\n\tVeuillez saisir les coordonnées ou vous souhaitez jouer \n\t(d'abord la ligne puis la colonne) : ");
+			printf("\n\tVeuillez saisir les coordonnées ou vous souhaitez jouer \n\tLa ligne : ");
 			scanf("%c%*c",&lig);
+			printf("\n\tLa colonne : ");
 			scanf("%c%*c",&col);				/** Le joueur saisie les coordonnées où il veut jouer	**/
 
 			while(coup_possible(mat,blanc,lig-'0',col - '0') == 0 || (!isdigit(lig)||!isdigit(col)))		/** Tant que le coup est impossible le joueur doit ressaisir les coordonnées de l'endroit ou il veut jouer	**/
 			{
-				printf("\n\tCe coup la n'est pas possible\n\tVeuillez resaisir : ");
+				printf("\n\tCe coup la n'est pas possible\n\tVeuillez resaisir\n\tLa ligne : ");
 				scanf("%c%*c",&lig);
+				printf("\n\tLa colonne : ");
 				scanf("%c%*c",&col);
 			}
 		
@@ -119,8 +123,8 @@ void gestion_tour(char mat[N][N],t_joueur joueur1,t_joueur joueur2)
 			printf("\n\tLe nb de pion(s) retourné(s) est de %i", retourner(mat,blanc,lig-'0',col-'0'));
 			i+=1;							/** On incrémente i	**/
 		}
-		else{
-			printf("\n\t%s ne peut pas jouer",&joueur2.nom_joueur);
+		else{				
+			printf("\n\t%s ne peut pas jouer\n",joueur2.nom_joueur);
 		}
 		if(peut_jouer(mat, blanc) == 0 && peut_jouer(mat, noir) == 0){
 			printf("\n\tAucun joueur ne peut jouer");
@@ -133,9 +137,9 @@ void gestion_tour(char mat[N][N],t_joueur joueur1,t_joueur joueur2)
 	printf("\n\tNb de pions noir %i", compter_elem(mat, noir));
 	lire_mat(mat);
 	if(gagnant(mat) == 1)
-		printf("\tC'est le joueur n°1 qui a gagné !\n");
+		printf("\tC'est %s qui a gagné !\n",joueur1.nom_joueur);
 	else if(gagnant(mat) == 0)
-		printf("\tC'est le joueur n°2 qui a gagné !\n");
+		printf("\tC'est %s qui a gagné !\n",joueur2.nom_joueur);
 	else
 		printf("\tEx-aequo !\n");
 	return;
