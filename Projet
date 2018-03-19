@@ -25,13 +25,13 @@ Ordre:
 	-Création des règles du othello temps approximatif (10h) JLR | AL | JLQ
 
 
-		-Gestion d'un tour
-		-Gestion fin de partie
+		-Gestion d'un tour JLQ | AL
+		-Gestion fin de partie JLQ | AL
 		-Gestion début de partie (noir commence)
-		-Gestion coup possible (si l'utilisateur palce son pion à un endroit valide)
-		-Fonction afficher coordonnée
-		-Fonction saisir coordonées
-		-Gestion retourner pions (changer couleur apres prise du pion)
+		-Gestion coup possible (si l'utilisateur place son pion à un endroit valide) AL
+		-Fonction afficher coordonnée ( fait ) JLQ
+		-Fonction saisir coordonées ( fait ) JLQ
+		-Gestion retourner pions (changer couleur apres prise du pion) (fait) AL
 		
 
 	-Affichage coup possible temps approximatif (3h)
