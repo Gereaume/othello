@@ -7,14 +7,14 @@
 #define N 8
 
 
-/** fonction permettant de voir si on a cliquer sur une zone passée en paramètre    **/
+/** fonction permettant de voir si on a cliqué sur une zone passée en paramètre    **/
 int clic(int x, int y, struct SDL_Rect *rect){
 	if((x >= rect->x) && (rect->x <= x+rect->w) && (y >= rect->y) && (rect->y <= (y+rect->h)))
 		return 1;
 	return 0;
 }
 
-/** fonction affichant le signe aux positions passées en paramètre si le coup et possible   **/
+/** fonction affichant le signe aux positions passées en paramètre si le coup est possible   **/
 /*void aff_signe(int posx, int posy, SDL_Renderer *renderer, SDL_Surface * image){
 	SDL_Rect positions;
 	positions.x = posx;
@@ -103,7 +103,7 @@ int aff_mat(SDL_Renderer* renderer){
 int main(int argc, char** argv)
 {
 
-	int posx,posy;   /** déclaration variables position x et y pour le curseur **/
+	int posx,posy;   /** déclaration variables position x et y pour le curseur  **/
 
 	SDL_Window* fenetre = NULL;  /** pointeur création fenetre SDL **/
 
@@ -161,7 +161,6 @@ int main(int argc, char** argv)
 	if(!police || !police2) {
         printf("TTF_OpenFont: %s\n", TTF_GetError());
         exit(EXIT_FAILURE);
-        // handle error
     }
 
     /** si la fenetre est ouverte   **/
