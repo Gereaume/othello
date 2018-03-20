@@ -2,81 +2,28 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
-/*#include <SDL2/SDL_ttf.h>
-/*#include<SDL2/SDL_image.h>*/
-
+#include <SDL2/SDL_ttf.h>
+#include <SDL2/SDL_image.h>
+#define N 8
 
 
 /*
-void Draw_Cercle(SDL_Renderer* renderer)
-{
-  int an = 0;
-  float ra = 1;
-  int x = 0;
-  int y = 0;
-  int ray = 250;
-
-  while (an < 360){
-    ra = (M_PI*(float)an/180.0);
-    x =ray * cos(ra) + 50;
-    y =ray * sin(ra) + 50;
-    SDL_RenderDrawPoint(renderer, x, y);
-    an++;
-  }
-  SDL_RenderPresent(renderer);
-}
-*/
-
-
-
-
-void coordonnees(int cont, int posx, int posy){
-	
-	SDL_Event event;  /** on prend les évènements de la souris	**/	
-		
-    while(SDL_PollEvent(&event)){  /** tant qu'on à un évènement de la souris 	**/
- 
-    			switch(event.type){
-    				case SDL_MOUSEBUTTONUP:  /** relachement de la souris **/
-    				fprintf(stdout,"position : %d;%d\n",event.motion.x,event.motion.y);  /** affichage des coordonnés **/
-    				posx=event.motion.x;
-    				posy=event.motion.y;
-    					
-    				case SDL_WINDOWEVENT:
-    					if ( event.window.event == SDL_WINDOWEVENT_CLOSE ) // si clic sur la croix
-    						cont = 0;  /** fermeture de la fenetre **/
-    					break;
-    					
-    			}
-    }
-
-
-}
-
-/*
-void aff_joueur1(int posx, int posy){
+void aff_signe(int posx, int posy, SDL_Renderer *renderer, SDL_Surface * image){
+	SDL_Rect positions;
+	positions.x = posx;
+	positions.y = posy;
 
 	while(coupPoss(char mat[N][N], char mat2[N][N], char couleur, posx,posy)==0){*/
 		/** affichage message "Vous ne pouvez pas jouer ici, recommencez"	**/
 	/*}
 	else{*/
-		/** afficher un cercle noir aux bonnes coordonnées	**/
+		/**SDL_BlitSurface(image, NULL, fenetre, &position)**/
 	/*}
 	
 }*/
 
 
-/*
-void aff_joueur2(int posx, int posy){
 
-	while(coupPoss(char mat[N][N], char mat2[N][N], char couleur, posx,posy)==0){
-		*//** affichage message "Vous ne pouvez pas jouer ici, recommencez"	**/
-	/*}
-	else{*/
-		/** afficher un cercle noir aux bonnes coordonnées	**/
-	/*}
-}
-*/
 
 
 
@@ -91,7 +38,7 @@ int aff_mat(SDL_Renderer* renderer){
     	}
     	SDL_Rect cases[32]; // Déclaration du tableau contenant les cases
     	
-		SDL_SetRenderDrawColor( renderer, 0, 255, 0, 255 ); /**Couleur verte	**/
+	SDL_SetRenderDrawColor( renderer, 0, 255, 0, 255 ); /**Couleur verte	**/
     	SDL_RenderClear(renderer);
 		
 
@@ -151,69 +98,79 @@ int aff_mat(SDL_Renderer* renderer){
     	return 1;
 
 }
-void Draw_Ellipse(SDL_Surface *super,
-                  Sint16 x0, Sint16 y0,
-                  Uint16 Xradius, Uint16 Yradius,
-                  Uint32 color);
 
+int aff(SDL_Window* fenetre){
 
+    
+    int posx = 0;  /** position en abscisse 	**/
+    int posy = 0;  /** position en ordonnée	**/
 
-int main(int argc, char** argv)
-{
-    /** Initialisation	**/
-	if (SDL_Init(SDL_INIT_VIDEO) != 0 )
+    fenetre = SDL_CreateWindow("Interface graphique de l'othello" , SDL_WINDOWPOS_CENTERED , SDL_WINDOWPOS_CENTERED , 800 , 800 , 0);
+	
+    SDL_Surface *surface = NULL, *fond = NULL, *texte = NULL;  /** definition de variables de surface	**/
+    SDL_Surface* cercle = SDL_LoadBMP("cercle.bmp"), croix = SDL_LoadBMP("croix.bmp");
+
+    SDL_Color noir = {0,0,0},blanc = {255, 255, 255};
+
+        /** Initialisation	**/
+    if (SDL_Init(SDL_INIT_VIDEO) != 0 )
     {
         fprintf(stdout,"Échec de l'initialisation de la SDL (%s)\n",SDL_GetError());
         return -1;
     }
-    /*SDL_Surface *texte=NULL;
-    TTF_Init();
-    TTF_Font *police = NULL;
-    SDL_Color noir = {0, 0, 0};
+    int i = 1;
+    fond = SDL_LoadBMP("fond.bmp");
+    surface = SDL_LoadBMP("image.bmp"); /** telechargement icone de l'othello	**/
+    SDL_SetWindowIcon(fenetre, surface);  /** affichage icone de l'othello	**/
 
-    texte = TTF_RenderText_Blended(police, "bonjour", noir);*/
-    
 
-    int posx = 0;  /** position en abscisse 	**/
-    int posy = 0;  /** position en ordonnée		**/
+
 	
-    SDL_Window* fenetre = SDL_CreateWindow("Interface graphique de l'othello" , SDL_WINDOWPOS_CENTERED , SDL_WINDOWPOS_CENTERED , 800 , 800 , 0);
-	
-	SDL_Surface *surface = NULL, *fond = NULL;  /** definition de variables de surface	**/
-	
-	fond = SDL_LoadBMP("fond.bmp");
-	surface = SDL_LoadBMP("image.bmp"); /** telechargement icone de l'othello	**/
-	SDL_SetWindowIcon(fenetre, surface);  /** affichage icone de l'othello	**/
-	
-	SDL_Renderer* renderer = SDL_CreateRenderer(fenetre, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC); /** Création du renderer	**/
-	
-	
-    
 	if(fenetre)  /** si l'ouverture de la fenetre a réussi	**/
 	{
 		aff_mat(renderer);
+
+		int cont = 1;
+    		while(cont == 1) /** appel de la fonction coordonnes tant qu'on le clique pas sur la croix	**/
+    		{	
+    			SDL_Event event;
 		
-		SDL_RenderPresent(renderer);
-		
-    	int cont = 1;
-		
-    	while(cont != 0) /** appel de la fonction coordonnes tant qu'on le clique pas sur la croix	**/
-    	{	
-    			coordonnees(cont,posx,posy);
+    			while(SDL_PollEvent(&event)){  /** tant qu'on à un évènement de la souris 	**/
+ 
+    				switch(event.type){
+    					case SDL_MOUSEBUTTONUP:  /** relachement de la souris **/
+    					fprintf(stdout,"position : %d;%d\n",event.motion.x,event.motion.y);  /** affichage des coordonnés **/
+    					posx=event.motion.x;
+    					posy=event.motion.y;
+					/*if(i%2 !=0)
+    						aff_signe(posx,posy,renderer, croix); 
+					else
+						aff_signe(posx,posy,render,rond);*/
+    					case SDL_WINDOWEVENT:
+    						if ( event.window.event == SDL_WINDOWEVENT_CLOSE ) // si clic sur la croix
+    						cont = 0;
+    					break;
+					i++;
+    					
+    			}
+			/*while(!ecrire_mat_clic(mat,posx,posy)){*/
+				/** afficher message ne peut pas jouer ici **/
+				/** recommencez **/
+			/*}*/
+			/** afficher croix ou cercle au bons coordonnées **/
+			
+
+		}
     	}
-    	
-    	SDL_DestroyRenderer(renderer);
-    	SDL_DestroyWindow(fenetre);		/** fermer la fenetre 	**/
+	SDL_DestroyRenderer(renderer);
+    	SDL_DestroyWindow(fenetre); /** fermer la fenetre 	**/
 
-    }else{
-    	fprintf(stderr,"erreur creation fenetre : %s\n",SDL_GetError());
-    	return EXIT_FAILURE;
-    }
+    	}else{
+    		fprintf(stderr,"erreur creation fenetre : %s\n",SDL_GetError());
+    		return EXIT_FAILURE;
+    	}
 
-    /*TTF_CloseFont(police);
-    TTF_Quit();
-
-    SDL_Quit();*/  /** quitter 	**/
+    SDL_Quit();
     
     return 0;
 }
