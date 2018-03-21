@@ -24,14 +24,14 @@ int clic(int x, int y, struct SDL_Rect *rect){
 }
 
 /** fonction affichant le signe aux positions passées en paramètre si le coup est possible, sinon affiche le message d'erreur   **/
-/*void aff_signe(int posx, int posy, SDL_Renderer *renderer, SDL_Texture * text){
+void aff_signe(int posx, int posy, SDL_Renderer *renderer, SDL_Texture * text){
 	SDL_Rect position;
 	position.x = posx;
 	position.y = posy;
 	SDL_Surface *message = NULL;
 	SDL_Texture *m;
 
-    if(text == cercle){
+    if(text == b){
         if(coup_possible(mat, blanc, posx, posy) == 0 && coup_possible(mat, noir,posx,posy) == 0){
             position.x = 900;
             position.y = 300;
@@ -43,7 +43,7 @@ int clic(int x, int y, struct SDL_Rect *rect){
                 message = TTF_RenderText_Solid(police2, "Fin du jeu ! Le gagnant est %s.", joueur2.nom_joueur ,rouge);
                 m = SDL_CreateTextureFromSurface(renderer,message);
             }
-            else{
+            else if(joueur1.score == joueur2.score){
                 message = TTF_RenderText_Solid(police2, "Fin du jeu ! Le résultat est ex_aequo.",rouge);
                 m = SDL_CreateTextureFromSurface(renderer,message);
             }
@@ -62,7 +62,7 @@ int clic(int x, int y, struct SDL_Rect *rect){
             return 0;
         }
     }
-    else{
+    else if(text == n){
         if(coup_possible(mat, blanc, posx, posy) == 0 && coup_possible(mat, noir,posx,posy) == 0){
             position.x = 900;
             position.y = 300;
@@ -74,7 +74,7 @@ int clic(int x, int y, struct SDL_Rect *rect){
                 message = TTF_RenderText_Solid(police2, "Fin du jeu ! Le gagnant est %s.", joueur2.nom_joueur ,rouge);
                 m = SDL_CreateTextureFromSurface(renderer,message);
             }
-            else{
+            else if(joueur1.score == joueur2.score){
                 message = TTF_RenderText_Solid(police2, "Fin du jeu ! Le résultat est ex_aequo.",rouge);
                 m = SDL_CreateTextureFromSurface(renderer,message);
             }
@@ -83,8 +83,7 @@ int clic(int x, int y, struct SDL_Rect *rect){
             SDL_RenderCopy(renderer,m,NULL,&position);
             return -1;
         }
-        else{
-            if(coup_possible(mat, noir, posx,posy)==0){
+        else if(coup_possible(mat, noir, posx,posy)==0){
                 position.x = 900;
                 position.y = 300;
                 message = TTF_RenderText_Solid(police2, "Vous ne pouvez pas jouer ici, choisissez une autre case ! ",rouge);
@@ -98,17 +97,17 @@ int clic(int x, int y, struct SDL_Rect *rect){
     SDL_RenderCopy(renderer,text,NULL,&position);
     return 1;
 
-}*/
+}
 
 /** fonction initialisation la matrice avec les 4 premiers signes au centre **/
-/*
+
 int init(SDL_Renderer *renderer){
     aff_signe(500,400,renderer,c1);
     aff_signe(500,500,renderer,c1);
     aff_signe(400,400,renderer,c2);
     aff_signe(400,500,renderer,c2);
 }
-*/
+
 
 /** fonction affichant la matrice 8x8 vide  **/
 
@@ -291,8 +290,8 @@ int main(int argc, char** argv)
     int i = 1;
 	SDL_Window* fenetre = NULL;  /** pointeur création fenetre SDL **/
 
-    SDL_Surface*regle = NULL, *cercle = NULL, *croix = NULL, *retour;  /** création de variables surfaces pour afficher du texte ou des images **/
-    SDL_Texture *fd, *r, *retourr;  /** creation de textures pour affichages du texte **/
+    SDL_Surface*regle = NULL, *b = NULL, *n = NULL, *retour;  /** création de variables surfaces pour afficher du texte ou des images **/
+    SDL_Texture *r, *retourr;  /** creation de textures pour affichages du texte **/
 	SDL_Rect pos;  /** déclaration rectangle pos pour position du curseur **/
 	SDL_Rect posfond = {800,800,800,800};
     SDL_Rect reg = {600,600,600,40};
@@ -308,8 +307,8 @@ int main(int argc, char** argv)
 
 	/** telechargement des différentes images  **/
 
-    croix = IMG_Load("croix.bmp");
-    cercle = IMG_Load("cercle.bmp");
+    n = IMG_Load("cerclenoir.bmp");
+    b = IMG_Load("cercleblanc.bmp");
 
     SDL_SetWindowIcon(fenetre, surface);  /** affichage icone de l'othello  **/
 
@@ -340,19 +339,19 @@ int main(int argc, char** argv)
 	SDL_Renderer* renderer = SDL_CreateRenderer(fenetre, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC); /** Création du renderer    **/
 
 
-    c1 = SDL_CreateTextureFromSurface(renderer,cercle);
-    SDL_FreeSurface(cercle); /** puisqu'on a la texture, on peut libérer la surface **/
-    c2 = SDL_CreateTextureFromSurface(renderer,croix);
-    SDL_FreeSurface(croix);
+    c1 = SDL_CreateTextureFromSurface(renderer,b);
+    SDL_FreeSurface(b); /** puisqu'on a la texture, on peut libérer la surface **/
+    c2 = SDL_CreateTextureFromSurface(renderer,n);
+    SDL_FreeSurface(n);
     fd = SDL_CreateTextureFromSurface(renderer,fond);
     SDL_FreeSurface(fond);
 
 
 
-    aff_menu(renderer,fenetre);
     int cont = 1;
     while(cont){ /** tant qu'on ne quitte pas la fenetre    **/
         int cont2=1;
+        aff_menu(renderer,fenetre);
         while(cont2){
             /** declaration variable event qui traite les évènements de la souris   **/
 			SDL_Event souris;
@@ -383,71 +382,76 @@ int main(int argc, char** argv)
                 }
             }
             if(res==1){
-                //SDL_RenderClear(renderer);
-                /*
+
+                aff_mat(renderer);
+                init(renderer);
+
                 s1 = TTF_RenderText_Solid(police, "Score de %s = %1 ",joueur1.nom_joueur, joueur1.score,noir);
                 s2 = TTF_RenderText_Solid(police,"Score de %s = %1 ",joueur2.nom_joueur, joueur2.score,noir);
                 sc1 = SDL_CreateTextureFromSurface(renderer, s1);
-                sc2 = SDL_CreateTextureFromSurface(renderer, s2);*/
-                    SDL_Event event;
-                    while(SDL_PollEvent(&event)){  /** tant qu'on à un évènement de la souris 	**/
+                sc2 = SDL_CreateTextureFromSurface(renderer, s2);
+                SDL_Event event;
+                while(SDL_PollEvent(&event)){  /** tant qu'on à un évènement de la souris 	**/
+                    switch(event.type){
+                        case SDL_MOUSEBUTTONUP:  /** relachement de la souris **/
+                            posx=event.motion.x;
+                            posy=event.motion.y;
 
-                        switch(event.type){
-                            case SDL_MOUSEBUTTONUP:  /** relachement de la souris **/
-                                posx=event.motion.x;
-                                posy=event.motion.y;
-
-                                /*
-                                SDL_QueryTexture(sc1, NULL, NULL, &scor1.w, &scor1.h);
-                                SDL_RenderCopy(renderer,sc1,NULL,&scor1);
-                                SDL_QueryTexture(sc2, NULL, NULL, &scor2.w, &scor2.h);
-                                SDL_RenderCopy(renderer,sc2,NULL,(&scor2);
-                                SDL_QueryTexture(retourr, NULL, NULL, &ret.w, &ret.h);
-                                SDL_RenderCopy(renderer,retourr,NULL,&ret);
-                                if(i%2 !=0){
-                                    if(aff_signe(posx,posy,renderer,cercle)==1){
-                                        SDL_QueryTexture(sc1, NULL, NULL, &scor1.w, &scor1.h);
-                                        SDL_RenderCopy(renderer,sc1,NULL,&scor1);
-                                        SDL_QueryTexture(sc2, NULL, NULL, &scor2.w, &scor2.h);
-                                        SDL_RenderCopy(renderer,sc2,NULL,(&scor2);
-                                        i++;
-                                    }
-                                    else if(aff_signe(posx,posy,renderer,cercle)==-1)){
-
-                                    }
-                                }else{
-                                    if(aff_signe(posx,posy,renderer,croix)==1){
-                                        SDL_QueryTexture(sc1, NULL, NULL, &scor1.w, &scor1.h);
-                                        SDL_RenderCopy(renderer,sc1,NULL,&scor1);
-                                        SDL_QueryTexture(sc2, NULL, NULL, &scor2.w, &scor2.h);
-                                        SDL_RenderCopy(renderer,sc2,NULL,(&scor2);
-                                        i++;
-                                    }
-                                    else if(aff_signe(posx,posy,renderer,cercle)==-1)){
-
-                                    }
-                                }*/
+                            SDL_QueryTexture(sc1, NULL, NULL, &scor1.w, &scor1.h);
+                            SDL_RenderCopy(renderer,sc1,NULL,&scor1);
+                            SDL_QueryTexture(sc2, NULL, NULL, &scor2.w, &scor2.h);
+                            SDL_RenderCopy(renderer,sc2,NULL,(&scor2);
+                            SDL_QueryTexture(retourr, NULL, NULL, &ret.w, &ret.h);
+                            SDL_RenderCopy(renderer,retourr,NULL,&ret);
+                            if(i%2 !=0){
+                                if(aff_signe(posx,posy,renderer,b)==1){
+                                    SDL_QueryTexture(sc1, NULL, NULL, &scor1.w, &scor1.h);
+                                    SDL_RenderCopy(renderer,sc1,NULL,&scor1);
+                                    SDL_QueryTexture(sc2, NULL, NULL, &scor2.w, &scor2.h);
+                                    SDL_RenderCopy(renderer,sc2,NULL,(&scor2);
+                                    i++;
+                                }
+                                else if(aff_signe(posx,posy,renderer,b)==-1)){
+                                    sleep(15);
+                                    cont2 = 0;
+                                    break;
+                                }
+                            }else{
+                                if(aff_signe(posx,posy,renderer,n)==1){
+                                    SDL_QueryTexture(sc1, NULL, NULL, &scor1.w, &scor1.h);
+                                    SDL_RenderCopy(renderer,sc1,NULL,&scor1);
+                                    SDL_QueryTexture(sc2, NULL, NULL, &scor2.w, &scor2.h);
+                                    SDL_RenderCopy(renderer,sc2,NULL,(&scor2);
+                                    i++;
+                                }
+                                else if(aff_signe(posx,posy,renderer,n)==-1)){
+                                    sleep(15);
+                                    cont2 = 0;
+                                    break;
+                                }
+                            }
                             if(clic(10,820,&ret)){
-                                aff_menu(renderer,fenetre);
-                                cont = 0;
+                                cont2 = 0;
+                                break;
                             }
                             case SDL_WINDOWEVENT:
                                 if ( event.window.event == SDL_WINDOWEVENT_CLOSE ) /** si clic sur la croix on ferme la fenetre **/
+                                    cont = 0;
                                     cont2 = 0;
                                 break;
                         }
-                        //SDL_RenderPresent(renderer);
+                        SDL_RenderPresent(renderer);
                     }
                 }
             }
             else if(res==2){
-                /** on declare les premières positions pour le premier message  **/
+               /** on declare les premières positions pour le premier message  **/
                 pos.x = 250;
                 pos.y = 100;
                 pos.w = 200;
                 pos.h = 30;
-                /** on nettoie l'écran  **/
-                regle = TTF_RenderText_Solid(police, "blablabla ",vert);
+               /** on nettoie l'écran  **/
+                regle = TTF_RenderText_Solid(police, "L'Othello est un jeu de stratégie. Chaque joueur a une couleur de pièce, et doit en avoir le plus à la fin du jeu. Pour obtenir plus de pièces, il doit 'manger' les pièces de son adversaire. Pour cela, il faut que deux de ses pièces entourent l'une des pièces de l'adversaire. Si c'est le cas, la pièce de l'adversaire se transforme en la couleur du joueur. Et ainsi de suite pour l'adversaire. ",vert);
                 r = SDL_CreateTextureFromSurface(renderer, regle);
                 SDL_RenderClear(renderer);
 
