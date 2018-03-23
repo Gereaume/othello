@@ -5,13 +5,14 @@
 
 #include "gestion_matrice.h"
 #include "define.h"
+#include "coup_possible_retourner.h"
 
-int fonc_eval(char mat[N][N], char couleur, int lig, int col, int nb_pions_en_plus);
+int fonc_eval(char mat[N][N], char couleur);
 
-int joueur(char mat[N][N], char couleur, int nb_coup_prevu, int * x, int * y);
+int joueur(char mat[N][N], char couleur, int nb_coup_prevu, int alpha, int beta);
 
-int ordi(char mat[N][N], char couleur, int nb_coup_prevu, int * x, int * y);
+int ordi(char mat[N][N], char couleur, int nb_coup_prevu, int alpha, int beta);
 
-void ordi_cb(char mat[N][N], char couleur, int nb_coup_prevu);
+void tour_ordi(char mat[N][N], char couleur, int nb_coup_prevu, int *px, int *py);
 
 #endif

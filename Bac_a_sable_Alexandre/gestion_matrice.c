@@ -29,12 +29,14 @@ void init_mat(char mat[N][N])
 		{
 			mat[lig][col]='*';						/** On place des points dans chaque case	**/
 			if((lig == (N/2)-1 && col == (N/2)-1) || (lig == N/2 && col == N/2))		/** Sauf les cases ou nous plaçons les pions du départ	**/
-				mat[lig][col] = blanc;
+				mat[lig][col] = BLANC;
 			else if((lig == (N/2)-1 && col == N/2) || (lig == N/2 && col == (N/2)-1))
-				mat[lig][col] = noir;
+				mat[lig][col] = NOIR;
 		}
 	}
 }
+
+
 
 /**
 *\brief La fonction lire_mat permet de lire la matrice
@@ -43,7 +45,7 @@ void lire_mat(char mat[N][N])
 {	
 	int lig,col;									/** Declaration des variables a incrementer	**/
 	printf("\n\t + |");
-	for(int i= 0;i<N;i++)
+	for(int i= 0;i<N+8;i++)
 	{
 		if(i<=9)
 		{
@@ -55,7 +57,7 @@ void lire_mat(char mat[N][N])
 		}
 	}
 	
-	for(lig=0;lig<N;lig++)								/** Incrementation de ligne	**/
+	for(lig=0;lig<N+8;lig++)								/** Incrementation de ligne	**/
 	{
 		if(lig<=9)
 		{
@@ -66,7 +68,7 @@ void lire_mat(char mat[N][N])
 			printf("\n\t%i |",lig);
 		}
 		
-		for(col=0;col<N;col++)							/** Incrementation de colonne	**/
+		for(col=0;col<N+8;col++)							/** Incrementation de colonne	**/
 		{
 			printf(" %c |",mat[lig][col]);					/** Affichage de la matrice	**/
 		}
@@ -78,16 +80,16 @@ void lire_mat(char mat[N][N])
 /**
 *\brief La fonction ecrire_mat permet d'ecrire dans une matrice a une case donnée
 **/
-void ecrire_mat(char mat[N][N],char symbole,int lig,int col)
+void ecrire_mat(char mat[N][N],char couleur,int lig,int col)
 {	
-	mat[lig][col] = symbole;							/** On met le symbole au coordonnées souhaité	**/
+	mat[lig][col] = couleur;							/** On met la couleur au coordonnées souhaité	**/
 }
 
 /**
 *\brief La fonction compter_elem permet de compter le nombre d'element elem sur le plateau
 **/
 
-int compter_elem(char mat[N][N],char elem)
+int compter_elem(char mat[N][N],char couleur)
 {
 	int cpt_elem = 0,lig,col;							/** Declaration des variables a incrementer	**/
 
@@ -95,7 +97,7 @@ int compter_elem(char mat[N][N],char elem)
 	{
 		for(col=0;col<N;col++)							/** Incrementation de colonne	**/
 		{
-			if(mat[lig][col] == elem)
+			if(mat[lig][col] == couleur)
 				cpt_elem++;						/** Incrementation du compteur si la case contient l'elem	**/
 		}
 	}
@@ -108,7 +110,7 @@ int compter_elem(char mat[N][N],char elem)
 
 int hors_mat(int lig,int col)
 {
-	if( (lig < 0 || lig > (N-1)) || (col < 0 || col > (N-1)) )				/** Ce test nous permet de verifier si l'on  est en dehors de la matrice si c'est le cas on return 1	**/
+	if( lig < 0 || lig > (N-1) || col < 0 || col > (N-1) )				/** Ce test nous permet de verifier si l'on  est en dehors de la matrice si c'est le cas on return 1	**/
 		return 1;
 	else										/** Autrement on return 0	**/
 		return 0;

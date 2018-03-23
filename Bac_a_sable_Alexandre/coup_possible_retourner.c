@@ -131,6 +131,7 @@ Il y a 8 fois ce traitement pour les 8 directions possibles pour retourner un pi
 	A droite
 	*******/
 	if(mat[lig][col+1] != '*' && mat[lig][col+1] != couleur){
+		
 		i = lig;
 		j = col+1;
 		cpt = 0;
@@ -140,9 +141,11 @@ Il y a 8 fois ce traitement pour les 8 directions possibles pour retourner un pi
 			cpt++;
 		}
 		if(mat[i][j] == couleur){
+			
 			i = lig;
 			j = col+1;
 			for(x=0;x<cpt;x++){
+				
 				mat[i][j] = couleur;
 				
 				j++;
