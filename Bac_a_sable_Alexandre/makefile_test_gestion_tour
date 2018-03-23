@@ -1,12 +1,13 @@
-OBJ = gestion_matrice.o gestion_tour.o test_Beta.o 
+OBJ = gestion_matrice.o gestion_tour.o test_Beta.o
 
 GM = gestion_matrice.c gestion_matrice.h define.h
 
-GT = gestion_tour.c gestion_tour.h define.h
+GT = gestion_tour.c gestion_tour.h define.h joueur.h
 
 CP = coup_possible_retourner.c coup_possible_retourner.h define.h
 
 CC = gcc
+
 CFLAGS = -g -Wall
 
 test_Beta: ${OBJ}
@@ -27,4 +28,5 @@ test_Beta.o: test_Beta.c
 
 clean :
 	- rm -f *.o
-	- rm -f test_Beta
+doc :
+	doxygen doxyfile_test_fonctions
