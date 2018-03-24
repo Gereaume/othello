@@ -124,11 +124,7 @@ void tour_ordi(char mat[N][N], char couleur, int nb_coup_prevu, int *px, int *py
 	int lig, col, val_ret, lig_max, col_max;
 	int val_max = -999;
 	char mat2[N][N];
-/*
-	if(nb_coup_prevu == 1){
-		return fonc_eval(mat, couleur);
-	}
-*/
+
 	/* On fait toutes les possibilitées */
 	for(lig=0;lig<N;lig++){
 		for(col=0;col<N;col++){
@@ -142,8 +138,13 @@ void tour_ordi(char mat[N][N], char couleur, int nb_coup_prevu, int *px, int *py
 				ecrire_mat(mat2,couleur,lig,col);
 				val_ret = retourner(mat2, couleur, lig, col);
 
+				if(nb_coup_prevu == 1){
+					return fonc_eval(mat, couleur);
+				}
+				else{
+					val_ret = joueur(mat2, couleur==NOIR?BLANC:NOIR, nb_coup_prevu-1, 999, -999);
+				}
 				
-				val_ret = joueur(mat2, couleur==NOIR?BLANC:NOIR, nb_coup_prevu-1, 999, -999);
 				if(val_ret > val_max) {
 					val_max=val_ret;
 					lig_max=lig;
@@ -154,6 +155,7 @@ void tour_ordi(char mat[N][N], char couleur, int nb_coup_prevu, int *px, int *py
 			/* On passe à la case suivante */
 		}
 	}
+	printf("\n\n\tVal de lig_max %i et val de col_max %i\n\n", lig_max, col_max);
 	*px=lig_max;
 	*py=col_max;
 }

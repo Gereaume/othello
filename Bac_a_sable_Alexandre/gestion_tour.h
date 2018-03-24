@@ -9,6 +9,6 @@
 
 void gestion_tour(char mat[N][N],t_joueur joueur1, t_joueur joueur2);
 
-void gestion_tour_ia(char mat[N][N], t_joueur joueur1, t_joueur joueur2);
+void gestion_tour_ia(char mat[N][N], t_joueur joueur1, t_joueur joueur2, int nb_coup_prevu);
 
 #endif

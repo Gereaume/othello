@@ -45,7 +45,7 @@ void lire_mat(char mat[N][N])
 {	
 	int lig,col;									/** Declaration des variables a incrementer	**/
 	printf("\n\t + |");
-	for(int i= 0;i<N+8;i++)
+	for(int i= 0;i<N;i++)
 	{
 		if(i<=9)
 		{
@@ -57,7 +57,7 @@ void lire_mat(char mat[N][N])
 		}
 	}
 	
-	for(lig=0;lig<N+8;lig++)								/** Incrementation de ligne	**/
+	for(lig=0;lig<N;lig++)								/** Incrementation de ligne	**/
 	{
 		if(lig<=9)
 		{
@@ -68,7 +68,7 @@ void lire_mat(char mat[N][N])
 			printf("\n\t%i |",lig);
 		}
 		
-		for(col=0;col<N+8;col++)							/** Incrementation de colonne	**/
+		for(col=0;col<N;col++)							/** Incrementation de colonne	**/
 		{
 			printf(" %c |",mat[lig][col]);					/** Affichage de la matrice	**/
 		}

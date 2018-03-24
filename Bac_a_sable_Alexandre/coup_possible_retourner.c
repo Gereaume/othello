@@ -44,7 +44,7 @@ Il y a 8 fois ce traitement pour les 8 directions possibles pour retourner un pi
 			j--;
 			cpt++;
 		}
-		if(mat[i][j] == couleur){	/** Si la case est de la couleur du joueur, alors on retourne les pions précédemment compté **/
+		if(mat[i][j] == couleur && !hors_mat(i, j)){	/** Si la case est de la couleur du joueur, alors on retourne les pions précédemment compté **/
 			i = lig-1;
 			j = col-1;
 			for(x=0;x<cpt;x++){
@@ -68,7 +68,7 @@ Il y a 8 fois ce traitement pour les 8 directions possibles pour retourner un pi
 			i--;
 			cpt++;
 		}
-		if(mat[i][j] == couleur){
+		if(mat[i][j] == couleur && !hors_mat(i, j)){
 			i = lig-1;
 			j = col;
 			for(x=0;x<cpt;x++){
@@ -91,7 +91,7 @@ Il y a 8 fois ce traitement pour les 8 directions possibles pour retourner un pi
 			j++;
 			cpt++;
 		}
-		if(mat[i][j] == couleur){
+		if(mat[i][j] == couleur && !hors_mat(i, j)){
 			i = lig-1;
 			j = col+1;
 			for(x=0;x<cpt;x++){
@@ -115,7 +115,7 @@ Il y a 8 fois ce traitement pour les 8 directions possibles pour retourner un pi
 			j--;
 			cpt++;
 		}
-		if(mat[i][j] == couleur){
+		if(mat[i][j] == couleur && !hors_mat(i, j)){
 			i = lig;
 			j = col-1;
 			for(x=0;x<cpt;x++){
@@ -140,7 +140,7 @@ Il y a 8 fois ce traitement pour les 8 directions possibles pour retourner un pi
 			j++;
 			cpt++;
 		}
-		if(mat[i][j] == couleur){
+		if(mat[i][j] == couleur && !hors_mat(i, j)){
 			
 			i = lig;
 			j = col+1;
@@ -166,7 +166,7 @@ Il y a 8 fois ce traitement pour les 8 directions possibles pour retourner un pi
 			j--;
 			cpt++;
 		}
-		if(mat[i][j] == couleur){
+		if(mat[i][j] == couleur && !hors_mat(i, j)){
 			i = lig+1;
 			j = col-1;
 			for(x=0;x<cpt;x++){
@@ -190,7 +190,7 @@ Il y a 8 fois ce traitement pour les 8 directions possibles pour retourner un pi
 			i++;
 			cpt++;
 		}
-		if(mat[i][j] == couleur){
+		if(mat[i][j] == couleur && !hors_mat(i, j)){
 			i = lig+1;
 			j = col;
 			for(x=0;x<cpt;x++){
@@ -214,7 +214,7 @@ Il y a 8 fois ce traitement pour les 8 directions possibles pour retourner un pi
 			j++;
 			cpt++;
 		}
-		if(mat[i][j] == couleur){
+		if(mat[i][j] == couleur && !hors_mat(i, j)){
 			i = lig+1;
 			j = col+1;
 			for(x=0;x<cpt;x++){

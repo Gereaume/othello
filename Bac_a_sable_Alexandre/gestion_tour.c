@@ -129,7 +129,7 @@ void gestion_tour(char mat[N][N], t_joueur joueur1, t_joueur joueur2)
 }
 
 
-void gestion_tour_ia(char mat[N][N], t_joueur joueur1, t_joueur joueur2)
+void gestion_tour_ia(char mat[N][N], t_joueur joueur1, t_joueur joueur2, int nb_coup_prevu)
 {
 
 
@@ -138,9 +138,9 @@ void gestion_tour_ia(char mat[N][N], t_joueur joueur1, t_joueur joueur2)
 	int x = 0;
 	int y = 0;
 	
-	/*system("clear");*/
+	system("clear");
 	printf("\nBIENVENUE AU JEU DE L'OTHELLO\n\n");
-	/*sleep(1);*/
+	sleep(1);
 	joueur1.score = 2;					/** Initialisation des scores des joueurs	**/
 	joueur2.score = 2;
 	
@@ -151,7 +151,6 @@ void gestion_tour_ia(char mat[N][N], t_joueur joueur1, t_joueur joueur2)
 		
 		if(peut_jouer(mat, NOIR) == 1)
 		{
-			/*system("clear");*/					/** On nettoie le terminal au debut du tour	**/
 		
 			printf("\n\tNb de pions blanc %i",joueur2.score); /** On affiche le score actuel **/
 			printf("\n\tNb de pions noir %i\n", joueur1.score);			
@@ -183,15 +182,21 @@ void gestion_tour_ia(char mat[N][N], t_joueur joueur1, t_joueur joueur2)
 			printf("\n\t%s ne peut pas jouer\n",joueur1.nom_joueur);	
 		}
 
-
+		sleep(2);
 		
 		if(peut_jouer(mat, BLANC) == 1)
 		{
-			/*system("clear");*/					/** On nettoie le terminal au debut du tour	**/
-		
+			system("clear");					/** On nettoie le terminal au debut du tour	**/
+			printf("\n\tAffichage du plateau de jeu : \n");
 			lire_mat(mat);						/** On affiche la matrice	**/
 			
-			tour_ordi(mat, BLANC, (N*N-4-i), &x, &y);
+			if(nb_coup_prevu > (N*N-4-i)){
+				tour_ordi(mat, BLANC, (N*N-4-i), &x, &y);
+			}
+			else{
+				tour_ordi(mat, BLANC, (nb_coup_prevu), &x, &y);
+			}
+			
 			printf("\n\t%s joue à la ligne %i et colonne %i\n", joueur2.nom_joueur, x, y);
 			ecrire_mat(mat,BLANC,x,y);				/** Une fois que l'endroit ou le joueur a décider de jouer est possible on l'ecrit dans la matrice	**/
 			nb_ret=retourner(mat,BLANC,x,y);
@@ -199,7 +204,7 @@ void gestion_tour_ia(char mat[N][N], t_joueur joueur1, t_joueur joueur2)
 			joueur1.score -= nb_ret;
 			printf("\n\tLe nb de pion(s) retourné(s) est de %i\n",nb_ret);
 			i+=1;							/** On incrémente i	**/
-			/*sleep(3);*/
+			sleep(3);
 		}
 		else{				
 			printf("\n\tBlanc ne peut pas jouer\n");
@@ -209,12 +214,12 @@ void gestion_tour_ia(char mat[N][N], t_joueur joueur1, t_joueur joueur2)
 			break;
 		}
 	}
-	/*system("clear");*/
+	
 	lire_mat(mat);
 	if(joueur1.score>joueur2.score)
-		printf("\tC'est %s qui a gagné avec %i pions !\n",joueur1.nom_joueur, joueur1.score);
+		printf("\tC'est %s qui a gagné avec %i pions à %i!\n",joueur1.nom_joueur, joueur1.score, joueur2.score);
 	else if(joueur1.score<joueur2.score)
-		printf("\tC'est %s qui a gagné avec %i pions !\n",joueur2.nom_joueur, joueur2.score);
+		printf("\tC'est %s qui a gagné avec %i pions à %i!\n",joueur2.nom_joueur, joueur2.score, joueur1.score);
 	else
 		printf("\tEx-aequo, %i à %i!\n", joueur1.score, joueur2.score);
 	return;
