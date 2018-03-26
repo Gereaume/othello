@@ -30,17 +30,173 @@ Puis par rapport au différentes matrices que cela donnera, garder le chemin ét
 Renvoie une valeur par rapport au coup joué, plus le coup est interessant, plus il rapporte de point(s)
 ******************************************************************************************************/
 int fonc_eval(char mat[N][N], char couleur){
-	int val_eval = 0;
-	if(couleur==NOIR){ /* si c'est joueur, on minimise */
-		val_eval -= compter_elem(mat, couleur);
-		val_eval += compter_elem(mat, BLANC);
+
+	int i, j, val_calcul = 0, cpt_final = 0;
+	int haut_G = 0, haut_D = 0, bas_G = 0, bas_D = 0;
+	/* La mobilité : chaque case jouable rapporte des pts */
+	for(i=0;i<N;i++){
+		for(j=0;j<N;j++){
+			if(coup_possible(mat, couleur, i, j) == 1)
+				cpt_final += 2;
+		}
+	}
+
+	/* Le matériel : la différence de pions rapporte des pts */
+	val_calcul += compter_elem(mat, couleur);
+	val_calcul -= compter_elem(mat, couleur==BLANC?NOIR:BLANC);
+
+	cpt_final += val_calcul;
+
+
+
+	/* La force : la possession de certaines cases rapporte des pts */
+
+	/* Pts pour les coins du plateau */
+	if(mat[0][0] == couleur){
+		haut_G = 1;
+		cpt_final += 500;
+	}
+	if(mat[N-1][N-1] == couleur){
+		bas_D = 1;
+		cpt_final += 500;
+	}
+	if(mat[0][N-1] == couleur){
+		haut_D = 1;
+		cpt_final += 500;
+	}
+	if(mat[N-1][0] == couleur){
+		bas_G = 1;
+		cpt_final += 500;
+	}
+
+	/* Pts pour les cotés du plateau */
+	if(haut_G == 1){
+		i = 1;
+		j = 1;
+		while(mat[0][j] == couleur && j < N-1){
+			cpt_final += 250;
+			j++;
+		}
+		while(mat[i][0] == couleur && i < N-1){
+			cpt_final += 250;
+			i++;
+		}	
 	}
 	else{
-		val_eval += compter_elem(mat, couleur);
-		val_eval -= compter_elem(mat, NOIR);
+		i = 1;
+		j = 1;
+		if(mat[i][j] == couleur)
+			cpt_final -= 250;
+		while(j < N-1){
+			if(mat[0][j] == couleur)
+				cpt_final -= 150;
+			j++;
+		}
+		while(i < N-1){
+			if(mat[i][0] == couleur)
+				cpt_final -= 150;
+			i++;
+		}
 	}
-	return val_eval;
+	if(bas_D == 1){
+		i = N-2;
+		j = N-2;
+		while(mat[N-1][j] == couleur && j > 0){
+			cpt_final += 250;
+			j--;
+		}
+		while(mat[i][N-1] == couleur && i > 0){
+			cpt_final += 250;
+			i--;
+		}	
+	}
+	else{
+		i = N-2;
+		j = N-2;
+		if(mat[i][j] == couleur)
+			cpt_final -= 250;
+		while(j > 0){
+			if(mat[N-1][j] == couleur)
+				cpt_final -= 150;
+			j--;
+		}
+		while(i > 0){
+			if(mat[i][N-1] == couleur)
+				cpt_final += 150;
+			i--;
+		}
+	}
+	if(haut_D == 1){
+		i = 1;
+		j = N-2;
+		while(mat[0][j] == couleur && j > 0){
+			cpt_final += 250;
+			j--;
+		}
+		while(mat[i][N-1] == couleur && i < N-1){
+			cpt_final += 250;
+			i++;
+		}	
+	}
+	else{
+		i = 1;
+		j = N-2;
+		if(mat[i][j] == couleur)
+			cpt_final -= 250;
+		while(j > 0){
+			if(mat[0][j] == couleur)
+				cpt_final -= 150;
+			j--;
+		}
+		while(i < N-1){
+			if(mat[i][N-1] == couleur)
+				cpt_final -= 150;
+			i++;
+		}
+	}
+	if(bas_G == 1){
+		i = N-2;
+		j = 1;
+		while(mat[N-1][j] == couleur && j < N-1){
+			cpt_final += 250;
+			j++;
+		}
+		while(mat[i][0] == couleur && i > 0){
+			cpt_final += 250;
+			i--;
+		}	
+	}
+	else{
+		i = N-2;
+		j = 1;
+		if(mat[i][j] == couleur)
+			cpt_final -= 250;
+		while(j < N-1){
+			if(mat[N-1][j] == couleur)
+				cpt_final -= 150;
+			j++;
+		}
+		while(i > 0){
+			if(mat[i][0] == couleur)
+				cpt_final -= 150;
+			i--;
+		}
+	}
+
+	/* Pts pour le centre du plateau */
+	if(mat[N/2][N/2] == couleur)
+		cpt_final += 16;
+	if(mat[(N/2)-1][N/2] == couleur)
+		cpt_final += 16;
+	if(mat[N/2][(N/2)-1] == couleur)
+		cpt_final += 16;
+	if(mat[(N/2)-1][(N/2)-1] == couleur)
+		cpt_final += 16;
+
+
+	return cpt_final;
 }
+
 
 
 /*************
@@ -139,7 +295,7 @@ void tour_ordi(char mat[N][N], char couleur, int nb_coup_prevu, int *px, int *py
 				val_ret = retourner(mat2, couleur, lig, col);
 
 				if(nb_coup_prevu == 1){
-					return fonc_eval(mat, couleur);
+					val_ret = fonc_eval(mat, couleur);
 				}
 				else{
 					val_ret = joueur(mat2, couleur==NOIR?BLANC:NOIR, nb_coup_prevu-1, 999, -999);
