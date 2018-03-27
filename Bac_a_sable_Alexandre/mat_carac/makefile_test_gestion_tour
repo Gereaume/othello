@@ -4,8 +4,6 @@ GM = gestion_matrice.c gestion_matrice.h define.h
 
 GT = gestion_tour.c gestion_tour.h define.h joueur.h
 
-CP = coup_possible_retourner.c coup_possible_retourner.h define.h
-
 MM = min_max_ordi.c min_max_ordi.h
 
 CC = gcc
@@ -17,9 +15,6 @@ test_Beta: ${OBJ}
 
 gestion_matrice.o: ${GM}
 	${CC} -c gestion_matrice.c ${CFLAGS}
-
-coup_possible_retourner.o: ${CP}
-	${CC} -c coup_possible_retourner.c ${CFLAGS}
 
 gestion_tour.o: ${GT}
 	${CC} -c gestion_tour.c ${CFLAGS}

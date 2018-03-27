@@ -5,7 +5,6 @@
 
 #include "gestion_matrice.h"
 #include "define.h"
-#include "coup_possible_retourner.h"
 
 int fonc_eval(char mat[N][N], char couleur);
 
