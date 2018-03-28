@@ -12,6 +12,7 @@
 #include <time.h>
 
 #include "gestion_tour.h"
+#include "gestion_othello.h"
 #include "gestion_matrice.h"
 #include "min_max_ordi.h"
 #include "define.h"

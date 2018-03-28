@@ -4,6 +4,7 @@
 #include <stdlib.h>
 
 #include "gestion_matrice.h"
+#include "gestion_othello.h"
 #include "define.h"
 
 int fonc_eval(char mat[N][N], char couleur);

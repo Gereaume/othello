@@ -5,6 +5,8 @@
 
 #include "define.h"
 #include "joueur.h"
+#include "gestion_othello.h"
+#include "gestion_matrice.h"
 #include "min_max_ordi.h"
 
 void gestion_tour(char mat[N][N],t_joueur joueur1, t_joueur joueur2);

@@ -11,6 +11,7 @@
 
 #include "min_max_ordi.h"
 #include "gestion_matrice.h"
+#include "gestion_othello.h"
 #include "define.h"
 
 
