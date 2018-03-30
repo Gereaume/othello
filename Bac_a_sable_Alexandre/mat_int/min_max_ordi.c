@@ -24,17 +24,27 @@ int fonc_eval(int mat[N][N], int couleur){
 	int i, j, val_calcul = 0, cpt_final = 0;
 	int haut_G = 0, haut_D = 0, bas_G = 0, bas_D = 0;
 
+	/* Valeur pour la mobilité */
+	int val_peut_jouer = 3;
+	/* Valeur pour le matériel */
+	int val_pion = 3;
+	/* Valeur pour la force */
+	int val_coin = 50;
+	int val_bord_pos = 25;
+	int val_bord_neg = 15;
+	int val_centre = 5;
+
 		/** La mobilité : chaque case jouable rapporte des pts **/
 	for(i=0;i<N;i++){
 		for(j=0;j<N;j++){
 			if(coup_possible(mat, couleur, i, j) == 1)
-				cpt_final += 2;
+				cpt_final += val_peut_jouer;
 		}
 	}
 
 		/** Le matériel : la différence de pions rapporte des pts **/
-	val_calcul += compter_couleur(mat, couleur);
-	val_calcul -= compter_couleur(mat, couleur==BLANC?NOIR:BLANC);
+	val_calcul += (val_pion * compter_couleur(mat, couleur));
+	val_calcul -= (val_pion * compter_couleur(mat, couleur==BLANC?NOIR:BLANC));
 
 	cpt_final += val_calcul;
 
@@ -44,19 +54,19 @@ int fonc_eval(int mat[N][N], int couleur){
 		/** Pts pour les coins du plateau **/
 	if(mat[0][0] == couleur){
 		haut_G = 1;
-		cpt_final += 500;
+		cpt_final += val_coin;
 	}
 	if(mat[N-1][N-1] == couleur){
 		bas_D = 1;
-		cpt_final += 500;
+		cpt_final += val_coin;
 	}
 	if(mat[0][N-1] == couleur){
 		haut_D = 1;
-		cpt_final += 500;
+		cpt_final += val_coin;
 	}
 	if(mat[N-1][0] == couleur){
 		bas_G = 1;
-		cpt_final += 500;
+		cpt_final += val_coin;
 	}
 
 		/** Pts pour les cotés du plateau **/
@@ -64,11 +74,11 @@ int fonc_eval(int mat[N][N], int couleur){
 		i = 1;
 		j = 1;
 		while(mat[0][j] == couleur && j < N-1){
-			cpt_final += 250;
+			cpt_final += val_bord_pos;
 			j++;
 		}
 		while(mat[i][0] == couleur && i < N-1){
-			cpt_final += 250;
+			cpt_final += val_bord_pos;
 			i++;
 		}	
 	}
@@ -76,15 +86,15 @@ int fonc_eval(int mat[N][N], int couleur){
 		i = 1;
 		j = 1;
 		if(mat[i][j] == couleur)
-			cpt_final -= 250;
+			cpt_final -= val_bord_pos;
 		while(j < N-1){
 			if(mat[0][j] == couleur)
-				cpt_final -= 150;
+				cpt_final -= val_bord_neg;
 			j++;
 		}
 		while(i < N-1){
 			if(mat[i][0] == couleur)
-				cpt_final -= 150;
+				cpt_final -= val_bord_neg;
 			i++;
 		}
 	}
@@ -92,11 +102,11 @@ int fonc_eval(int mat[N][N], int couleur){
 		i = N-2;
 		j = N-2;
 		while(mat[N-1][j] == couleur && j > 0){
-			cpt_final += 250;
+			cpt_final += val_bord_pos;
 			j--;
 		}
 		while(mat[i][N-1] == couleur && i > 0){
-			cpt_final += 250;
+			cpt_final += val_bord_pos;
 			i--;
 		}	
 	}
@@ -104,15 +114,15 @@ int fonc_eval(int mat[N][N], int couleur){
 		i = N-2;
 		j = N-2;
 		if(mat[i][j] == couleur)
-			cpt_final -= 250;
+			cpt_final -= val_bord_pos;
 		while(j > 0){
 			if(mat[N-1][j] == couleur)
-				cpt_final -= 150;
+				cpt_final -= val_bord_neg;
 			j--;
 		}
 		while(i > 0){
 			if(mat[i][N-1] == couleur)
-				cpt_final += 150;
+				cpt_final += val_bord_neg;
 			i--;
 		}
 	}
@@ -120,11 +130,11 @@ int fonc_eval(int mat[N][N], int couleur){
 		i = 1;
 		j = N-2;
 		while(mat[0][j] == couleur && j > 0){
-			cpt_final += 250;
+			cpt_final += val_bord_pos;
 			j--;
 		}
 		while(mat[i][N-1] == couleur && i < N-1){
-			cpt_final += 250;
+			cpt_final += val_bord_pos;
 			i++;
 		}	
 	}
@@ -132,15 +142,15 @@ int fonc_eval(int mat[N][N], int couleur){
 		i = 1;
 		j = N-2;
 		if(mat[i][j] == couleur)
-			cpt_final -= 250;
+			cpt_final -= val_bord_pos;
 		while(j > 0){
 			if(mat[0][j] == couleur)
-				cpt_final -= 150;
+				cpt_final -= val_bord_neg;
 			j--;
 		}
 		while(i < N-1){
 			if(mat[i][N-1] == couleur)
-				cpt_final -= 150;
+				cpt_final -= val_bord_neg;
 			i++;
 		}
 	}
@@ -148,11 +158,11 @@ int fonc_eval(int mat[N][N], int couleur){
 		i = N-2;
 		j = 1;
 		while(mat[N-1][j] == couleur && j < N-1){
-			cpt_final += 250;
+			cpt_final += val_bord_pos;
 			j++;
 		}
 		while(mat[i][0] == couleur && i > 0){
-			cpt_final += 250;
+			cpt_final += val_bord_pos;
 			i--;
 		}	
 	}
@@ -160,28 +170,28 @@ int fonc_eval(int mat[N][N], int couleur){
 		i = N-2;
 		j = 1;
 		if(mat[i][j] == couleur)
-			cpt_final -= 250;
+			cpt_final -= val_bord_pos;
 		while(j < N-1){
 			if(mat[N-1][j] == couleur)
-				cpt_final -= 150;
+				cpt_final -= val_bord_neg;
 			j++;
 		}
 		while(i > 0){
 			if(mat[i][0] == couleur)
-				cpt_final -= 150;
+				cpt_final -= val_bord_neg;
 			i--;
 		}
 	}
 
 		/** Pts pour le centre du plateau **/
 	if(mat[N/2][N/2] == couleur)
-		cpt_final += 16;
+		cpt_final += val_centre;
 	if(mat[(N/2)-1][N/2] == couleur)
-		cpt_final += 16;
+		cpt_final += val_centre;
 	if(mat[N/2][(N/2)-1] == couleur)
-		cpt_final += 16;
+		cpt_final += val_centre;
 	if(mat[(N/2)-1][(N/2)-1] == couleur)
-		cpt_final += 16;
+		cpt_final += val_centre;
 
 		/** On renvoie le compteur final **/
 	return cpt_final;
