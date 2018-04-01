@@ -1,14 +1,14 @@
 
 CC=gcc
-SDL_DIR=C:\MinGW
-SDLLIB_DIR=${SDL_DIR}\lib
-SDLINC_DIR=${SDL_DIR}\include
+SDL_DIR=${HOME}/SDL2
+SDLLIB_DIR=${SDL_DIR}/lib
+SDLINC_DIR=${SDL_DIR}/include
 
-LIBS=-L${SDLLIB_DIR} -I${SDLINC_DIR} -lSDL2 -lSDL2_ttf -lSDL2_image -lSDL2main
+LIBS=-L${SDLLIB_DIR} -I${SDLINC_DIR}  -lSDL2 -lSDL2_ttf -lSDL2_image
 INCLUDES=-I${SDLINC_DIR} 
 
-test_fonctions=Commun/mat_int
-OBJS= ${test_fonctions}/gestion_matrice.o ${test_fonctions}/gestion_othello.o ${test_fonctions}/define.h ${test_fonctions}/min_max_ordi.o  main.o 
+test_fonctions=Commun/Gestion_matrice_test
+OBJS=${test_fonctions}/gestion_matrice.o ${test_fonctions}/gestion_othello.o ${test_fonctions}/define.h ${test_fonctions}/joueur.h ${test_fonctions}/min_max_ordi.o sdl.o
 
 CFLAGS = -g -Wall
 PROG=sdl
@@ -17,8 +17,8 @@ PROG=sdl
 sdl: affichage.o sdljeu.o ${OBJS}
 	${CC} -o ${PROG} affichage.o sdljeu.o ${OBJS} ${LIBS}  -lm
 
-main.o : main.c
-	${CC} -c main.c ${LIBS} ${CFLAGS}
+sdl.o : sdl.c
+	${CC} -c sdl.c ${LIBS} ${CFLAGS}
 
 affichage.o : affichage.c affichage.h
 	${CC} -c affichage.c ${LIBS} ${CFLAGS}
@@ -38,6 +38,7 @@ gestion_othello.o: ${test_fonctions}/gestion_othello.c ${test_fonctions}/gestion
 clean:
 	rm -f ${PROG} *.o
 	rm -f *.o
+
 
 
 
