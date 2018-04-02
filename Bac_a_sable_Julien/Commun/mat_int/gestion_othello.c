@@ -67,19 +67,8 @@ Il y a 8 fois ce traitement pour les 8 directions possibles pour retourner un pi
 			j = col-1;
 			for(x=0;x<cpt;x++){
 				mat[i][j] = couleur;
-				if(i == 0 && j == 0){
-					tab[y] = 1;
-					tab[y+1] = 1;	
-				}else if(i == 0 && j!=0){
-					tab[y] = 1;
-					tab[y+1] = j*100 + 5;
-				}else if(i != 0 && j==0){
-					tab[y+1] = 1;
-					tab[y] = i*100 + 5;
-				}else{
-					tab[y] = i*100 + 5;
-					tab[y+1] = j*100 + 5;
-				}
+				tab[y] = i*100 + 5;
+				tab[y+1] = j*100 + 5;
 				y = y+2;
 				i--;
 				j--;
@@ -87,6 +76,7 @@ Il y a 8 fois ce traitement pour les 8 directions possibles pour retourner un pi
 			}
 		}
 	}
+
 
 	/******
 	En haut
@@ -105,19 +95,9 @@ Il y a 8 fois ce traitement pour les 8 directions possibles pour retourner un pi
 			j = col;
 			for(x=0;x<cpt;x++){
 				mat[i][j] = couleur;
-				if(i == 0 && j == 0){
-					tab[y] = 1;
-					tab[y+1] = 1;	
-				}else if(i == 0 && j!=0){
-					tab[y] = 1;
-					tab[y+1] = j*100 + 5;
-				}else if(i != 0 && j==0){
-					tab[y+1] = 1;
-					tab[y] = i*100 + 5;
-				}else{
-					tab[y] = i*100 + 5;
-					tab[y+1] = j*100 + 5;
-				}
+				tab[y] = i*100 + 5;
+				tab[y+1] = j*100 + 5;
+				y = y+2;
 				i--;
 				cpt_final++;
 			}
@@ -141,19 +121,9 @@ Il y a 8 fois ce traitement pour les 8 directions possibles pour retourner un pi
 			j = col+1;
 			for(x=0;x<cpt;x++){
 				mat[i][j] = couleur;
-				if(i == 0 && j == 0){
-					tab[y] = 1;
-					tab[y+1] = 1;	
-				}else if(i == 0 && j!=0){
-					tab[y] = 1;
-					tab[y+1] = j*100 + 5;
-				}else if(i != 0 && j==0){
-					tab[y+1] = 1;
-					tab[y] = i*100 + 5;
-				}else{
-					tab[y] = i*100 + 5;
-					tab[y+1] = j*100 + 5;
-				}
+				tab[y] = i*100 + 5;
+				tab[y+1] = j*100 + 5;
+				y = y+2;
 				i--;
 				j++;
 				cpt_final++;
@@ -178,21 +148,9 @@ Il y a 8 fois ce traitement pour les 8 directions possibles pour retourner un pi
 			j = col-1;
 			for(x=0;x<cpt;x++){
 				mat[i][j] = couleur;
-				if(i == 0 && j == 0){
-					tab[y] = 1;
-					tab[y+1] = 1;	
-				}else if(i == 0 && j!=0){
-					tab[y] = 1;
-					tab[y+1] = j*100 + 5;
-				}else if(i != 0 && j==0){
-					tab[y+1] = 1;
-					tab[y] = i*100 + 5;
-				}else{
-					tab[y] = i*100 + 5;
-					tab[y+1] = j*100 + 5;
-				}
-
-				
+				tab[y] = i*100 + 5;
+				tab[y+1] = j*100 + 5;
+				y = y+2;	
 				j--;
 				cpt_final++;
 			}
@@ -219,20 +177,9 @@ Il y a 8 fois ce traitement pour les 8 directions possibles pour retourner un pi
 			for(x=0;x<cpt;x++){
 				
 				mat[i][j] = couleur;
-				if(i == 0 && j == 0){
-					tab[y] = 1;
-					tab[y+1] = 1;	
-				}else if(i == 0 && j!=0){
-					tab[y] = 1;
-					tab[y+1] = j*100 + 5;
-				}else if(i != 0 && j==0){
-					tab[y+1] = 1;
-					tab[y] = i*100 + 5;
-				}else{
-					tab[y] = i*100 + 5;
-					tab[y+1] = j*100 + 5;
-				}
-				
+				tab[y] = i*100 + 5;
+				tab[y+1] = j*100 + 5;
+				y = y+2;
 				j++;
 				cpt_final++;
 			}
@@ -256,19 +203,9 @@ Il y a 8 fois ce traitement pour les 8 directions possibles pour retourner un pi
 			j = col-1;
 			for(x=0;x<cpt;x++){
 				mat[i][j] = couleur;
-				if(i == 0 && j == 0){
-					tab[y] = 1;
-					tab[y+1] = 1;	
-				}else if(i == 0 && j!=0){
-					tab[y] = 1;
-					tab[y+1] = j*100 + 5;
-				}else if(i != 0 && j==0){
-					tab[y+1] = 1;
-					tab[y] = i*100 + 5;
-				}else{
-					tab[y] = i*100 + 5;
-					tab[y+1] = j*100 + 5;
-				}
+				tab[y] = i*100 + 5;
+				tab[y+1] = j*100 + 5;
+				y = y+2;
 				i++;
 				j--;
 				cpt_final++;
@@ -293,20 +230,9 @@ Il y a 8 fois ce traitement pour les 8 directions possibles pour retourner un pi
 			j = col;
 			for(x=0;x<cpt;x++){
 				mat[i][j] = couleur;
-				if(i == 0 && j == 0){
-					tab[y] = 1;
-					tab[y+1] = 1;	
-				}else if(i == 0 && j!=0){
-					tab[y] = 1;
-					tab[y+1] = j*100 + 5;
-				}else if(i != 0 && j==0){
-					tab[y+1] = 1;
-					tab[y] = i*100 + 5;
-				}else{
-					tab[y] = i*100 + 5;
-					tab[y+1] = j*100 + 5;
-				}
-				
+				tab[y] = i*100 + 5;
+				tab[y+1] = j*100 + 5;
+				y = y+2;	
 				i++;
 				cpt_final++;
 			}
@@ -330,19 +256,9 @@ Il y a 8 fois ce traitement pour les 8 directions possibles pour retourner un pi
 			j = col+1;
 			for(x=0;x<cpt;x++){
 				mat[i][j] = couleur;
-				if(i == 0 && j == 0){
-					tab[y] = 1;
-					tab[y+1] = 1;	
-				}else if(i == 0 && j!=0){
-					tab[y] = 1;
-					tab[y+1] = j*100 + 5;
-				}else if(i != 0 && j==0){
-					tab[y+1] = 1;
-					tab[y] = i*100 + 5;
-				}else{
-					tab[y] = i*100 + 5;
-					tab[y+1] = j*100 + 5;
-				}
+				tab[y] = i*100 + 5;
+				tab[y+1] = j*100 + 5;
+				y = y+2;
 				i++;
 				j++;
 				cpt_final++;
