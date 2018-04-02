@@ -123,10 +123,12 @@ int aff_cercleblanc(int mat[N][N],t_joueur joueur1,t_joueur joueur2, int posx, i
 	int a = 0;
 
 	while(a<54){
-		pos.x = tab[a];
-		pos.y = tab[a+1];
-    	SDL_QueryTexture(c1, NULL, NULL, &pos.w, &pos.h);
-    	SDL_RenderCopy(renderer,c1,NULL,&pos);
+		if(tab[a]!=0 && tab[a+1]!=0){
+			pos.x = tab[a];
+			pos.y = tab[a+1];
+			SDL_QueryTexture(c1, NULL, NULL, &pos.w, &pos.h);
+    		SDL_RenderCopy(renderer,c1,NULL,&pos);
+		}
 		a = a+2;
 	}
     return 1;
@@ -226,10 +228,12 @@ int aff_cerclenoir(int mat[N][N],t_joueur joueur1,t_joueur joueur2, int posx, in
 	int a = 0;
 	
 	while(a<54){
-		pos.x = tab[a];
-		pos.y = tab[a+1];
-    	SDL_QueryTexture(c2, NULL, NULL, &pos.w, &pos.h);
-    	SDL_RenderCopy(renderer,c2,NULL,&pos);
+		if(tab[a]!=0 && tab[a+1]!=0){
+			pos.x = tab[a];
+			pos.y = tab[a+1];
+			SDL_QueryTexture(c1, NULL, NULL, &pos.w, &pos.h);
+    		SDL_RenderCopy(renderer,c1,NULL,&pos);
+		}
 		a = a+2;
 	}
     return 1;
@@ -319,10 +323,12 @@ int aff_ordi(int mat[N][N],t_joueur joueur1,t_joueur joueur2, SDL_Renderer *rend
 	int a = 0;
 	
 	while(a<54){
-		pos.x = tab[a];
-		pos.y = tab[a+1];
-    	SDL_QueryTexture(c2, NULL, NULL, &pos.w, &pos.h);
-    	SDL_RenderCopy(renderer,c2,NULL,&pos);
+		if(tab[a]!=0 && tab[a+1]!=0){
+			pos.x = tab[a];
+			pos.y = tab[a+1];
+			SDL_QueryTexture(c1, NULL, NULL, &pos.w, &pos.h);
+    		SDL_RenderCopy(renderer,c1,NULL,&pos);
+		}
 		a = a+2;
 	}
     return 1;
