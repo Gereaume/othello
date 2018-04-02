@@ -11,9 +11,7 @@
 
 int clic(int x, int y, struct SDL_Rect *rect);
 
-int aff_menu(SDL_Renderer* renderer, SDL_Window* fenetre, int);
-
-int aff_menu_jouer(SDL_Renderer* renderer, SDL_Window* fenetre);
+int aff_menu(SDL_Renderer* renderer, SDL_Window* fenetre, int j);
 
 int lancer_jeu1(SDL_Renderer* renderer, SDL_Window* fenetre);
 

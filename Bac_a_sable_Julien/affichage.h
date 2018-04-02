@@ -24,3 +24,5 @@ int aff_cerclenoir(int mat[N][N],t_joueur joueur1,t_joueur joueur2, int posx, in
 int aff_mat(SDL_Renderer* renderer, SDL_Window* fenetre);
 
 int aff_ordi(int mat[N][N],t_joueur joueur1,t_joueur joueur2, SDL_Renderer *renderer, SDL_Surface* n, SDL_Window * fenetre, int nb_coup_prevu, int i);
+
+int aff_menu_jouer(SDL_Renderer* renderer, SDL_Window* fenetre);

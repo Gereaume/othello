@@ -231,8 +231,8 @@ int aff_cerclenoir(int mat[N][N],t_joueur joueur1,t_joueur joueur2, int posx, in
 		if(tab[a]!=0 && tab[a+1]!=0){
 			pos.x = tab[a];
 			pos.y = tab[a+1];
-			SDL_QueryTexture(c1, NULL, NULL, &pos.w, &pos.h);
-    		SDL_RenderCopy(renderer,c1,NULL,&pos);
+			SDL_QueryTexture(c2, NULL, NULL, &pos.w, &pos.h);
+    		SDL_RenderCopy(renderer,c2,NULL,&pos);
 		}
 		a = a+2;
 	}
@@ -326,8 +326,8 @@ int aff_ordi(int mat[N][N],t_joueur joueur1,t_joueur joueur2, SDL_Renderer *rend
 		if(tab[a]!=0 && tab[a+1]!=0){
 			pos.x = tab[a];
 			pos.y = tab[a+1];
-			SDL_QueryTexture(c1, NULL, NULL, &pos.w, &pos.h);
-    		SDL_RenderCopy(renderer,c1,NULL,&pos);
+			SDL_QueryTexture(c2, NULL, NULL, &pos.w, &pos.h);
+    		SDL_RenderCopy(renderer,c2,NULL,&pos);
 		}
 		a = a+2;
 	}
@@ -572,3 +572,131 @@ int aff_mat(SDL_Renderer* renderer, SDL_Window* fenetre){
 
 
 
+
+/** fonction affichant le menu pour choisir à quel niveau on veut jouer **/
+int aff_menu_jouer(SDL_Renderer* renderer, SDL_Window* fenetre){
+
+
+	SDL_RenderClear(renderer); /** nettoyage de l'écran et du renderer 	**/
+
+    SDL_Surface *texte = NULL, *texte1 = NULL, *texte2 = NULL, *texte3 = NULL, *texte4 = NULL, *surf_retour = NULL;  /** création de variables surfaces pour afficher du texte ou des images **/
+    SDL_Texture *texture, *texture1, *texture2, *texture3, *texture4, *text_retour;  /** creation de textures pour affichages du texte **/
+
+	SDL_Rect pos,r1,r2,r3, r4, ret;  /** déclaration rectangle pos pour position du curseur **/
+
+	SDL_Color c_vert = {22, 184, 78},c_bleu = {0, 0, 255}, c_jaune = {255, 94, 77}, c_orange = {239, 155, 15}, c_orange2 = {237, 127, 16}, c_rouge = {255, 0, 0};
+
+	TTF_Font *police = NULL, *police2 = NULL;  /** declaration pointeurs vers différentes polices   **/
+
+	police = TTF_OpenFont("Roboto-Black.ttf", 30); /** police de taille 30  **/
+	police2 = TTF_OpenFont("Roboto-Black.ttf", 60); /** police de taille 60 **/
+
+	if(police == NULL || police2 == NULL){
+		printf("ERROR police \n");
+	}
+	/** déclaration des messages pour les surfaces **/
+
+	texte = TTF_RenderUTF8_Solid(police, "Jouer en 1 contre 1",c_bleu);
+	texte1 = TTF_RenderUTF8_Solid(police, "Jouer avec l'IA en niveau facile",c_orange);
+	texte2 = TTF_RenderUTF8_Solid(police, "Jouer avec l'IA en niveau medium",c_orange2);
+	texte3 = TTF_RenderUTF8_Solid(police, "Jouer avec l'IA en niveau difficile",c_jaune);
+	texte4 = TTF_RenderUTF8_Solid(police, "Jouer avec l'IA en niveau impossible",c_rouge);
+
+	/** appel des surfaces dans les textures    **/
+
+    texture = SDL_CreateTextureFromSurface(renderer, texte);
+	texture1 = SDL_CreateTextureFromSurface(renderer, texte1);
+	texture2 = SDL_CreateTextureFromSurface(renderer, texte2);
+	texture3 = SDL_CreateTextureFromSurface(renderer, texte3);
+	texture4 = SDL_CreateTextureFromSurface(renderer, texte4);
+
+	surf_retour = TTF_RenderText_Solid(police,"<- Retour au MENU ->", c_vert);
+	text_retour = SDL_CreateTextureFromSurface(renderer, surf_retour);
+
+	if(fenetre)
+	{
+	
+		pos.x = 250;
+		pos.y = 200;
+		pos.w = 200;
+		pos.h = 30;
+
+
+        /** appel du premier message    **/
+
+		SDL_QueryTexture(texture, NULL, NULL, &pos.w, &pos.h);
+		SDL_RenderCopy(renderer,texture,NULL,&pos);
+
+        	/** ainsi de suite pour les autres messages **/
+
+		r1.x = 250;
+		r1.y = 300;
+
+		SDL_QueryTexture(texture1, NULL, NULL, &r1.w, &r1.h);
+		SDL_RenderCopy(renderer,texture1,NULL,&r1);
+
+		r2.x = 250;
+		r2.y = 400;
+
+		SDL_QueryTexture(texture2, NULL, NULL, &r2.w, &r2.h);
+		SDL_RenderCopy(renderer,texture2,NULL,&r2);
+
+		r3.x = 250;
+		r3.y = 500;
+
+		SDL_QueryTexture(texture3, NULL, NULL, &r3.w, &r3.h);
+		SDL_RenderCopy(renderer,texture3,NULL,&r3);
+
+		r4.x = 250;
+		r4.y = 600;
+
+		SDL_QueryTexture(texture4, NULL, NULL, &r4.w, &r4.h);
+		SDL_RenderCopy(renderer,texture4,NULL,&r4);
+
+		ret.x = 40; 
+		ret.y = 10;
+
+		SDL_QueryTexture(text_retour, NULL, NULL, &(ret.w), &(ret.h));
+		SDL_RenderCopy(renderer, text_retour, NULL, &ret);
+
+		/** mise en place et appel du renderer pour l'affichage  **/
+		SDL_RenderPresent(renderer);
+        int cont = 1; 
+
+		while(cont) { 
+			SDL_Event event; 
+			while(SDL_PollEvent(&event)) { 
+				switch(event.type) { 
+					case SDL_QUIT: 
+						cont = 0; 
+					break; 
+					case SDL_MOUSEBUTTONDOWN:
+					    switch (event.button.button)
+					    {
+						case SDL_BUTTON_LEFT:
+							if(clic(event.motion.x, event.motion.y, &pos)){
+								lancer_jeu1(renderer, fenetre);
+							}else if(clic(event.motion.x, event.motion.y, &r1)){
+								lancer_jeu2(renderer, fenetre, 3);
+							}else if(clic(event.motion.x, event.motion.y, &r2)){
+								lancer_jeu2(renderer, fenetre, 5);
+							}else if(clic(event.motion.x, event.motion.y, &r3)){
+								lancer_jeu2(renderer, fenetre, 7);
+							}else if(clic(event.motion.x, event.motion.y, &r4)){
+								lancer_jeu2(renderer, fenetre, (N*N)-4);
+							}else if(clic(event.motion.x, event.motion.y, &ret)){
+								aff_menu(renderer, fenetre, 1);
+								cont = 0;
+							}						
+						    break;
+					    }
+					    break;
+				} 
+			} 
+		}
+	}else{
+		fprintf(stderr,"Erreur de création de la fenêtre: %s\n",SDL_GetError());
+	}
+	 SDL_DestroyWindow(fenetre);
+	 return 1;
+}
