@@ -30,9 +30,9 @@ int fonc_eval(char mat[N][N], char couleur){
 	int val_pion = 3;
 	/* Valeur pour la force */
 	int val_coin = 40;
-	int val_bord = 10;
+	int val_bord = 13;
 	int val_adj_coin = 30;
-	int val_centre = 8;
+	int val_centre = 4;
 
 		/** La mobilité : chaque case jouable rapporte des pts **/
 	for(i=0;i<N;i++){
