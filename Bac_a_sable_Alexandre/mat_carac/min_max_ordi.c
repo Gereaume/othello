@@ -273,10 +273,11 @@ int fonc_eval(char mat[N][N], char couleur){
 /**
 *\brief Cette fonction simule le tour du joueur, et renvoie la valeur la plus petite calculée (elle appelle la fonction ordi)
 **/
-int joueur(char mat[N][N], char couleur, int nb_coup_prevu, int *alpha, int *beta){
+int joueur(char mat[N][N], char couleur, int nb_coup_prevu, int beta){
 
 	int lig, col, val_ret = 0;
 	int val_min = 99999;
+	int alpha = 99999;
 	char mat2[N][N];
 
 	if(peut_jouer(mat, couleur) == 0)						/** Si on ne peut pas jouer **/
@@ -293,12 +294,12 @@ int joueur(char mat[N][N], char couleur, int nb_coup_prevu, int *alpha, int *bet
 				val_ret = retourner(mat2, couleur, lig, col);
 				if(nb_coup_prevu == 1){
 					/*
-					printf("\n\t\t\t\tj %i/%i (%c)= %i", lig, col, couleur, fonc_eval(mat2, couleur));
+					printf("\n\t\t\t\tj %i/%i (%c)= %i alpha = %i beta = %i", lig, col, couleur, fonc_eval(mat2, couleur), alpha, beta);
 					*/
 					val_ret = fonc_eval(mat2, couleur);
 				}	
 				else{										/** On regarde un cran plus bas **/
-					val_ret = ordi(mat2, couleur==NOIR?BLANC:NOIR, nb_coup_prevu-1, alpha, beta);
+					val_ret = ordi(mat2, couleur==NOIR?BLANC:NOIR, nb_coup_prevu-1, alpha);
 					/*
 					if(nb_coup_prevu == 4)
 						printf("\n\t");
@@ -308,12 +309,16 @@ int joueur(char mat[N][N], char couleur, int nb_coup_prevu, int *alpha, int *bet
 						printf("\n\t\t\t");
 					if(nb_coup_prevu == 1)
 						printf("\n\t\t\t\t");
-					printf("j %i/%i (%c)= %i", lig, col, couleur, val_ret);
+					printf("j %i/%i (%c)= %i alpha = %i beta = %i", lig, col, couleur, val_ret, alpha, beta);
 					*/
 				}
-				if(val_ret < val_min) 						/** On garde la valeur la plus petite **/
-					val_min = val_ret;
+				if(val_ret < beta)
+					return val_ret;
 				
+				if(val_ret < val_min){ 						/** On garde la valeur la plus petite **/
+					val_min = val_ret;
+					alpha = val_min;
+				}
 			}
 															/** On passe à la case suivante **/
 		}
@@ -327,7 +332,7 @@ int joueur(char mat[N][N], char couleur, int nb_coup_prevu, int *alpha, int *bet
 		printf("\n\t\t\t");
 	if(nb_coup_prevu == 1)
 		printf("\n\t\t\t\t");
-	printf("j (%c)= %i", couleur, val_min);
+	printf("j (%c)= %i alpha = %i beta = %i", couleur, val_min, alpha, beta);
 	*/
 	return val_min;											/** On renvoie la valeur minimum **/
 }
@@ -337,10 +342,11 @@ int joueur(char mat[N][N], char couleur, int nb_coup_prevu, int *alpha, int *bet
 /**
 *\brief Cette fonction simule le tour de l'ordinateur, et renvoie la valeur la plus grande calculée (elle appelle la fonction joueur)
 **/
-int ordi(char mat[N][N], char couleur, int nb_coup_prevu, int *alpha, int *beta){
+int ordi(char mat[N][N], char couleur, int nb_coup_prevu, int alpha){
 
 	int lig, col, val_ret = 0;
 	int val_max = -99999;
+	int beta = -99999;
 	char mat2[N][N];
 	
 	if(peut_jouer(mat, couleur) == 0)						/** Si on ne peut pas jouer **/
@@ -357,12 +363,12 @@ int ordi(char mat[N][N], char couleur, int nb_coup_prevu, int *alpha, int *beta)
 				val_ret = retourner(mat2, couleur, lig, col);
 				if(nb_coup_prevu == 1){									/** Si on est arrivé à la profondeur voulue, on renvoie la valeur de fonc_eval **/
 					/*
-					printf("\n\t\t\t\to %i/%i (%c)= %i", lig, col, couleur, fonc_eval(mat2, couleur));
+					printf("\n\t\t\t\to %i/%i (%c)= %i alpha = %i beta = %i", lig, col, couleur, fonc_eval(mat2, couleur), alpha, beta);
 					*/
 					val_ret = fonc_eval(mat2, couleur);
 				}										
 				else{										/** On regarde un cran plus bas **/
-					val_ret = joueur(mat2, couleur==NOIR?BLANC:NOIR, nb_coup_prevu-1, alpha, beta);
+					val_ret = joueur(mat2, couleur==NOIR?BLANC:NOIR, nb_coup_prevu-1, beta);
 					/*
 					if(nb_coup_prevu == 4)
 						printf("\n\t");
@@ -372,12 +378,15 @@ int ordi(char mat[N][N], char couleur, int nb_coup_prevu, int *alpha, int *beta)
 						printf("\n\t\t\t");
 					if(nb_coup_prevu == 1)
 						printf("\n\t\t\t\t");
-					printf("o %i/%i (%c)= %i", lig, col, couleur, val_ret);
+					printf("o %i/%i (%c)= %i alpha = %i beta = %i", lig, col, couleur, val_ret, alpha, beta);
 					*/
 				}
-				if(val_ret > val_max) 						/** On garde la valeur la plus grande **/
+				if(val_ret > alpha)
+					return val_ret;
+				if(val_ret > val_max){ 						/** On garde la valeur la plus grande **/
 					val_max = val_ret;
-
+					beta = val_max;
+				}
 			}
 															/** On passe à la case suivante **/
 		}
@@ -391,7 +400,7 @@ int ordi(char mat[N][N], char couleur, int nb_coup_prevu, int *alpha, int *beta)
 		printf("\n\t\t\t");
 	if(nb_coup_prevu == 1)
 		printf("\n\t\t\t\t");
-	printf("o (%c)= %i", couleur, val_max);
+	printf("o (%c)= %i alpha = %i beta = %i", couleur, val_max, alpha, beta);
 	*/
 	return val_max;											/** On renvoie la valeur maximum **/
 }
@@ -406,8 +415,7 @@ void tour_ordi(char mat[N][N], char couleur, int nb_coup_prevu, int *px, int *py
 	int lig, col, val_ret = 0, lig_max = -1, col_max = -1;
 	int val_max = -99999;
 
-	int alpha = -99999;
-	int beta = 99999;
+	int beta = -99999;
 
 	char mat2[N][N];
 	
@@ -426,15 +434,17 @@ void tour_ordi(char mat[N][N], char couleur, int nb_coup_prevu, int *px, int *py
 					val_ret = fonc_eval(mat2, couleur);
 				}
 				else{										/** Sinon, on regarde un cran plus bas **/
-					val_ret = joueur(mat2, couleur==NOIR?BLANC:NOIR, nb_coup_prevu-1, &alpha, &beta);
+					val_ret = joueur(mat2, couleur==NOIR?BLANC:NOIR, nb_coup_prevu-1, beta);
 				}
 				/*
 				printf("\no %i/%i (%c)= %i", lig, col, couleur, val_ret);
 				*/
+				
 				if(val_ret > val_max) {						/** On garde la valeur la plus grande **/
 					val_max=val_ret;
 					lig_max=lig;
 					col_max=col;
+					beta = val_max;
 				}
 				
 			}

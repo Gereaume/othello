@@ -9,9 +9,9 @@
 
 int fonc_eval(char mat[N][N], char couleur);
 
-int joueur(char mat[N][N], char couleur, int nb_coup_prevu, int *alpha, int *beta);
+int joueur(char mat[N][N], char couleur, int nb_coup_prevu, int beta);
 
-int ordi(char mat[N][N], char couleur, int nb_coup_prevu, int *alpha, int *beta);
+int ordi(char mat[N][N], char couleur, int nb_coup_prevu, int alpha);
 
 void tour_ordi(char mat[N][N], char couleur, int nb_coup_prevu, int *px, int *py);
 
