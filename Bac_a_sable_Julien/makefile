@@ -8,7 +8,7 @@ LIBS=-L${SDLLIB_DIR} -I${SDLINC_DIR}  -lSDL2 -lSDL2_ttf -lSDL2_image
 INCLUDES=-I${SDLINC_DIR} 
 
 test_fonctions=Commun/Gestion_matrice_test
-OBJS=${test_fonctions}/gestion_matrice.o ${test_fonctions}/gestion_othello.o ${test_fonctions}/define.h ${test_fonctions}/joueur.h ${test_fonctions}/min_max_ordi.o sdl.o
+OBJS=${test_fonctions}/gestion_matrice.o ${test_fonctions}/gestion_othello.o ${test_fonctions}/define.h ${test_fonctions}/joueur.h ${test_fonctions}/min_max_ordi.o main.o
 
 CFLAGS = -g -Wall
 PROG=sdl
@@ -17,8 +17,8 @@ PROG=sdl
 sdl: affichage.o sdljeu.o ${OBJS}
 	${CC} -o ${PROG} affichage.o sdljeu.o ${OBJS} ${LIBS}  -lm
 
-sdl.o : sdl.c
-	${CC} -c sdl.c ${LIBS} ${CFLAGS}
+sdl.o : main.c
+	${CC} -c main.c ${LIBS} ${CFLAGS}
 
 affichage.o : affichage.c affichage.h
 	${CC} -c affichage.c ${LIBS} ${CFLAGS}
