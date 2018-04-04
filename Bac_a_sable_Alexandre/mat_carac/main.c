@@ -26,6 +26,7 @@ int main(){
 	t_joueur joueur2;
 	char mat[N][N];
 	int choix;
+    int j1, j2;
 
     do{
         printf("\nBienvenue au Jeu de l'Othello\n");
@@ -122,8 +123,11 @@ int main(){
                         joueur2.nom_joueur[3] = 'i';
                         joueur2.nom_joueur[4] = '2';
                         joueur2.nom_joueur[5] = '\0';
-                        
-                        gestion_tour_iaVSia(mat,joueur1,joueur2, 7, 1); break;
+                        printf("Choisir niveau Ordi 1 :");
+                        scanf("%i", &j1);
+                        printf("Choisir niveau Ordi 2 :");
+                        scanf("%i", &j2);
+                        gestion_tour_iaVSia(mat,joueur1,joueur2, j1, j2); break;
 						
             case 7 : break;
             default: printf("Erreur : votre choix doit être compris entre 1 et 7\n");
