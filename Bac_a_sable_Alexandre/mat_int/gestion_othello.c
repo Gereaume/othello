@@ -52,11 +52,11 @@ Il y a 8 fois ce traitement pour les 8 directions possibles pour retourner un pi
 	/***************
 	En haut à gauche
 	***************/
-	if(mat[lig-1][col-1] != 0 && mat[lig-1][col-1] != couleur){				/** Si la case est de la couleur de l'adversaire **/
+	if(mat[lig-1][col-1] != 0 && mat[lig-1][col-1] != couleur){					/** Si la case est de la couleur de l'adversaire **/
 		i = lig-1;
 		j = col-1;
 		cpt = 0;
-		while(mat[i][j] != couleur && mat[i][j] != 0 && !hors_mat(i, j) ){	/** Tant que la case est de la couleur de l'adversaire **/
+		while(mat[i][j] != couleur && mat[i][j] != 0 && !hors_mat(i, j) ){		/** Tant que la case est de la couleur de l'adversaire **/
 			i--;
 			j--;
 			cpt++;
@@ -257,7 +257,7 @@ int coup_possible(int mat[N][N], int couleur, int lig, int col){
 	int nb_pions_ret;
 	copie(mat, mat2);											/** copie contenu de mat dans mat2	**/
 
-	if((mat[lig][col] == 0) && !hors_mat(lig,col)){			/** si les coordonnées correspondent à une zone vide **/
+	if((mat[lig][col] == 0) && !hors_mat(lig,col)){				/** si les coordonnées correspondent à une zone vide **/
 		
 		nb_pions_ret = retourner(mat2, couleur, lig, col);		
 		

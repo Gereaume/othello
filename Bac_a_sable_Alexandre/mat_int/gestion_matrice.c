@@ -26,7 +26,7 @@ void init_mat(int mat[N][N]){
 	{
 		for(col=0;col<N;col++)															/** Incrementation de colonne **/
 		{
-			mat[lig][col] = 0;														/** On place des étoile dans chaque case **/
+			mat[lig][col] = 0;															/** On place des étoile dans chaque case **/
 			if((lig == (N/2)-1 && col == (N/2)-1) || (lig == N/2 && col == N/2))		/** Sauf les cases ou nous plaçons les pions du départ **/
 				mat[lig][col] = BLANC;
 			else if((lig == (N/2)-1 && col == N/2) || (lig == N/2 && col == (N/2)-1))

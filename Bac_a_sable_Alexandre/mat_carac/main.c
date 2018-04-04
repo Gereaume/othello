@@ -59,7 +59,7 @@ int main(){
             			
             			printf("\n\tJoueur entrez votre pseudo : ");
 						scanf("%s%*c",joueur1.nom_joueur);
-						gestion_tour_ia(mat,joueur1,joueur2, 3); break;
+						gestion_tour_ia(mat,joueur1,joueur2, 1); break;
 
 			case 3 : 	init_mat(mat);
             			/*
@@ -73,7 +73,7 @@ int main(){
             			
             			printf("\n\tJoueur entrez votre pseudo : ");
 						scanf("%s%*c",joueur1.nom_joueur);
-						gestion_tour_ia(mat,joueur1,joueur2, 5); break;
+						gestion_tour_ia(mat,joueur1,joueur2, 3); break;
 
 			case 4 : 	init_mat(mat);
             			/*
@@ -87,7 +87,7 @@ int main(){
             			
             			printf("\n\tJoueur entrez votre pseudo : ");
 						scanf("%s%*c",joueur1.nom_joueur);
-						gestion_tour_ia(mat,joueur1,joueur2, 7); break;
+						gestion_tour_ia(mat,joueur1,joueur2, 5); break;
 
 			case 5 : 	init_mat(mat);
             			/*
@@ -101,7 +101,7 @@ int main(){
             			
             			printf("\n\tJoueur entrez votre pseudo : ");
 						scanf("%s%*c",joueur1.nom_joueur);
-						gestion_tour_ia(mat,joueur1,joueur2, (N*N-4)); break;
+						gestion_tour_ia(mat,joueur1,joueur2, 7); break;
 						
             case 6 : break;
             default: printf("Erreur : votre choix doit être compris entre 1 et 6\n");

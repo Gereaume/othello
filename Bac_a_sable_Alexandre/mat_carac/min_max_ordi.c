@@ -276,10 +276,10 @@ int fonc_eval(char mat[N][N], char couleur){
 int joueur(char mat[N][N], char couleur, int nb_coup_prevu, int beta){
 
 	int lig, col, val_ret = 0;
-	int val_min = 99999;
 	int alpha = 99999;
 	char mat2[N][N];
-
+	
+	
 	if(peut_jouer(mat, couleur) == 0)						/** Si on ne peut pas jouer **/
 		return (150);
 
@@ -292,49 +292,23 @@ int joueur(char mat[N][N], char couleur, int nb_coup_prevu, int beta){
 															/** On effectue le placement du pion et on retourne le(s) pion(s) à retourner **/
 				ecrire_mat(mat2,couleur,lig,col);
 				val_ret = retourner(mat2, couleur, lig, col);
-				if(nb_coup_prevu == 1){
-					/*
-					printf("\n\t\t\t\tj %i/%i (%c)= %i alpha = %i beta = %i", lig, col, couleur, fonc_eval(mat2, couleur), alpha, beta);
-					*/
+				if(nb_coup_prevu == 1)						/** Si on est arrivé à la profondeur voulue, on renvoie la valeur de fonc_eval **/
 					val_ret = fonc_eval(mat2, couleur);
-				}	
 				else{										/** On regarde un cran plus bas **/
 					val_ret = ordi(mat2, couleur==NOIR?BLANC:NOIR, nb_coup_prevu-1, alpha);
-					/*
-					if(nb_coup_prevu == 4)
-						printf("\n\t");
-					if(nb_coup_prevu == 3)
-						printf("\n\t\t");
-					if(nb_coup_prevu == 2)
-						printf("\n\t\t\t");
-					if(nb_coup_prevu == 1)
-						printf("\n\t\t\t\t");
-					printf("j %i/%i (%c)= %i alpha = %i beta = %i", lig, col, couleur, val_ret, alpha, beta);
-					*/
 				}
+
 				if(val_ret < beta)
 					return val_ret;
 				
-				if(val_ret < val_min){ 						/** On garde la valeur la plus petite **/
-					val_min = val_ret;
-					alpha = val_min;
-				}
+				if(val_ret < alpha) 						/** On garde la valeur la plus petite **/
+					alpha = val_ret;
+				
 			}
 															/** On passe à la case suivante **/
 		}
 	}
-	/*
-	if(nb_coup_prevu == 4)
-		printf("\n\t");
-	if(nb_coup_prevu == 3)
-		printf("\n\t\t");
-	if(nb_coup_prevu == 2)
-		printf("\n\t\t\t");
-	if(nb_coup_prevu == 1)
-		printf("\n\t\t\t\t");
-	printf("j (%c)= %i alpha = %i beta = %i", couleur, val_min, alpha, beta);
-	*/
-	return val_min;											/** On renvoie la valeur minimum **/
+	return alpha;											/** On renvoie la valeur minimum **/
 }
 
 
@@ -345,9 +319,9 @@ int joueur(char mat[N][N], char couleur, int nb_coup_prevu, int beta){
 int ordi(char mat[N][N], char couleur, int nb_coup_prevu, int alpha){
 
 	int lig, col, val_ret = 0;
-	int val_max = -99999;
 	int beta = -99999;
 	char mat2[N][N];
+	
 	
 	if(peut_jouer(mat, couleur) == 0)						/** Si on ne peut pas jouer **/
 		return (-150);
@@ -361,48 +335,23 @@ int ordi(char mat[N][N], char couleur, int nb_coup_prevu, int alpha){
 															/** On effectue le placement du pion et on retourne le(s) pion(s) à retourner **/
 				ecrire_mat(mat2,couleur,lig,col);
 				val_ret = retourner(mat2, couleur, lig, col);
-				if(nb_coup_prevu == 1){									/** Si on est arrivé à la profondeur voulue, on renvoie la valeur de fonc_eval **/
-					/*
-					printf("\n\t\t\t\to %i/%i (%c)= %i alpha = %i beta = %i", lig, col, couleur, fonc_eval(mat2, couleur), alpha, beta);
-					*/
-					val_ret = fonc_eval(mat2, couleur);
-				}										
+				if(nb_coup_prevu == 1)						/** Si on est arrivé à la profondeur voulue, on renvoie la valeur de fonc_eval **/
+					val_ret = fonc_eval(mat2, couleur);							
 				else{										/** On regarde un cran plus bas **/
 					val_ret = joueur(mat2, couleur==NOIR?BLANC:NOIR, nb_coup_prevu-1, beta);
-					/*
-					if(nb_coup_prevu == 4)
-						printf("\n\t");
-					if(nb_coup_prevu == 3)
-						printf("\n\t\t");
-					if(nb_coup_prevu == 2)
-						printf("\n\t\t\t");
-					if(nb_coup_prevu == 1)
-						printf("\n\t\t\t\t");
-					printf("o %i/%i (%c)= %i alpha = %i beta = %i", lig, col, couleur, val_ret, alpha, beta);
-					*/
 				}
+
 				if(val_ret > alpha)
 					return val_ret;
-				if(val_ret > val_max){ 						/** On garde la valeur la plus grande **/
-					val_max = val_ret;
-					beta = val_max;
-				}
+
+				if(val_ret > beta) 							/** On garde la valeur la plus grande **/
+					beta = val_ret;
+				
 			}
 															/** On passe à la case suivante **/
 		}
 	}
-	/*
-	if(nb_coup_prevu == 4)
-		printf("\n\t");
-	if(nb_coup_prevu == 3)
-		printf("\n\t\t");
-	if(nb_coup_prevu == 2)
-		printf("\n\t\t\t");
-	if(nb_coup_prevu == 1)
-		printf("\n\t\t\t\t");
-	printf("o (%c)= %i alpha = %i beta = %i", couleur, val_max, alpha, beta);
-	*/
-	return val_max;											/** On renvoie la valeur maximum **/
+	return beta;											/** On renvoie la valeur maximum **/
 }
 
 
@@ -413,10 +362,7 @@ int ordi(char mat[N][N], char couleur, int nb_coup_prevu, int alpha){
 void tour_ordi(char mat[N][N], char couleur, int nb_coup_prevu, int *px, int *py){
 
 	int lig, col, val_ret = 0, lig_max = -1, col_max = -1;
-	int val_max = -99999;
-
 	int beta = -99999;
-
 	char mat2[N][N];
 	
 
@@ -430,30 +376,22 @@ void tour_ordi(char mat[N][N], char couleur, int nb_coup_prevu, int *px, int *py
 				ecrire_mat(mat2,couleur,lig,col);
 				val_ret = retourner(mat2, couleur, lig, col);
 				
-				if(nb_coup_prevu == 1){						/** Si on est arrivé à la profondeur voulue, on garde la valeur de fonc_eval **/
+				if(nb_coup_prevu == 1)						/** Si on est arrivé à la profondeur voulue, on garde la valeur de fonc_eval **/
 					val_ret = fonc_eval(mat2, couleur);
-				}
 				else{										/** Sinon, on regarde un cran plus bas **/
 					val_ret = joueur(mat2, couleur==NOIR?BLANC:NOIR, nb_coup_prevu-1, beta);
 				}
-				/*
-				printf("\no %i/%i (%c)= %i", lig, col, couleur, val_ret);
-				*/
 				
-				if(val_ret > val_max) {						/** On garde la valeur la plus grande **/
-					val_max=val_ret;
+				if(val_ret > beta) {						/** On garde la valeur la plus grande **/
+					beta=val_ret;
 					lig_max=lig;
 					col_max=col;
-					beta = val_max;
 				}
 				
 			}
 															/** On passe à la case suivante **/
 		}
 	}
-	/*
-	printf("\no (%c)= %i", couleur, val_max);
-	*/
 	*px=lig_max;											/** On met les coordonnées du prochain coup dans des pointeurs **/
 	*py=col_max;
 }
