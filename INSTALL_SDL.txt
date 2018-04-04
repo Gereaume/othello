@@ -1,0 +1,17 @@
+Pour installer la SDL:
+
+- télécharger les fichiers tar.gz de SDL2, SDL2_image et SDL2_ttf
+
+- faire tar xzvf de ces fichiers
+
+- se déplacer dans le fichier SDL2-2.0.8
+
+- faire ./configure --prefix=$HOME/SDL2
+
+- puis make;make install
+
+- retourner dans le dossier précédent
+
+- faire de pour SDL2_image et SDL2_ttf
+
+compiler le makefile
