@@ -7,10 +7,10 @@
 #include <string.h>
 #include <unistd.h>
 
-#include "Commun/Gestion_matrice_test/gestion_matrice.h"
-#include "Commun/Gestion_matrice_test/gestion_othello.h"
-#include "Commun/Gestion_matrice_test/joueur.h"
-#include "Commun/Gestion_matrice_test/define.h"
+#include "gestion_matrice.h"
+#include "gestion_othello.h"
+#include "joueur.h"
+#include "define.h"
 #include "affichage.h"
 
 int clic(int x, int y, struct SDL_Rect *rect);
