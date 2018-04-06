@@ -6,10 +6,10 @@
 #include <stdio.h>
 #include <math.h>
 #include <unistd.h>
-#include "Commun/Gestion_matrice_test/gestion_matrice.h"
-#include "Commun/Gestion_matrice_test/gestion_othello.h"
-#include "Commun/Gestion_matrice_test/joueur.h"
-#include "Commun/Gestion_matrice_test/min_max_ordi.h"
+#include "gestion_matrice.h"
+#include "gestion_othello.h"
+#include "joueur.h"
+#include "min_max_ordi.h"
 
 
 #define N 8
