@@ -15,11 +15,11 @@
 #include <string.h>
 #include <unistd.h>
 
-#include "Commun/Gestion_matrice_test/gestion_matrice.h"
-#include "Commun/Gestion_matrice_test/gestion_othello.h"
-#include "Commun/Gestion_matrice_test/joueur.h"
-#include "Commun/Gestion_matrice_test/define.h"
-#include "Commun/Gestion_matrice_test/min_max_ordi.h"
+#include "gestion_matrice.h"
+#include "gestion_othello.h"
+#include "joueur.h"
+#include "define.h"
+#include "min_max_ordi.h"
 
 #include "sdljeu.h"
 #include "affichage.h"
