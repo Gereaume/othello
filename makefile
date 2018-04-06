@@ -7,7 +7,7 @@ SDLINC_DIR=${SDL_DIR}/include
 LIBS=-L${SDLLIB_DIR} -I${SDLINC_DIR}  -lSDL2 -lSDL2_ttf -lSDL2_image
 INCLUDES=-I${SDLINC_DIR} 
 
-test_fonctions=Commun/Gestion_matrice_test
+test_fonctions=src
 OBJS=${test_fonctions}/gestion_matrice.o ${test_fonctions}/gestion_othello.o ${test_fonctions}/define.h ${test_fonctions}/joueur.h ${test_fonctions}/min_max_ordi.o main.o
 
 CFLAGS = -g -Wall
