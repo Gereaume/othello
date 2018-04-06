@@ -1,0 +1,129 @@
+\hypertarget{gestion__tour_8c}{}\section{src/gestion\+\_\+tour.c File Reference}
+\label{gestion__tour_8c}\index{src/gestion\+\_\+tour.\+c@{src/gestion\+\_\+tour.\+c}}
+
+
+Ce fichier contient des fonctions permettant la gestion des tours en mode humain vs humain ou bien humain vs ia.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$ctype.\+h$>$}\\*
+{\ttfamily \#include $<$time.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}gestion\+\_\+tour.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}gestion\+\_\+othello.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}gestion\+\_\+matrice.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}min\+\_\+max\+\_\+ordi.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}define.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}joueur.\+h\char`\"{}}\\*
+Include dependency graph for gestion\+\_\+tour.\+c\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{gestion__tour_8c_a3ea04a96fd6492419f594f964b858256}{gestion\+\_\+tour} (int mat\mbox{[}N\mbox{]}\mbox{[}N\mbox{]}, \hyperlink{structjoueur__s}{t\+\_\+joueur} joueur1, \hyperlink{structjoueur__s}{t\+\_\+joueur} joueur2)
+\begin{DoxyCompactList}\small\item\em Cette fonction permet le bon déroulement du tour des 2 joueurs. \end{DoxyCompactList}\item 
+void \hyperlink{gestion__tour_8c_a7bd2a71b3f2b49d26690329d22a1703b}{gestion\+\_\+tour\+\_\+ia} (int mat\mbox{[}N\mbox{]}\mbox{[}N\mbox{]}, \hyperlink{structjoueur__s}{t\+\_\+joueur} joueur1, \hyperlink{structjoueur__s}{t\+\_\+joueur} joueur2, int nb\+\_\+coup\+\_\+prevu)
+\begin{DoxyCompactList}\small\item\em Cette fonction permet le bon déroulement du tour du joueur face à l\textquotesingle{}ordinateur. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Ce fichier contient des fonctions permettant la gestion des tours en mode humain vs humain ou bien humain vs ia. 
+
+\begin{DoxyAuthor}{Author}
+Alexandre Laloy / Jérôme Le Querrec 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+08 fevrier 2018 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\index{gestion\+\_\+tour.\+c@{gestion\+\_\+tour.\+c}!gestion\+\_\+tour@{gestion\+\_\+tour}}
+\index{gestion\+\_\+tour@{gestion\+\_\+tour}!gestion\+\_\+tour.\+c@{gestion\+\_\+tour.\+c}}
+\subsubsection[{\texorpdfstring{gestion\+\_\+tour(int mat[N][N], t\+\_\+joueur joueur1, t\+\_\+joueur joueur2)}{gestion_tour(int mat[N][N], t_joueur joueur1, t_joueur joueur2)}}]{\setlength{\rightskip}{0pt plus 5cm}void gestion\+\_\+tour (
+\begin{DoxyParamCaption}
+\item[{int}]{mat\mbox{[}\+N\mbox{]}\mbox{[}\+N\mbox{]}, }
+\item[{{\bf t\+\_\+joueur}}]{joueur1, }
+\item[{{\bf t\+\_\+joueur}}]{joueur2}
+\end{DoxyParamCaption}
+)}\hypertarget{gestion__tour_8c_a3ea04a96fd6492419f594f964b858256}{}\label{gestion__tour_8c_a3ea04a96fd6492419f594f964b858256}
+
+
+Cette fonction permet le bon déroulement du tour des 2 joueurs. 
+
+Déclaration des variables
+
+Initialisation des scores des joueurs
+
+On nettoie le terminal au debut du tour
+
+On affiche le score actuel
+
+On indique que c\textquotesingle{}est le tour du joueur n°1
+
+On affiche la matrice
+
+Le joueur saisie les coordonnées où il veut jouer
+
+Tant que le coup est impossible le joueur doit ressaisir des coordonnées correctes
+
+Une fois que l\textquotesingle{}endroit où le joueur a décider de jouer est possible on l\textquotesingle{}ecrit dans la matrice
+
+On incrémente i
+
+On nettoie le terminal au debut du tour
+
+On affiche le score actuel
+
+On indique que c\textquotesingle{}est le tour du joueur n°2
+
+On affiche la matrice
+
+Le joueur saisie les coordonnées où il veut jouer
+
+Tant que le coup est impossible le joueur doit ressaisir des coordonnées correctes
+
+Une fois que l\textquotesingle{}endroit ou le joueur a décider de jouer est possible on l\textquotesingle{}ecrit dans la matrice
+
+On incrémente i \index{gestion\+\_\+tour.\+c@{gestion\+\_\+tour.\+c}!gestion\+\_\+tour\+\_\+ia@{gestion\+\_\+tour\+\_\+ia}}
+\index{gestion\+\_\+tour\+\_\+ia@{gestion\+\_\+tour\+\_\+ia}!gestion\+\_\+tour.\+c@{gestion\+\_\+tour.\+c}}
+\subsubsection[{\texorpdfstring{gestion\+\_\+tour\+\_\+ia(int mat[N][N], t\+\_\+joueur joueur1, t\+\_\+joueur joueur2, int nb\+\_\+coup\+\_\+prevu)}{gestion_tour_ia(int mat[N][N], t_joueur joueur1, t_joueur joueur2, int nb_coup_prevu)}}]{\setlength{\rightskip}{0pt plus 5cm}void gestion\+\_\+tour\+\_\+ia (
+\begin{DoxyParamCaption}
+\item[{int}]{mat\mbox{[}\+N\mbox{]}\mbox{[}\+N\mbox{]}, }
+\item[{{\bf t\+\_\+joueur}}]{joueur1, }
+\item[{{\bf t\+\_\+joueur}}]{joueur2, }
+\item[{int}]{nb\+\_\+coup\+\_\+prevu}
+\end{DoxyParamCaption}
+)}\hypertarget{gestion__tour_8c_a7bd2a71b3f2b49d26690329d22a1703b}{}\label{gestion__tour_8c_a7bd2a71b3f2b49d26690329d22a1703b}
+
+
+Cette fonction permet le bon déroulement du tour du joueur face à l\textquotesingle{}ordinateur. 
+
+Déclaration des variables
+
+Initialisation des scores des joueurs
+
+On affiche le score actuel
+
+On indique que c\textquotesingle{}est le tour du joueur
+
+On affiche la matrice
+
+Le joueur saisie les coordonnées où il veut jouer
+
+Tant que le coup est impossible le joueur doit ressaisir des coordonnées correctes
+
+Une fois que l\textquotesingle{}endroit où le joueur a décider de jouer est possible on l\textquotesingle{}ecrit dans la matrice
+
+On incrémente i
+
+On nettoie le terminal au debut du tour
+
+On affiche la matrice
+
+Une fois que l\textquotesingle{}ordinateur sait où il joue, on l\textquotesingle{}ecrit dans la matrice
+
+On incrémente i 

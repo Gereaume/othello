@@ -1,0 +1,134 @@
+\hypertarget{gestion__othello_8c}{}\section{src/gestion\+\_\+othello.c File Reference}
+\label{gestion__othello_8c}\index{src/gestion\+\_\+othello.\+c@{src/gestion\+\_\+othello.\+c}}
+
+
+Ce fichier contient des fonctions permettant la gestion du jeu othello.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}gestion\+\_\+matrice.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}gestion\+\_\+othello.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}define.\+h\char`\"{}}\\*
+Include dependency graph for gestion\+\_\+othello.\+c\+:
+% FIG 0
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries N\+O\+IR}~1\hypertarget{gestion__othello_8c_a8a711bd77f878f23e61dfd98fc505a1c}{}\label{gestion__othello_8c_a8a711bd77f878f23e61dfd98fc505a1c}
+
+\item 
+\#define {\bfseries B\+L\+A\+NC}~2\hypertarget{gestion__othello_8c_a4371941fa5aa27c04b3e2b973c39f4b0}{}\label{gestion__othello_8c_a4371941fa5aa27c04b3e2b973c39f4b0}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{gestion__othello_8c_ae6a657b175d4f1424812431f86b9a3de}{compter\+\_\+couleur} (int mat\mbox{[}N\mbox{]}\mbox{[}N\mbox{]}, int couleur)
+\begin{DoxyCompactList}\small\item\em La fonction compter\+\_\+elem permet de compter le nombre d\textquotesingle{}element elem sur le plateau. \end{DoxyCompactList}\item 
+int \hyperlink{gestion__othello_8c_aa1ab56feb8972ed69827e9dbe50938be}{retourner} (int mat\mbox{[}N\mbox{]}\mbox{[}N\mbox{]}, int couleur, int lig, int col)
+\begin{DoxyCompactList}\small\item\em Renvoie le nombre de pions retourné, si aucun retourné, return 0. \end{DoxyCompactList}\item 
+int \hyperlink{gestion__othello_8c_a60ca3e782cf497e0bd20144a9ef4e896}{coup\+\_\+possible} (int mat\mbox{[}N\mbox{]}\mbox{[}N\mbox{]}, int couleur, int lig, int col)
+\begin{DoxyCompactList}\small\item\em La fonction coup\+\_\+possible nous renvoie 1 si le coup est possible et renvoie 0 si le coup n\textquotesingle{}est pas possible. \end{DoxyCompactList}\item 
+int \hyperlink{gestion__othello_8c_ae9db35d59c01e951b0c135944dd80558}{peut\+\_\+jouer} (int mat\mbox{[}N\mbox{]}\mbox{[}N\mbox{]}, int couleur)
+\begin{DoxyCompactList}\small\item\em La fonction peut\+\_\+jouer nous renvoie 1 si le joueur peut jouer et renvoie 0 s\textquotesingle{}il ne peut pas. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Ce fichier contient des fonctions permettant la gestion du jeu othello. 
+
+\begin{DoxyAuthor}{Author}
+Alexandre Laloy 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+28 mars 2018 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\index{gestion\+\_\+othello.\+c@{gestion\+\_\+othello.\+c}!compter\+\_\+couleur@{compter\+\_\+couleur}}
+\index{compter\+\_\+couleur@{compter\+\_\+couleur}!gestion\+\_\+othello.\+c@{gestion\+\_\+othello.\+c}}
+\subsubsection[{\texorpdfstring{compter\+\_\+couleur(int mat[N][N], int couleur)}{compter_couleur(int mat[N][N], int couleur)}}]{\setlength{\rightskip}{0pt plus 5cm}int compter\+\_\+couleur (
+\begin{DoxyParamCaption}
+\item[{int}]{mat\mbox{[}\+N\mbox{]}\mbox{[}\+N\mbox{]}, }
+\item[{int}]{couleur}
+\end{DoxyParamCaption}
+)}\hypertarget{gestion__othello_8c_ae6a657b175d4f1424812431f86b9a3de}{}\label{gestion__othello_8c_ae6a657b175d4f1424812431f86b9a3de}
+
+
+La fonction compter\+\_\+elem permet de compter le nombre d\textquotesingle{}element elem sur le plateau. 
+
+Declaration des variables a incrementer
+
+Incrementation de ligne
+
+Incrementation de colonne
+
+Incrementation du compteur si la case contient la couleur
+
+Retourne la valeur de cpt\+\_\+pions \index{gestion\+\_\+othello.\+c@{gestion\+\_\+othello.\+c}!coup\+\_\+possible@{coup\+\_\+possible}}
+\index{coup\+\_\+possible@{coup\+\_\+possible}!gestion\+\_\+othello.\+c@{gestion\+\_\+othello.\+c}}
+\subsubsection[{\texorpdfstring{coup\+\_\+possible(int mat[N][N], int couleur, int lig, int col)}{coup_possible(int mat[N][N], int couleur, int lig, int col)}}]{\setlength{\rightskip}{0pt plus 5cm}int coup\+\_\+possible (
+\begin{DoxyParamCaption}
+\item[{int}]{mat\mbox{[}\+N\mbox{]}\mbox{[}\+N\mbox{]}, }
+\item[{int}]{couleur, }
+\item[{int}]{lig, }
+\item[{int}]{col}
+\end{DoxyParamCaption}
+)}\hypertarget{gestion__othello_8c_a60ca3e782cf497e0bd20144a9ef4e896}{}\label{gestion__othello_8c_a60ca3e782cf497e0bd20144a9ef4e896}
+
+
+La fonction coup\+\_\+possible nous renvoie 1 si le coup est possible et renvoie 0 si le coup n\textquotesingle{}est pas possible. 
+
+copie contenu de mat dans mat2
+
+si les coordonnées correspondent à une zone vide
+
+si le pion posé retourne au moins 1 pion
+
+on renvoie le nombre de pions retourné(s)
+
+sinon on renvoie 0 \index{gestion\+\_\+othello.\+c@{gestion\+\_\+othello.\+c}!peut\+\_\+jouer@{peut\+\_\+jouer}}
+\index{peut\+\_\+jouer@{peut\+\_\+jouer}!gestion\+\_\+othello.\+c@{gestion\+\_\+othello.\+c}}
+\subsubsection[{\texorpdfstring{peut\+\_\+jouer(int mat[N][N], int couleur)}{peut_jouer(int mat[N][N], int couleur)}}]{\setlength{\rightskip}{0pt plus 5cm}int peut\+\_\+jouer (
+\begin{DoxyParamCaption}
+\item[{int}]{mat\mbox{[}\+N\mbox{]}\mbox{[}\+N\mbox{]}, }
+\item[{int}]{couleur}
+\end{DoxyParamCaption}
+)}\hypertarget{gestion__othello_8c_ae9db35d59c01e951b0c135944dd80558}{}\label{gestion__othello_8c_ae9db35d59c01e951b0c135944dd80558}
+
+
+La fonction peut\+\_\+jouer nous renvoie 1 si le joueur peut jouer et renvoie 0 s\textquotesingle{}il ne peut pas. 
+
+on teste toutes les cases
+
+si il y a au moins 1 coup possible
+
+on renvoie 1
+
+sinon 0 \index{gestion\+\_\+othello.\+c@{gestion\+\_\+othello.\+c}!retourner@{retourner}}
+\index{retourner@{retourner}!gestion\+\_\+othello.\+c@{gestion\+\_\+othello.\+c}}
+\subsubsection[{\texorpdfstring{retourner(int mat[N][N], int couleur, int lig, int col)}{retourner(int mat[N][N], int couleur, int lig, int col)}}]{\setlength{\rightskip}{0pt plus 5cm}int retourner (
+\begin{DoxyParamCaption}
+\item[{int}]{mat\mbox{[}\+N\mbox{]}\mbox{[}\+N\mbox{]}, }
+\item[{int}]{couleur, }
+\item[{int}]{lig, }
+\item[{int}]{col}
+\end{DoxyParamCaption}
+)}\hypertarget{gestion__othello_8c_aa1ab56feb8972ed69827e9dbe50938be}{}\label{gestion__othello_8c_aa1ab56feb8972ed69827e9dbe50938be}
+
+
+Renvoie le nombre de pions retourné, si aucun retourné, return 0. 
+
+Si la case est de la couleur de l\textquotesingle{}adversaire
+
+Tant que la case est de la couleur de l\textquotesingle{}adversaire
+
+Si la case est de la couleur du joueur, alors on retourne les pions précédemment compté
+
+On incrémente le compteur final
+
+On renvoie le nombre de pions retournés 

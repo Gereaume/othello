@@ -1,0 +1,163 @@
+\hypertarget{min__max__ordi_8c}{}\section{src/min\+\_\+max\+\_\+ordi.c File Reference}
+\label{min__max__ordi_8c}\index{src/min\+\_\+max\+\_\+ordi.\+c@{src/min\+\_\+max\+\_\+ordi.\+c}}
+
+
+Ce fichier contient le main permettant de jouer une partie d\textquotesingle{}othello.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}min\+\_\+max\+\_\+ordi.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}gestion\+\_\+matrice.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}gestion\+\_\+othello.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}define.\+h\char`\"{}}\\*
+Include dependency graph for min\+\_\+max\+\_\+ordi.\+c\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{min__max__ordi_8c_a6ac4b3578a819b46ecb10ec18bc00921}{fonc\+\_\+eval} (int mat\mbox{[}N\mbox{]}\mbox{[}N\mbox{]}, int couleur)
+\begin{DoxyCompactList}\small\item\em Cette fonction envoie une valeur par rapport au coup joué, plus le coup est interessant, plus il rapporte de point(s) \end{DoxyCompactList}\item 
+int \hyperlink{min__max__ordi_8c_a845046ac3f902d74f7e6f0499721791d}{joueur} (int mat\mbox{[}N\mbox{]}\mbox{[}N\mbox{]}, int couleur, int nb\+\_\+coup\+\_\+prevu, int alpha, int beta)
+\begin{DoxyCompactList}\small\item\em Cette fonction simule le tour du joueur, et renvoie la valeur la plus petite calculée (elle appelle la fonction ordi) \end{DoxyCompactList}\item 
+int \hyperlink{min__max__ordi_8c_a45c83f0d63a45b8cbfcb4a638eb8be4f}{ordi} (int mat\mbox{[}N\mbox{]}\mbox{[}N\mbox{]}, int couleur, int nb\+\_\+coup\+\_\+prevu, int alpha, int beta)
+\begin{DoxyCompactList}\small\item\em Cette fonction simule le tour de l\textquotesingle{}ordinateur, et renvoie la valeur la plus grande calculée (elle appelle la fonction joueur) \end{DoxyCompactList}\item 
+void \hyperlink{min__max__ordi_8c_a970b888679dfa2258ee97d2f6d3ba6fb}{tour\+\_\+ordi} (int mat\mbox{[}N\mbox{]}\mbox{[}N\mbox{]}, int couleur, int nb\+\_\+coup\+\_\+prevu, int $\ast$px, int $\ast$py)
+\begin{DoxyCompactList}\small\item\em Cette fonction simule le tour de l\textquotesingle{}ordinateur, et permet d\textquotesingle{}avoir les coordonnées du prochain coup de l\textquotesingle{}ordinateur. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Ce fichier contient le main permettant de jouer une partie d\textquotesingle{}othello. 
+
+Ce fichier contient la fonction permettant à l\textquotesingle{}ordinateur de jouer.
+
+\begin{DoxyAuthor}{Author}
+Alexandre Laloy 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+16 mars 2018 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\index{min\+\_\+max\+\_\+ordi.\+c@{min\+\_\+max\+\_\+ordi.\+c}!fonc\+\_\+eval@{fonc\+\_\+eval}}
+\index{fonc\+\_\+eval@{fonc\+\_\+eval}!min\+\_\+max\+\_\+ordi.\+c@{min\+\_\+max\+\_\+ordi.\+c}}
+\subsubsection[{\texorpdfstring{fonc\+\_\+eval(int mat[N][N], int couleur)}{fonc_eval(int mat[N][N], int couleur)}}]{\setlength{\rightskip}{0pt plus 5cm}int fonc\+\_\+eval (
+\begin{DoxyParamCaption}
+\item[{int}]{mat\mbox{[}\+N\mbox{]}\mbox{[}\+N\mbox{]}, }
+\item[{int}]{couleur}
+\end{DoxyParamCaption}
+)}\hypertarget{min__max__ordi_8c_a6ac4b3578a819b46ecb10ec18bc00921}{}\label{min__max__ordi_8c_a6ac4b3578a819b46ecb10ec18bc00921}
+
+
+Cette fonction envoie une valeur par rapport au coup joué, plus le coup est interessant, plus il rapporte de point(s) 
+
+La mobilité \+: chaque case jouable rapporte des pts
+
+Le matériel \+: la différence de pions rapporte des pts
+
+La force \+: la possession de certaines cases rapporte des pts
+
+Pts pour les coins du plateau
+
+Pts pour les cotés du plateau
+
+Pts pour le centre du plateau
+
+On renvoie le compteur final \index{min\+\_\+max\+\_\+ordi.\+c@{min\+\_\+max\+\_\+ordi.\+c}!joueur@{joueur}}
+\index{joueur@{joueur}!min\+\_\+max\+\_\+ordi.\+c@{min\+\_\+max\+\_\+ordi.\+c}}
+\subsubsection[{\texorpdfstring{joueur(int mat[N][N], int couleur, int nb\+\_\+coup\+\_\+prevu, int alpha, int beta)}{joueur(int mat[N][N], int couleur, int nb_coup_prevu, int alpha, int beta)}}]{\setlength{\rightskip}{0pt plus 5cm}int joueur (
+\begin{DoxyParamCaption}
+\item[{int}]{mat\mbox{[}\+N\mbox{]}\mbox{[}\+N\mbox{]}, }
+\item[{int}]{couleur, }
+\item[{int}]{nb\+\_\+coup\+\_\+prevu, }
+\item[{int}]{alpha, }
+\item[{int}]{beta}
+\end{DoxyParamCaption}
+)}\hypertarget{min__max__ordi_8c_a845046ac3f902d74f7e6f0499721791d}{}\label{min__max__ordi_8c_a845046ac3f902d74f7e6f0499721791d}
+
+
+Cette fonction simule le tour du joueur, et renvoie la valeur la plus petite calculée (elle appelle la fonction ordi) 
+
+Si on est arrivé à la profondeur voulue, on renvoie la valeur de fonc\+\_\+eval
+
+On fait toutes les possibilitées
+
+Si le coup est possible
+
+On effectue les calculs sur une copie de mat
+
+On effectue le placement du pion et on retourne le(s) pion(s) à retourner
+
+On regarde un cran plus bas
+
+On garde la valeur la plus petite
+
+On passe à la case suivante
+
+On renvoie la valeur minimum \index{min\+\_\+max\+\_\+ordi.\+c@{min\+\_\+max\+\_\+ordi.\+c}!ordi@{ordi}}
+\index{ordi@{ordi}!min\+\_\+max\+\_\+ordi.\+c@{min\+\_\+max\+\_\+ordi.\+c}}
+\subsubsection[{\texorpdfstring{ordi(int mat[N][N], int couleur, int nb\+\_\+coup\+\_\+prevu, int alpha, int beta)}{ordi(int mat[N][N], int couleur, int nb_coup_prevu, int alpha, int beta)}}]{\setlength{\rightskip}{0pt plus 5cm}int ordi (
+\begin{DoxyParamCaption}
+\item[{int}]{mat\mbox{[}\+N\mbox{]}\mbox{[}\+N\mbox{]}, }
+\item[{int}]{couleur, }
+\item[{int}]{nb\+\_\+coup\+\_\+prevu, }
+\item[{int}]{alpha, }
+\item[{int}]{beta}
+\end{DoxyParamCaption}
+)}\hypertarget{min__max__ordi_8c_a45c83f0d63a45b8cbfcb4a638eb8be4f}{}\label{min__max__ordi_8c_a45c83f0d63a45b8cbfcb4a638eb8be4f}
+
+
+Cette fonction simule le tour de l\textquotesingle{}ordinateur, et renvoie la valeur la plus grande calculée (elle appelle la fonction joueur) 
+
+Si on est arrivé à la profondeur voulue, on renvoie la valeur de fonc\+\_\+eval
+
+On fait toutes les possibilitées
+
+Si le coup est possible
+
+On effectue les calculs sur une copie de mat
+
+On effectue le placement du pion et on retourne le(s) pion(s) à retourner
+
+On regarde un cran plus bas
+
+On garde la valeur la plus grande
+
+On passe à la case suivante
+
+On renvoie la valeur maximum \index{min\+\_\+max\+\_\+ordi.\+c@{min\+\_\+max\+\_\+ordi.\+c}!tour\+\_\+ordi@{tour\+\_\+ordi}}
+\index{tour\+\_\+ordi@{tour\+\_\+ordi}!min\+\_\+max\+\_\+ordi.\+c@{min\+\_\+max\+\_\+ordi.\+c}}
+\subsubsection[{\texorpdfstring{tour\+\_\+ordi(int mat[N][N], int couleur, int nb\+\_\+coup\+\_\+prevu, int $\ast$px, int $\ast$py)}{tour_ordi(int mat[N][N], int couleur, int nb_coup_prevu, int *px, int *py)}}]{\setlength{\rightskip}{0pt plus 5cm}void tour\+\_\+ordi (
+\begin{DoxyParamCaption}
+\item[{int}]{mat\mbox{[}\+N\mbox{]}\mbox{[}\+N\mbox{]}, }
+\item[{int}]{couleur, }
+\item[{int}]{nb\+\_\+coup\+\_\+prevu, }
+\item[{int $\ast$}]{px, }
+\item[{int $\ast$}]{py}
+\end{DoxyParamCaption}
+)}\hypertarget{min__max__ordi_8c_a970b888679dfa2258ee97d2f6d3ba6fb}{}\label{min__max__ordi_8c_a970b888679dfa2258ee97d2f6d3ba6fb}
+
+
+Cette fonction simule le tour de l\textquotesingle{}ordinateur, et permet d\textquotesingle{}avoir les coordonnées du prochain coup de l\textquotesingle{}ordinateur. 
+
+On fait toutes les possibilitées
+
+Si le coup est possible
+
+On effectue les calculs sur une copie de mat
+
+On effectue le placement du pion et on retourne le(s) pion(s) à retourner
+
+Si on est arrivé à la profondeur voulue, on garde la valeur de fonc\+\_\+eval
+
+Sinon, on regarde un cran plus bas
+
+On garde la valeur la plus grande
+
+On passe à la case suivante
+
+On met les coordonnées du prochain coup dans des pointeurs 
