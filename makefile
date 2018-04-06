@@ -18,7 +18,7 @@ sdl: ${OBJS}
 	${CC} -o ${PROG} ${OBJS} ${LIBS}  -lm
 
 main.o : ${test_fonctions}/main.c
-	${CC} -c main.c ${LIBS} ${CFLAGS}
+	${CC} -c ${test_fonctions}/main.c ${LIBS} ${CFLAGS}
 
 affichage.o : ${test_fonctions}/affichage.c ${test_fonctions}/affichage.h
 	${CC} -c ${test_fonctions}/affichage.c ${LIBS} ${CFLAGS}
