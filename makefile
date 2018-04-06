@@ -8,32 +8,32 @@ LIBS=-L${SDLLIB_DIR} -I${SDLINC_DIR}  -lSDL2 -lSDL2_ttf -lSDL2_image
 INCLUDES=-I${SDLINC_DIR} 
 
 test_fonctions=src
-OBJS=${test_fonctions}/gestion_matrice.o ${test_fonctions}/gestion_othello.o ${test_fonctions}/define.h ${test_fonctions}/joueur.h ${test_fonctions}/min_max_ordi.o main.o
+OBJS=${test_fonctions}/gestion_matrice.o ${test_fonctions}/affichage.o ${test_fonctions}/sdljeu.o ${test_fonctions}/gestion_othello.o ${test_fonctions}/min_max_ordi.o ${test_fonctions}/main.o
 
 CFLAGS = -g -Wall
 PROG=sdl
 
 
-sdl: affichage.o sdljeu.o ${OBJS}
-	${CC} -o ${PROG} affichage.o sdljeu.o ${OBJS} ${LIBS}  -lm
+sdl: ${OBJS}
+	${CC} -o ${PROG} ${OBJS} ${LIBS}  -lm
 
-main.o : main.c
+main.o : ${test_fonctions}/main.c
 	${CC} -c main.c ${LIBS} ${CFLAGS}
 
-affichage.o : affichage.c affichage.h
-	${CC} -c affichage.c ${LIBS} ${CFLAGS}
+affichage.o : ${test_fonctions}/affichage.c ${test_fonctions}/affichage.h
+	${CC} -c ${test_fonctions}/affichage.c ${LIBS} ${CFLAGS}
 
-sdljeu.o : sdljeu.c sdljeu.h
-	${CC} -c sdljeu.c ${LIBS} ${CFLAGS}
+sdljeu.o : ${test_fonctions}/sdljeu.c ${test_fonctions}/sdljeu.h
+	${CC} -c ${test_fonctions}/sdljeu.c ${LIBS} ${CFLAGS}
 
 min_max_ordi.o: ${test_fonctions}/min_max_ordi.c ${test_fonctions}/min_max_ordi.h 
 	${CC} -c ${test_fonctions}/min_max_ordi.c ${CFLAGS}
 
 gestion_matrice.o: ${test_fonctions}/gestion_matrice.c ${test_fonctions}/gestion_matrice.h
-	${CC} -c ${test_fonctions}/gestion_matrice.c${CFLAGS}
+	${CC} -c ${test_fonctions}/gestion_matrice.c ${CFLAGS}
 
 gestion_othello.o: ${test_fonctions}/gestion_othello.c ${test_fonctions}/gestion_othello.h
-	${CC} -c ${test_fonctions}/gestion_othello.c${CFLAGS}
+	${CC} -c ${test_fonctions}/gestion_othello.c ${CFLAGS}
 
 
 clean:
