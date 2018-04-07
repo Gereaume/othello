@@ -85,10 +85,7 @@ int aff_cercleblanc(int mat[N][N],t_joueur joueur1,t_joueur joueur2, int posx, i
         	return 1;
     }
 
-	sprintf(totblanc,"Nb de pions blanc(s) : %i", joueur2.score);
-	sprintf(totnoir,"Nb de pions noir(s) : %i", joueur1.score);
-	sprintf(tour,"%s a toi de jouer", joueur1.nom_joueur);
-
+	
 	system("clear");							/** On nettoie le terminal au debut du tour	**/
 
 
@@ -101,6 +98,11 @@ int aff_cercleblanc(int mat[N][N],t_joueur joueur1,t_joueur joueur2, int posx, i
 
 	pos.x = 805;
         pos.y = 400;
+	
+	sprintf(totblanc,"Nb de pions blanc(s) : %i", joueur2.score);
+	sprintf(totnoir,"Nb de pions noir(s) : %i", joueur1.score);
+	sprintf(tour,"%s a toi de jouer", joueur1.nom_joueur);
+
 
 	message = TTF_RenderText_Solid(police, totblanc,c_bleu);
         m = SDL_CreateTextureFromSurface(renderer,message);
@@ -289,9 +291,7 @@ int aff_cerclenoir(int mat[N][N],t_joueur joueur1,t_joueur joueur2, int posx, in
 	system("clear");							/** On nettoie le terminal au debut du tour	**/
 	
 
-	sprintf(totblanc,"Nb de pions blanc(s) : %i", joueur2.score);
-	sprintf(totnoir,"Nb de pions noir(s) : %i", joueur1.score);
-	sprintf(tour,"%s a toi de jouer", joueur2.nom_joueur);
+	
 
 	lire_mat(mat);
 	ecrire_mat(mat,NOIR,x,y);		/** Une fois que l'endroit ou le joueur a décider de jouer est possible on l'ecrit dans la matrice **/
@@ -302,7 +302,9 @@ int aff_cerclenoir(int mat[N][N],t_joueur joueur1,t_joueur joueur2, int posx, in
 	SDL_FreeSurface(message);
 
 
-
+	sprintf(totblanc,"Nb de pions blanc(s) : %i", joueur2.score);
+	sprintf(totnoir,"Nb de pions noir(s) : %i", joueur1.score);
+	sprintf(tour,"%s a toi de jouer", joueur2.nom_joueur);
 	pos.x = 805;
         pos.y = 400;
 
@@ -467,10 +469,7 @@ int aff_ordi(int mat[N][N],t_joueur joueur1,t_joueur joueur2, SDL_Renderer *rend
 		system("clear");							/** On nettoie le terminal au debut du tour	**/
 	
 
-		sprintf(totblanc,"Nb de pions blanc(s) : %i", joueur2.score);
-		sprintf(totnoir,"Nb de pions noir(s) : %i", joueur1.score);
-		sprintf(tour,"%s a toi de jouer", joueur1.nom_joueur);
-
+		
 		lire_mat(mat);
 		ecrire_mat(mat,BLANC,x,y);		/** Une fois que l'endroit ou le joueur a décider de jouer est possible on l'ecrit dans la matrice **/
 		nb_ret=retourner(mat,BLANC,x,y, tab);
@@ -480,6 +479,9 @@ int aff_ordi(int mat[N][N],t_joueur joueur1,t_joueur joueur2, SDL_Renderer *rend
 
 		pos.x = 805;
         	pos.y = 400;
+		sprintf(totblanc,"Nb de pions blanc(s) : %i", joueur2.score);
+		sprintf(totnoir,"Nb de pions noir(s) : %i", joueur1.score);
+		sprintf(tour,"%s a toi de jouer", joueur1.nom_joueur);
 
 		message = TTF_RenderText_Solid(police, totblanc,c_bleu);
         	m = SDL_CreateTextureFromSurface(renderer,message);
