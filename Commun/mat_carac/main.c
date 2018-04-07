@@ -26,6 +26,7 @@ int main(){
 	t_joueur joueur2;
 	char mat[N][N];
 	int choix;
+    int j1, j2;
 
     do{
         printf("\nBienvenue au Jeu de l'Othello\n");
@@ -35,7 +36,8 @@ int main(){
         printf(" 3 - Jouer mode Humain VS Ordi (Medium)\n");
         printf(" 4 - Jouer mode Humain VS Ordi (Hard)\n");
         printf(" 5 - Jouer mode Humain VS Ordi (Impossible)\n");
-        printf(" 6 - Quitter\n");
+        printf(" 6 - Jouer mode Ordi VS Ordi\n");
+        printf(" 7 - Quitter\n");
         printf("Votre choix  : ");
         scanf("%i",&choix);
 
@@ -59,7 +61,7 @@ int main(){
             			
             			printf("\n\tJoueur entrez votre pseudo : ");
 						scanf("%s%*c",joueur1.nom_joueur);
-						gestion_tour_ia(mat,joueur1,joueur2, 3); break;
+						gestion_tour_ia(mat,joueur1,joueur2, 1); break;
 
 			case 3 : 	init_mat(mat);
             			/*
@@ -73,7 +75,7 @@ int main(){
             			
             			printf("\n\tJoueur entrez votre pseudo : ");
 						scanf("%s%*c",joueur1.nom_joueur);
-						gestion_tour_ia(mat,joueur1,joueur2, 5); break;
+						gestion_tour_ia(mat,joueur1,joueur2, 3); break;
 
 			case 4 : 	init_mat(mat);
             			/*
@@ -87,7 +89,7 @@ int main(){
             			
             			printf("\n\tJoueur entrez votre pseudo : ");
 						scanf("%s%*c",joueur1.nom_joueur);
-						gestion_tour_ia(mat,joueur1,joueur2, 7); break;
+						gestion_tour_ia(mat,joueur1,joueur2, 5); break;
 
 			case 5 : 	init_mat(mat);
             			/*
@@ -101,13 +103,37 @@ int main(){
             			
             			printf("\n\tJoueur entrez votre pseudo : ");
 						scanf("%s%*c",joueur1.nom_joueur);
-						gestion_tour_ia(mat,joueur1,joueur2, (N*N-4)); break;
+						gestion_tour_ia(mat,joueur1,joueur2, 7); break;
+
+
+            case 6 :    init_mat(mat);
+                        /*
+                        joueur2.nom_joueur[50] = "Ordi";
+                        */
+                        joueur1.nom_joueur[0] = 'O';
+                        joueur1.nom_joueur[1] = 'r';
+                        joueur1.nom_joueur[2] = 'd';
+                        joueur1.nom_joueur[3] = 'i';
+                        joueur1.nom_joueur[4] = '1';
+                        joueur1.nom_joueur[5] = '\0';
+
+                        joueur2.nom_joueur[0] = 'O';
+                        joueur2.nom_joueur[1] = 'r';
+                        joueur2.nom_joueur[2] = 'd';
+                        joueur2.nom_joueur[3] = 'i';
+                        joueur2.nom_joueur[4] = '2';
+                        joueur2.nom_joueur[5] = '\0';
+                        printf("Choisir niveau Ordi 1 :");
+                        scanf("%i", &j1);
+                        printf("Choisir niveau Ordi 2 :");
+                        scanf("%i", &j2);
+                        gestion_tour_iaVSia(mat,joueur1,joueur2, j1, j2); break;
 						
-            case 6 : break;
-            default: printf("Erreur : votre choix doit être compris entre 1 et 6\n");
+            case 7 : break;
+            default: printf("Erreur : votre choix doit être compris entre 1 et 7\n");
         }
     }
-    while(choix != 6);
+    while(choix != 7);
     printf("Au revoir !\n");
     return EXIT_SUCCESS;
 }
