@@ -24,17 +24,27 @@ int fonc_eval(int mat[N][N], int couleur){
 	int i, j, val_calcul = 0, cpt_final = 0;
 	int haut_G = 0, haut_D = 0, bas_G = 0, bas_D = 0;
 
+	/* Valeur pour la mobilité */
+	int val_peut_jouer = 2;
+	/* Valeur pour le matériel */
+	int val_pion = 3;
+	/* Valeur pour la force */
+	int val_coin = 40;
+	int val_bord = 13;
+	int val_adj_coin = 30;
+	int val_centre = 4;
+
 		/** La mobilité : chaque case jouable rapporte des pts **/
 	for(i=0;i<N;i++){
 		for(j=0;j<N;j++){
 			if(coup_possible(mat, couleur, i, j) == 1)
-				cpt_final += 2;
+				cpt_final += val_peut_jouer;
 		}
 	}
 
 		/** Le matériel : la différence de pions rapporte des pts **/
-	val_calcul += compter_couleur(mat, couleur);
-	val_calcul -= compter_couleur(mat, couleur==BLANC?NOIR:BLANC);
+	val_calcul += (val_pion * compter_couleur(mat, couleur));
+	val_calcul -= (val_pion * compter_couleur(mat, couleur==BLANC?NOIR:BLANC));
 
 	cpt_final += val_calcul;
 
@@ -44,144 +54,216 @@ int fonc_eval(int mat[N][N], int couleur){
 		/** Pts pour les coins du plateau **/
 	if(mat[0][0] == couleur){
 		haut_G = 1;
-		cpt_final += 500;
+		cpt_final += val_coin;
+	}
+	else if(mat[0][0] == (couleur==BLANC?NOIR:BLANC)){
+		haut_G = -1;
+		cpt_final -= val_coin;
 	}
 	if(mat[N-1][N-1] == couleur){
 		bas_D = 1;
-		cpt_final += 500;
+		cpt_final += val_coin;
+	}
+	else if(mat[N-1][N-1] == (couleur==BLANC?NOIR:BLANC)){
+		bas_D = -1;
+		cpt_final -= val_coin;
 	}
 	if(mat[0][N-1] == couleur){
 		haut_D = 1;
-		cpt_final += 500;
+		cpt_final += val_coin;
+	}
+	else if(mat[0][N-1] == (couleur==BLANC?NOIR:BLANC)){
+		haut_D = -1;
+		cpt_final -= val_coin;
 	}
 	if(mat[N-1][0] == couleur){
 		bas_G = 1;
-		cpt_final += 500;
+		cpt_final += val_coin;
+	}
+	else if(mat[N-1][0] == (couleur==BLANC?NOIR:BLANC)){
+		bas_G = -1;
+		cpt_final -= val_coin;
 	}
 
 		/** Pts pour les cotés du plateau **/
 	if(haut_G == 1){
 		i = 1;
 		j = 1;
-		while(mat[0][j] == couleur && j < N-1){
-			cpt_final += 250;
+		while(mat[0][j] == couleur && j < (N/2)-1){
+			cpt_final += val_bord;
 			j++;
 		}
-		while(mat[i][0] == couleur && i < N-1){
-			cpt_final += 250;
+		while(mat[i][0] == couleur && i < (N/2)-1){
+			cpt_final += val_bord;
 			i++;
 		}	
 	}
-	else{
+	else if(haut_G == -1){
 		i = 1;
 		j = 1;
-		if(mat[i][j] == couleur)
-			cpt_final -= 250;
-		while(j < N-1){
-			if(mat[0][j] == couleur)
-				cpt_final -= 150;
+		while(mat[0][j] == (couleur==BLANC?NOIR:BLANC) && j < (N/2)-1){
+			cpt_final -= val_bord;
 			j++;
 		}
-		while(i < N-1){
-			if(mat[i][0] == couleur)
-				cpt_final -= 150;
+		while(mat[i][0] == (couleur==BLANC?NOIR:BLANC) && i < (N/2)-1){
+			cpt_final -= val_bord;
 			i++;
 		}
 	}
+	else{
+		if(mat[1][0] == couleur)
+			cpt_final -= val_adj_coin;
+		if(mat[0][1] == couleur)
+			cpt_final -= val_adj_coin;
+		if(mat[1][1] == couleur)
+			cpt_final -= val_adj_coin;
+		if(mat[2][0] == couleur)
+			cpt_final += val_bord;
+		if(mat[0][2] == couleur)
+			cpt_final += val_bord;
+	}
+
+
+
 	if(bas_D == 1){
 		i = N-2;
 		j = N-2;
-		while(mat[N-1][j] == couleur && j > 0){
-			cpt_final += 250;
+		while(mat[N-1][j] == couleur && j > (N/2)-1){
+			cpt_final += val_bord;
 			j--;
 		}
-		while(mat[i][N-1] == couleur && i > 0){
-			cpt_final += 250;
+		while(mat[i][N-1] == couleur && i > (N/2)-1){
+			cpt_final += val_bord;
 			i--;
 		}	
 	}
-	else{
+	else if(bas_D == -1){
 		i = N-2;
 		j = N-2;
-		if(mat[i][j] == couleur)
-			cpt_final -= 250;
-		while(j > 0){
-			if(mat[N-1][j] == couleur)
-				cpt_final -= 150;
+		while(mat[N-1][j] == (couleur==BLANC?NOIR:BLANC) && j > (N/2)-1){
+			cpt_final -= val_bord;
 			j--;
 		}
-		while(i > 0){
-			if(mat[i][N-1] == couleur)
-				cpt_final += 150;
+		while(mat[i][N-1] == (couleur==BLANC?NOIR:BLANC) && i > (N/2)-1){
+			cpt_final -= val_bord;
 			i--;
 		}
 	}
+	else{
+		if(mat[N-2][N-1] == couleur)
+			cpt_final -= val_adj_coin;
+		if(mat[N-1][N-2] == couleur)
+			cpt_final -= val_adj_coin;
+		if(mat[N-2][N-2] == couleur)
+			cpt_final -= val_adj_coin;
+		if(mat[N-3][N-1] == couleur)
+			cpt_final += val_bord;
+		if(mat[N-1][N-3] == couleur)
+			cpt_final += val_bord;
+	}
+
+
+	
 	if(haut_D == 1){
 		i = 1;
 		j = N-2;
-		while(mat[0][j] == couleur && j > 0){
-			cpt_final += 250;
+		while(mat[0][j] == couleur && j > (N/2)-1){
+			cpt_final += val_bord;
 			j--;
 		}
-		while(mat[i][N-1] == couleur && i < N-1){
-			cpt_final += 250;
+		while(mat[i][N-1] == couleur && i < (N/2)-1){
+			cpt_final += val_bord;
 			i++;
 		}	
 	}
-	else{
+	else if(haut_D == -1){
 		i = 1;
 		j = N-2;
-		if(mat[i][j] == couleur)
-			cpt_final -= 250;
-		while(j > 0){
-			if(mat[0][j] == couleur)
-				cpt_final -= 150;
+		while(mat[0][j] == (couleur==BLANC?NOIR:BLANC) && j > (N/2)-1){
+			cpt_final -= val_bord;
 			j--;
 		}
-		while(i < N-1){
-			if(mat[i][N-1] == couleur)
-				cpt_final -= 150;
+		while(mat[i][N-1] == (couleur==BLANC?NOIR:BLANC) && i < (N/2)-1){
+			cpt_final -= val_bord;
 			i++;
 		}
 	}
+	else{
+		if(mat[N-2][0] == couleur)
+			cpt_final -= val_adj_coin;
+		if(mat[N-1][1] == couleur)
+			cpt_final -= val_adj_coin;
+		if(mat[N-2][1] == couleur)
+			cpt_final -= val_adj_coin;
+		if(mat[N-3][0] == couleur)
+			cpt_final += val_bord;
+		if(mat[N-1][2] == couleur)
+			cpt_final += val_bord;
+	}
+	
+
+
 	if(bas_G == 1){
 		i = N-2;
 		j = 1;
-		while(mat[N-1][j] == couleur && j < N-1){
-			cpt_final += 250;
+		while(mat[N-1][j] == couleur && j < (N/2)-1){
+			cpt_final += val_bord;
 			j++;
 		}
-		while(mat[i][0] == couleur && i > 0){
-			cpt_final += 250;
+		while(mat[i][0] == couleur && i > (N/2)-1){
+			cpt_final += val_bord;
 			i--;
 		}	
 	}
-	else{
+	else if(bas_G == -1){
 		i = N-2;
 		j = 1;
-		if(mat[i][j] == couleur)
-			cpt_final -= 250;
-		while(j < N-1){
-			if(mat[N-1][j] == couleur)
-				cpt_final -= 150;
+		while(mat[N-1][j] == (couleur==BLANC?NOIR:BLANC) && j < (N/2)-1){
+			cpt_final -= val_bord;
 			j++;
 		}
-		while(i > 0){
-			if(mat[i][0] == couleur)
-				cpt_final -= 150;
+		while(mat[i][0] == (couleur==BLANC?NOIR:BLANC) && i > (N/2)-1){
+			cpt_final -= val_bord;
 			i--;
 		}
 	}
+	else{
+		if(mat[0][N-2] == couleur)
+			cpt_final -= val_adj_coin;
+		if(mat[1][N-1] == couleur)
+			cpt_final -= val_adj_coin;
+		if(mat[0][N-1] == couleur)
+			cpt_final -= val_adj_coin;
+		if(mat[0][N-3] == couleur)
+			cpt_final += val_bord;
+		if(mat[2][N-1] == couleur)
+			cpt_final += val_bord;
+	}
+	
+
+
 
 		/** Pts pour le centre du plateau **/
 	if(mat[N/2][N/2] == couleur)
-		cpt_final += 16;
+		cpt_final += val_centre;
+	else{
+		cpt_final -= val_centre;
+	}
 	if(mat[(N/2)-1][N/2] == couleur)
-		cpt_final += 16;
+		cpt_final += val_centre;
+	else{
+		cpt_final -= val_centre;
+	}
 	if(mat[N/2][(N/2)-1] == couleur)
-		cpt_final += 16;
+		cpt_final += val_centre;
+	else{
+		cpt_final -= val_centre;
+	}
 	if(mat[(N/2)-1][(N/2)-1] == couleur)
-		cpt_final += 16;
+		cpt_final += val_centre;
+	else{
+		cpt_final -= val_centre;
+	}
 
 		/** On renvoie le compteur final **/
 	return cpt_final;
@@ -191,16 +273,16 @@ int fonc_eval(int mat[N][N], int couleur){
 /**
 *\brief Cette fonction simule le tour du joueur, et renvoie la valeur la plus petite calculée (elle appelle la fonction ordi)
 **/
-int joueur(int mat[N][N], int couleur, int nb_coup_prevu, int alpha, int beta){
+int joueur(int mat[N][N], int couleur, int nb_coup_prevu, int beta){
 
-	int lig, col, val_ret;
+	int lig, col, val_ret = 0;
+	int alpha = 99999;
 	int mat2[N][N];
-	int val_min = 99999;
+	
+	
+	if(peut_jouer(mat, couleur) == 0)						/** Si on ne peut pas jouer **/
+		return (150);
 
-	if(nb_coup_prevu == 1){									/** Si on est arrivé à la profondeur voulue, on renvoie la valeur de fonc_eval **/
-		return fonc_eval(mat, couleur);
-	}
-								
 	for(lig=0;lig<N;lig++){									/** On fait toutes les possibilitées **/
 		for(col=0;col<N;col++){
 								
@@ -210,17 +292,23 @@ int joueur(int mat[N][N], int couleur, int nb_coup_prevu, int alpha, int beta){
 															/** On effectue le placement du pion et on retourne le(s) pion(s) à retourner **/
 				ecrire_mat(mat2,couleur,lig,col);
 				val_ret = retourner(mat2, couleur, lig, col);
-			
-															/** On regarde un cran plus bas **/
-				val_ret = ordi(mat2, couleur==NOIR?BLANC:NOIR, nb_coup_prevu-1, alpha, beta);
-				if(val_ret < val_min) 						/** On garde la valeur la plus petite **/
-					val_min=val_ret;
+				if(nb_coup_prevu == 1)						/** Si on est arrivé à la profondeur voulue, on renvoie la valeur de fonc_eval **/
+					val_ret = fonc_eval(mat2, couleur);
+				else{										/** On regarde un cran plus bas **/
+					val_ret = ordi(mat2, couleur==NOIR?BLANC:NOIR, nb_coup_prevu-1, alpha);
+				}
+
+				if(val_ret < beta)
+					return val_ret;
+				
+				if(val_ret < alpha) 						/** On garde la valeur la plus petite **/
+					alpha = val_ret;
 				
 			}
 															/** On passe à la case suivante **/
 		}
 	}
-	return val_min;											/** On renvoie la valeur minimum **/
+	return alpha;											/** On renvoie la valeur minimum **/
 }
 
 
@@ -228,15 +316,15 @@ int joueur(int mat[N][N], int couleur, int nb_coup_prevu, int alpha, int beta){
 /**
 *\brief Cette fonction simule le tour de l'ordinateur, et renvoie la valeur la plus grande calculée (elle appelle la fonction joueur)
 **/
-int ordi(int mat[N][N], int couleur, int nb_coup_prevu, int alpha, int beta){
+int ordi(int mat[N][N], int couleur, int nb_coup_prevu, int alpha){
 
-	int lig, col, val_ret;
-	int val_max = -99999;
+	int lig, col, val_ret = 0;
+	int beta = -99999;
 	int mat2[N][N];
-
-	if(nb_coup_prevu == 1){									/** Si on est arrivé à la profondeur voulue, on renvoie la valeur de fonc_eval **/
-		return fonc_eval(mat, couleur);
-	}
+	
+	
+	if(peut_jouer(mat, couleur) == 0)						/** Si on ne peut pas jouer **/
+		return (-150);
 	
 	for(lig=0;lig<N;lig++){									/** On fait toutes les possibilitées **/
 		for(col=0;col<N;col++){
@@ -247,17 +335,23 @@ int ordi(int mat[N][N], int couleur, int nb_coup_prevu, int alpha, int beta){
 															/** On effectue le placement du pion et on retourne le(s) pion(s) à retourner **/
 				ecrire_mat(mat2,couleur,lig,col);
 				val_ret = retourner(mat2, couleur, lig, col);
+				if(nb_coup_prevu == 1)						/** Si on est arrivé à la profondeur voulue, on renvoie la valeur de fonc_eval **/
+					val_ret = fonc_eval(mat2, couleur);							
+				else{										/** On regarde un cran plus bas **/
+					val_ret = joueur(mat2, couleur==NOIR?BLANC:NOIR, nb_coup_prevu-1, beta);
+				}
 
-															/** On regarde un cran plus bas **/
-				val_ret = joueur(mat2, couleur==NOIR?BLANC:NOIR, nb_coup_prevu-1, alpha, beta);
-				if(val_ret > val_max) 						/** On garde la valeur la plus grande **/
-					val_max=val_ret;
+				if(val_ret > alpha)
+					return val_ret;
+
+				if(val_ret > beta) 							/** On garde la valeur la plus grande **/
+					beta = val_ret;
 				
 			}
 															/** On passe à la case suivante **/
 		}
 	}
-	return val_max;											/** On renvoie la valeur maximum **/
+	return beta;											/** On renvoie la valeur maximum **/
 }
 
 
@@ -267,30 +361,29 @@ int ordi(int mat[N][N], int couleur, int nb_coup_prevu, int alpha, int beta){
 **/
 void tour_ordi(int mat[N][N], int couleur, int nb_coup_prevu, int *px, int *py){
 
-	int lig, col, val_ret, lig_max = -1, col_max = -1;
-	int val_max = -99999;
+	int lig, col, val_ret = 0, lig_max = -1, col_max = -1;
+	int beta = -99999;
 	int mat2[N][N];
 	
+
 	for(lig=0;lig<N;lig++){									/** On fait toutes les possibilitées **/
 		for(col=0;col<N;col++){
-			
+
 			if(coup_possible(mat,couleur,lig,col) != 0){	/** Si le coup est possible **/
-				
 				
 				copie(mat, mat2);							/** On effectue les calculs sur une copie de mat **/
 															/** On effectue le placement du pion et on retourne le(s) pion(s) à retourner **/
 				ecrire_mat(mat2,couleur,lig,col);
 				val_ret = retourner(mat2, couleur, lig, col);
-
-				if(nb_coup_prevu == 1){						/** Si on est arrivé à la profondeur voulue, on garde la valeur de fonc_eval **/
-					val_ret = fonc_eval(mat, couleur);
-				}
+				
+				if(nb_coup_prevu == 1)						/** Si on est arrivé à la profondeur voulue, on garde la valeur de fonc_eval **/
+					val_ret = fonc_eval(mat2, couleur);
 				else{										/** Sinon, on regarde un cran plus bas **/
-					val_ret = joueur(mat2, couleur==NOIR?BLANC:NOIR, nb_coup_prevu-1, 999, -999);
+					val_ret = joueur(mat2, couleur==NOIR?BLANC:NOIR, nb_coup_prevu-1, beta);
 				}
 				
-				if(val_ret > val_max) {						/** On garde la valeur la plus grande **/
-					val_max=val_ret;
+				if(val_ret > beta) {						/** On garde la valeur la plus grande **/
+					beta=val_ret;
 					lig_max=lig;
 					col_max=col;
 				}
@@ -299,14 +392,7 @@ void tour_ordi(int mat[N][N], int couleur, int nb_coup_prevu, int *px, int *py){
 															/** On passe à la case suivante **/
 		}
 	}
-	printf("\n\n\tVal de lig_max %i et val de col_max %i\n\n", lig_max, col_max);
-	if(lig_max == -1 || col_max == -1){
-		printf("\n\n\tErreur - lig_max ou col_max n'a pas pris de valeur\n\n");
-	}
-	else{
-		*px=lig_max;										/** On met les coordonnées du prochain coup dans des pointeurs **/
-		*py=col_max;
-	}
-	
+	*px=lig_max;											/** On met les coordonnées du prochain coup dans des pointeurs **/
+	*py=col_max;
 }
 
