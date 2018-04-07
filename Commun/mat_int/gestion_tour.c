@@ -48,9 +48,9 @@ void gestion_tour(int mat[N][N], t_joueur joueur1, t_joueur joueur2){
 			printf("\n\tVeuillez saisir les coordonnées ou vous souhaitez jouer \n\tLa ligne : ");
 			scanf("%i",&lig);
 			printf("\n\tLa colonne : ");
-			scanf("%i",&col);																	/** Le joueur saisie les coordonnées où il veut jouer **/		
+			scanf("%i",&col);																		/** Le joueur saisie les coordonnées où il veut jouer **/		
 			
-			while(coup_possible(mat,NOIR,lig,col) == 0){	/** Tant que le coup est impossible le joueur doit ressaisir des coordonnées correctes **/
+			while(coup_possible(mat,NOIR,lig,col)==0){	/** Tant que le coup est impossible le joueur doit ressaisir des coordonnées correctes **/
 			
 				printf("\n\tCe coup la n'est pas possible\n\tVeuillez resaisir\n\tLa ligne : ");
 				scanf("%i",&lig);
@@ -58,7 +58,7 @@ void gestion_tour(int mat[N][N], t_joueur joueur1, t_joueur joueur2){
 				scanf("%i",&col);
 			}
 		
-			ecrire_mat(mat,NOIR,lig,col);		/** Une fois que l'endroit où le joueur a décider de jouer est possible on l'ecrit dans la matrice **/
+			ecrire_mat(mat,NOIR,lig,col);				/** Une fois que l'endroit où le joueur a décider de jouer est possible on l'ecrit dans la matrice **/
 			nb_ret = retourner(mat,NOIR,lig,col);
 			joueur1.score += (nb_ret+1);
 			joueur2.score -= nb_ret;
@@ -85,9 +85,9 @@ void gestion_tour(int mat[N][N], t_joueur joueur1, t_joueur joueur2){
 			printf("\n\tVeuillez saisir les coordonnées ou vous souhaitez jouer \n\tLa ligne : ");
 			scanf("%i",&lig);
 			printf("\n\tLa colonne : ");
-			scanf("%i",&col);																	/** Le joueur saisie les coordonnées où il veut jouer **/
+			scanf("%i",&col);																		/** Le joueur saisie les coordonnées où il veut jouer **/
 
-			while(coup_possible(mat,BLANC,lig,col) == 0){	/** Tant que le coup est impossible le joueur doit ressaisir des coordonnées correctes **/
+			while(coup_possible(mat,BLANC,lig,col)==0){	/** Tant que le coup est impossible le joueur doit ressaisir des coordonnées correctes **/
 			
 				printf("\n\tCe coup la n'est pas possible\n\tVeuillez resaisir\n\tLa ligne : ");
 				scanf("%i",&lig);
@@ -95,7 +95,7 @@ void gestion_tour(int mat[N][N], t_joueur joueur1, t_joueur joueur2){
 				scanf("%i",&col);
 			}
 		
-			ecrire_mat(mat,BLANC,lig,col);		/** Une fois que l'endroit ou le joueur a décider de jouer est possible on l'ecrit dans la matrice **/
+			ecrire_mat(mat,BLANC,lig,col);				/** Une fois que l'endroit ou le joueur a décider de jouer est possible on l'ecrit dans la matrice **/
 			nb_ret=retourner(mat,BLANC,lig,col);
 			joueur2.score += (nb_ret+1);
 			joueur1.score -= nb_ret;
@@ -155,9 +155,9 @@ void gestion_tour_ia(int mat[N][N], t_joueur joueur1, t_joueur joueur2, int nb_c
 			printf("\n\tVeuillez saisir les coordonnées ou vous souhaitez jouer \n\tLa ligne : ");
 			scanf("%i",&lig);
 			printf("\n\tLa colonne : ");
-			scanf("%i",&col);																	/** Le joueur saisie les coordonnées où il veut jouer **/		
+			scanf("%i",&col);																		/** Le joueur saisie les coordonnées où il veut jouer **/		
 			
-			while(coup_possible(mat,NOIR,lig,col) == 0){	/** Tant que le coup est impossible le joueur doit ressaisir des coordonnées correctes **/
+			while(coup_possible(mat,NOIR,lig,col)==0){	/** Tant que le coup est impossible le joueur doit ressaisir des coordonnées correctes **/
 			
 				printf("\n\tCe coup la n'est pas possible\n\tVeuillez resaisir\n\tLa ligne : ");
 				scanf("%i",&lig);
@@ -165,7 +165,7 @@ void gestion_tour_ia(int mat[N][N], t_joueur joueur1, t_joueur joueur2, int nb_c
 				scanf("%i",&col);
 			}
 		
-			ecrire_mat(mat,NOIR,lig,col);		/** Une fois que l'endroit où le joueur a décider de jouer est possible on l'ecrit dans la matrice	**/
+			ecrire_mat(mat,NOIR,lig,col);				/** Une fois que l'endroit où le joueur a décider de jouer est possible on l'ecrit dans la matrice	**/
 			nb_ret = retourner(mat,NOIR,lig,col);
 			joueur1.score += (nb_ret+1);
 			joueur2.score -= nb_ret;
